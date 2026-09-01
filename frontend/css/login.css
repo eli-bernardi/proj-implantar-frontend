@@ -1,0 +1,301 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    background: #0a0a0a;
+    color: #ffffff;
+    line-height: 1.6;
+}
+
+/* ========== HEADER ========== */
+header {
+    background: rgba(10, 10, 10, 0.9) !important;
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 1rem 2rem !important;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: padding 0.3s ease;
+}
+
+@media (min-width: 1280px) {
+    header {
+        padding: 1rem calc((100vw - 1200px) / 2 + 2rem) !important;
+    }
+}
+
+.logo {
+    font-size: 24px !important;
+    font-weight: 700;
+    background: linear-gradient(135deg, #ff6b6b, #d62828);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center !important;
+    letter-spacing: 1px;
+}
+
+/* ========== MAIN / LAYOUT DA TELA DE AUTENTICAÇÃO ========== */
+main {
+    margin-top: 80px;
+    min-height: calc(100vh - 80px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 64px 24px;
+}
+
+.auth-wrapper {
+    width: 100%;
+    max-width: 440px;
+}
+
+.auth-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 24px;
+    padding: 48px 40px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+/* ========== CABEÇALHO DO CARD ========== */
+.auth-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.auth-logo {
+    font-size: 28px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #ff6b6b, #d62828);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: block;
+    margin-bottom: 24px;
+    letter-spacing: 0.5px;
+}
+
+.auth-header h1 {
+    font-size: 26px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 8px;
+}
+
+.auth-header p {
+    font-size: 15px;
+    color: #888;
+}
+
+/* ========== FORMULÁRIO ========== */
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #cccccc;
+}
+
+.form-group input {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 14px 16px;
+    font-size: 15px;
+    color: #ffffff;
+    font-family: inherit;
+    transition: all 0.25s ease;
+}
+
+.form-group input::placeholder {
+    color: #555555;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #d62828;
+    background: rgba(214, 40, 40, 0.05);
+    box-shadow: 0 0 0 3px rgba(214, 40, 40, 0.12);
+}
+
+.form-group .field-error {
+    display: none;
+    font-size: 13px;
+    color: #ff6b6b;
+}
+
+/* ========== SENHA ========== */
+.password-field {
+    position: relative;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #666;
+    font-size: 13px;
+    cursor: pointer;
+    font-family: inherit;
+    padding: 4px;
+}
+
+.password-toggle:hover {
+    color: #d62828;
+}
+
+/* ========== OPÇÕES (lembrar-me / esqueci a senha) ========== */
+.auth-options {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 14px;
+    margin-top: -4px;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #999;
+    cursor: pointer;
+}
+
+.remember-me input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: #d62828;
+    cursor: pointer;
+}
+
+.forgot-link {
+    color: #d62828;
+    text-decoration: none;
+    font-weight: 500;
+    transition: opacity 0.2s;
+}
+
+.forgot-link:hover {
+    opacity: 0.8;
+    text-decoration: underline;
+}
+
+/* ========== MENSAGEM DE ERRO GERAL (hook para JS) ========== */
+.auth-alert {
+    display: none;
+    background: rgba(214, 40, 40, 0.1);
+    border: 1px solid rgba(214, 40, 40, 0.3);
+    color: #ff8a8a;
+    font-size: 14px;
+    padding: 12px 16px;
+    border-radius: 10px;
+}
+
+/* ========== BOTÃO ========== */
+.btn-auth {
+    background: linear-gradient(135deg, #d62828 0%, #c82323 100%);
+    color: white;
+    border: none;
+    padding: 15px 24px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1.2);
+    margin-top: 4px;
+    font-family: inherit;
+}
+
+.btn-auth:hover {
+    background: linear-gradient(135deg, #e02d2d 0%, #d62828 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(214, 40, 40, 0.3);
+}
+
+/* ========== DIVISOR ========== */
+.auth-divider {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 28px 0;
+    color: #555;
+    font-size: 13px;
+}
+
+.auth-divider::before,
+.auth-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+/* ========== RODAPÉ DO CARD ========== */
+.auth-footer {
+    text-align: center;
+    font-size: 14px;
+    color: #888;
+}
+
+.auth-footer a {
+    color: #d62828;
+    text-decoration: none;
+    font-weight: 600;
+    transition: opacity 0.2s;
+}
+
+.auth-footer a:hover {
+    opacity: 0.8;
+    text-decoration: underline;
+}
+
+.back-home {
+    display: block;
+    text-align: center;
+    margin-top: 32px;
+    font-size: 14px;
+    color: #666;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.back-home:hover {
+    color: #d62828;
+}
+
+/* ========== RESPONSIVIDADE ========== */
+@media (max-width: 768px) {
+    header {
+        padding: 1rem 2rem !important;
+    }
+
+    .auth-card {
+        padding: 36px 24px;
+        border-radius: 20px;
+    }
+
+    .auth-header h1 {
+        font-size: 22px;
+    }
+}

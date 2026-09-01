@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato | Del Company — Assessoria em Licitações</title>
+
+    <!-- Google Fonts: Cormorant Garamond & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['"Cormorant Garamond"', 'serif'],
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            black: '#0D0D0E',
+                            dark: '#161618',
+                            surface: '#FFFFFF',
+                            canvas: '#F6F6F7',
+                            border: '#E4E4E7',
+                            borderDark: '#27272A',
+                            muted: '#71717A',
+                            red: '#C92A2A',
+                            redHover: '#A61E1E',
+                            redLight: '#FFF5F5'
+                        }
+                    },
+                    letterSpacing: {
+                        widest2: '0.22em',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Scripts do Sistema -->
+    <script src="../js/config.js" defer></script>
+    <script src="../js/api.js" defer></script>
+    <script src="../js/auth.js" defer></script>
+    <script src="../js/cart-store.js" defer></script>
+    <script src="../js/contato.js" defer></script>
+</head>
+
+<body class="bg-brand-canvas text-brand-dark font-sans antialiased selection:bg-brand-red selection:text-white min-h-screen flex flex-col justify-between">
+
+    <!-- Header -->
+    <header class="w-full border-b border-brand-border bg-white/95 backdrop-blur-md sticky top-0 z-50 transition-all">
+        <div class="max-w-7xl mx-auto px-6 sm:px-8 h-24 flex items-center justify-between">
+            <a href="../index.html" class="flex items-center gap-3.5 group">
+                <div class="w-10 h-10 bg-brand-black flex items-center justify-center text-brand-red font-serif text-2xl font-bold border border-brand-border group-hover:border-brand-red transition-colors">
+                    D
+                </div>
+                <div class="flex flex-col tracking-widest uppercase">
+                    <span class="font-serif text-xl tracking-[0.2em] font-semibold text-brand-black leading-none">DEL COMPANY</span>
+                    <span class="text-[9px] tracking-[0.35em] text-brand-muted font-normal mt-1">ASSESSORIA EM LICITAÇÕES</span>
+                </div>
+            </a>
+
+            <nav class="hidden md:flex items-center gap-10 text-xs font-semibold uppercase tracking-widest text-brand-muted">
+                <a href="../index.html#solucoes" class="hover:text-brand-red transition-colors duration-200">Soluções</a>
+                <a href="../index.html#metodologia" class="hover:text-brand-red transition-colors duration-200">Metodologia</a>
+                <a href="../index.html#setores" class="hover:text-brand-red transition-colors duration-200">Setores</a>
+                <a href="../index.html#sobre" class="hover:text-brand-red transition-colors duration-200">Sobre</a>
+                <a href="./contato.html" class="text-brand-red font-bold transition-colors duration-200">Contato</a>
+            </nav>
+
+            <a href="../index.html"
+                class="hidden sm:inline-flex items-center gap-2.5 px-6 py-3 border border-brand-border hover:border-brand-black text-brand-black text-xs font-semibold uppercase tracking-widest transition-all duration-300">
+                <i data-lucide="arrow-left" class="w-3.5 h-3.5 stroke-[1.5]"></i>
+                Voltar ao Início
+            </a>
+        </div>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main class="max-w-7xl mx-auto px-6 sm:px-8 py-16 sm:py-24 w-full flex-1">
+
+        <!-- Topo Editorial -->
+        <div class="max-w-3xl mb-14">
+            <span class="text-xs uppercase tracking-widest2 text-brand-red font-bold">Atendimento Estratégico</span>
+            <h1 class="font-serif text-4xl sm:text-6xl font-normal text-brand-black mt-3 leading-tight">
+                Inicie a sua jornada em <br />
+                <span class="italic text-brand-red">contratos públicos</span>.
+            </h1>
+            <p class="text-sm sm:text-base text-brand-muted font-light mt-4 leading-relaxed">
+                Preencha o formulário abaixo para solicitar um diagnóstico preliminar ou agendar uma reunião com nossa equipe técnica de licitações.
+            </p>
+        </div>
+
+        <!-- Grid: Formulário + Canais -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+
+            <!-- Formulário (7 colunas) -->
+            <div class="lg:col-span-7 bg-brand-surface border border-brand-border p-8 sm:p-12 shadow-sm">
+
+                <!-- Alerta de status -->
+                <div id="form-alert" class="hidden mb-6 bg-brand-redLight border border-brand-red/20 text-brand-red text-xs px-4 py-3 font-medium"></div>
+
+                <form id="contato-form" class="space-y-6">
+
+                    <!-- Nome e Empresa -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div class="flex flex-col gap-2">
+                            <label for="nome" class="text-xs uppercase tracking-widest font-semibold text-brand-black">Nome Completo *</label>
+                            <input type="text" id="nome" required placeholder="Ex: Carlos Eduardo Silveira"
+                                class="w-full bg-brand-canvas border border-brand-border px-4 py-3.5 text-xs text-brand-dark placeholder:text-zinc-400 focus:outline-none focus:border-brand-black focus:bg-white transition-all">
+                            <span class="hidden text-[11px] text-brand-red font-medium" id="nome-error">Informe seu nome.</span>
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <label for="empresa" class="text-xs uppercase tracking-widest font-semibold text-brand-black">Nome da Empresa</label>
+                            <input type="text" id="empresa" placeholder="Ex: Construtora Alfa Ltda"
+                                class="w-full bg-brand-canvas border border-brand-border px-4 py-3.5 text-xs text-brand-dark placeholder:text-zinc-400 focus:outline-none focus:border-brand-black focus:bg-white transition-all">
+                        </div>
+                    </div>
+
+                    <!-- E-mail e Telefone -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div class="flex flex-col gap-2">
+                            <label for="email" class="text-xs uppercase tracking-widest font-semibold text-brand-black">E-mail *</label>
+                            <input type="email" id="email" required placeholder="carlos@empresa.com.br"
+                                class="w-full bg-brand-canvas border border-brand-border px-4 py-3.5 text-xs text-brand-dark placeholder:text-zinc-400 focus:outline-none focus:border-brand-black focus:bg-white transition-all">
+                            <span class="hidden text-[11px] text-brand-red font-medium" id="email-error">Informe um e-mail válido.</span>
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <label for="telefone" class="text-xs uppercase tracking-widest font-semibold text-brand-black">WhatsApp / Telefone</label>
+                            <input type="tel" id="telefone" placeholder="(48) 99999-9999"
+                                class="w-full bg-brand-canvas border border-brand-border px-4 py-3.5 text-xs text-brand-dark placeholder:text-zinc-400 focus:outline-none focus:border-brand-black focus:bg-white transition-all">
+                            <span class="hidden text-[11px] text-brand-red font-medium" id="telefone-error">Informe um telefone válido.</span>
+                        </div>
+                    </div>
+
+                    <!-- Assunto -->
+                    <div class="flex flex-col gap-2">
+                        <label for="assunto" class="text-xs uppercase tracking-widest font-semibold text-brand-black">Principal Necessidade *</label>
+                        <div class="relative">
+                            <select id="assunto"
+                                class="w-full bg-brand-canvas border border-brand-border px-4 py-3.5 text-xs text-brand-dark focus:outline-none focus:border-brand-black focus:bg-white appearance-none transition-all cursor-pointer">
+                                <option value="">Selecione um assunto</option>
+                                <option value="analise_edital">Análise e Parecer Técnico de Edital</option>
+                                <option value="auditoria_documental">Organização e Auditoria Documental</option>
+                                <option value="acompanhamento_completo">Assessoria Completa (End-to-End)</option>
+                                <option value="impugnacao_recurso">Elaboração de Impugnação ou Recurso</option>
+                                <option value="outro">Outro / Dúvidas Gerais</option>
+                            </select>
+                            <i data-lucide="chevron-down" class="w-4 h-4 text-brand-muted absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none stroke-[1.5]"></i>
+                        </div>
+                        <span class="hidden text-[11px] text-brand-red font-medium" id="assunto-error">Selecione um assunto.</span>
+                    </div>
+
+                    <!-- Mensagem -->
+                    <div class="flex flex-col gap-2">
+                        <label for="mensagem" class="text-xs uppercase tracking-widest font-semibold text-brand-black">Detalhes da Demanda *</label>
+                        <textarea id="mensagem" rows="4" required
+                            placeholder="Descreva brevemente o edital, o segmento ou a data prevista para a sessão..."
+                            class="w-full bg-brand-canvas border border-brand-border p-4 text-xs text-brand-dark placeholder:text-zinc-400 focus:outline-none focus:border-brand-black focus:bg-white transition-all resize-none"></textarea>
+                        <span class="hidden text-[11px] text-brand-red font-medium" id="mensagem-error">Descreva sua demanda.</span>
+                    </div>
+
+                    <!-- Privacidade -->
+                    <label class="flex items-start gap-3 text-xs text-brand-muted cursor-pointer">
+                        <input type="checkbox" id="privacidade" class="accent-brand-red w-4 h-4 mt-0.5">
+                        <span>Concordo com a <a href="#" class="text-brand-red hover:underline">Política de Privacidade</a> e autorizo o uso dos dados para contato.</span>
+                    </label>
+
+                    <!-- Botão Enviar -->
+                    <button type="submit" id="btn-enviar"
+                        class="w-full py-4 bg-brand-red hover:bg-brand-redHover text-white text-xs uppercase tracking-widest font-semibold transition-all duration-300 shadow-md shadow-brand-red/20 flex items-center justify-center gap-2 cursor-pointer">
+                        <span>Enviar Solicitação</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4 stroke-[1.5]"></i>
+                    </button>
+
+                    <p class="text-[11px] text-brand-muted text-center font-light">
+                        Garantimos sigilo e confidencialidade técnica integral de todas as informações.
+                    </p>
+
+                </form>
+            </div>
+
+            <!-- Canais Diretos (5 colunas) -->
+            <div class="lg:col-span-5 flex flex-col gap-8">
+
+                <!-- Card Canais -->
+                <div class="bg-brand-surface border border-brand-border p-8 sm:p-10">
+                    <span class="text-[10px] uppercase tracking-widest2 text-brand-muted">Canais Diretos</span>
+                    <h2 class="font-serif text-2xl font-normal text-brand-black mt-1 mb-6">Atendimento Consultivo</h2>
+
+                    <div class="space-y-6">
+                        <!-- WhatsApp -->
+                        <a href="https://wa.me/5548991004282" target="_blank" class="flex items-start gap-4 group">
+                            <div class="w-10 h-10 bg-brand-canvas border border-brand-border flex items-center justify-center text-brand-red group-hover:bg-brand-black group-hover:text-white transition-colors">
+                                <i data-lucide="message-circle" class="w-4 h-4 stroke-[1.5]"></i>
+                            </div>
+                            <div>
+                                <span class="text-[11px] uppercase tracking-widest text-brand-muted block">WhatsApp Direto</span>
+                                <span class="text-xs font-semibold text-brand-black group-hover:text-brand-red transition-colors">+55 (48) 99100-4282</span>
+                                <p class="text-[11px] text-zinc-400 mt-0.5">Resposta ágil em horário comercial</p>
+                            </div>
+                        </a>
+
+                        <!-- E-mail -->
+                        <a href="mailto:contato@delcompany.com.br" class="flex items-start gap-4 group">
+                            <div class="w-10 h-10 bg-brand-canvas border border-brand-border flex items-center justify-center text-brand-red group-hover:bg-brand-black group-hover:text-white transition-colors">
+                                <i data-lucide="mail" class="w-4 h-4 stroke-[1.5]"></i>
+                            </div>
+                            <div>
+                                <span class="text-[11px] uppercase tracking-widest text-brand-muted block">E-mail Institucional</span>
+                                <span class="text-xs font-semibold text-brand-black group-hover:text-brand-red transition-colors">contato@delcompany.com.br</span>
+                                <p class="text-[11px] text-zinc-400 mt-0.5">Para envio de editais e termos de referência</p>
+                            </div>
+                        </a>
+
+                        <!-- Horário -->
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 bg-brand-canvas border border-brand-border flex items-center justify-center text-brand-muted">
+                                <i data-lucide="clock" class="w-4 h-4 stroke-[1.5]"></i>
+                            </div>
+                            <div>
+                                <span class="text-[11px] uppercase tracking-widest text-brand-muted block">Horário Operacional</span>
+                                <span class="text-xs font-semibold text-brand-black">Segunda a Sexta, 08:30 às 18:00</span>
+                                <p class="text-[11px] text-zinc-400 mt-0.5">Plantão para pregões em andamento</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Box Escuro -->
+                <div class="bg-brand-black text-white p-8 sm:p-10 border border-brand-borderDark relative overflow-hidden">
+                    <div class="absolute -right-8 -bottom-8 opacity-5 text-white pointer-events-none">
+                        <i data-lucide="shield-check" class="w-44 h-44"></i>
+                    </div>
+
+                    <span class="text-[10px] uppercase tracking-widest2 text-brand-red font-semibold">Rigor &amp; Segurança</span>
+                    <h3 class="font-serif text-2xl font-normal text-white mt-1 mb-3">Análise Prévia Sem Custo</h3>
+                    <p class="text-xs text-zinc-400 font-light leading-relaxed">
+                        Envie o número do pregão ou edital de seu interesse. Nossa equipe realiza uma triagem prévia de viabilidade e requisitos técnicos sem compromisso inicial.
+                    </p>
+
+                    <div class="mt-6 pt-6 border-t border-zinc-800 flex items-center gap-3">
+                        <div class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
+                        <span class="text-[11px] uppercase tracking-widest text-zinc-300 font-medium">Equipe Técnica Disponível</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full border-t border-brand-border bg-white py-8">
+        <div class="max-w-7xl mx-auto px-6 sm:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-brand-muted font-light">
+            <div class="flex items-center gap-2">
+                <span class="font-semibold text-brand-black">DEL COMPANY</span>
+                <span>© 2026. Todos os direitos reservados.</span>
+            </div>
+            <div class="flex items-center gap-6 uppercase tracking-widest text-[10px]">
+                <a href="#" class="hover:text-brand-black transition-colors">Termos de Uso</a>
+                <a href="#" class="hover:text-brand-black transition-colors">Privacidade &amp; LGPD</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>
