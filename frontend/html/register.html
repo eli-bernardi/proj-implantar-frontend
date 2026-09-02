@@ -54,6 +54,10 @@
     <script src="../js/auth.js" defer></script>
     <script src="../js/cart-store.js" defer></script>
     <script src="../js/register.js" defer></script>
+    <style>
+        #register-alert { display: none; }
+        #register-alert.show { display: block; }
+    </style>
 </head>
 
 <body class="bg-brand-canvas text-brand-dark font-sans antialiased selection:bg-brand-red selection:text-white min-h-screen flex flex-col">
@@ -102,7 +106,7 @@
                 </div>
 
                 <!-- Alerta de Erro -->
-                <div id="register-alert" class="hidden mb-6 bg-brand-redLight border border-brand-red/20 text-brand-red text-xs px-4 py-3 font-medium"></div>
+                <div id="register-alert" class="mb-6 bg-brand-redLight border border-brand-red/20 text-brand-red text-xs px-4 py-3 font-medium"></div>
 
                 <!-- Formulário -->
                 <form id="form-register" class="space-y-5">

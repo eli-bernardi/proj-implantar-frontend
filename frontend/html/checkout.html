@@ -54,6 +54,9 @@
     <script src="../js/auth.js" defer></script>
     <script src="../js/cart-store.js" defer></script>
     <script src="../js/checkout.js" defer></script>
+    <style>
+        #checkout-alert { display: none; }
+    </style>
 </head>
 
 <body class="bg-brand-canvas text-brand-dark font-sans antialiased selection:bg-brand-red selection:text-white min-h-screen flex flex-col">
@@ -100,7 +103,7 @@
         </div>
 
         <!-- Alerta de Erro -->
-        <div id="checkout-alert" class="hidden mb-6 bg-brand-redLight border border-brand-red/20 text-brand-red text-xs px-5 py-4 font-medium"></div>
+        <div id="checkout-alert" class="mb-6 bg-brand-redLight border border-brand-red/20 text-brand-red text-xs px-5 py-4 font-medium"></div>
 
         <!-- Conteúdo do Checkout (carregado via JS) -->
         <div id="checkout-content">

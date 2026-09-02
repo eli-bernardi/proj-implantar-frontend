@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Del Company | Assessoria Especializada em Licitações</title>
+    <title>Del Company | Assessoria Especializada em LicitaÃ§Ãµes</title>
 
     <!-- Google Fonts: Cormorant Garamond & Plus Jakarta Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -48,6 +48,12 @@
             }
         }
     </script>
+    <!-- Scripts do Sistema -->
+    <script src="./js/config.js" defer></script>
+    <script src="./js/api.js" defer></script>
+    <script src="./js/auth.js" defer></script>
+    <script src="./js/cart-store.js" defer></script>
+    <script src="./js/home.js" defer></script>
 </head>
 
 <body class="bg-brand-canvas text-brand-dark font-sans antialiased selection:bg-brand-red selection:text-white">
@@ -56,42 +62,52 @@
     <header class="w-full border-b border-brand-border bg-white/90 backdrop-blur-md sticky top-0 z-50 transition-all">
         <div class="max-w-7xl mx-auto px-8 h-24 flex items-center justify-between">
 
-            <!-- Logotipo Minimalista com Monograma Red -->
+            <!-- Logotipo -->
             <a href="#" class="flex items-center gap-3.5 group">
                 <div
                     class="w-10 h-10 bg-brand-black flex items-center justify-center text-brand-red font-serif text-2xl font-bold border border-brand-border group-hover:border-brand-red transition-colors">
                     D
                 </div>
                 <div class="flex flex-col tracking-widest uppercase">
-                    <span class="font-serif text-xl tracking-[0.2em] font-semibold text-brand-black leading-none">DEL
-                        COMPANY</span>
-                    <span class="text-[9px] tracking-[0.35em] text-brand-muted font-normal mt-1">ASSESSORIA EM
-                        LICITAÇÕES</span>
+                    <span class="font-serif text-xl tracking-[0.2em] font-semibold text-brand-black leading-none">DEL COMPANY</span>
+                    <span class="text-[9px] tracking-[0.35em] text-brand-muted font-normal mt-1">ASSESSORIA EM LICITAÃ‡Ã•ES</span>
                 </div>
             </a>
 
-            <!-- Menu de Navegação -->
+            <!-- Menu de NavegaÃ§Ã£o -->
             <nav
-                class="hidden md:flex items-center gap-10 text-xs font-semibold uppercase tracking-widest text-brand-muted">
-                <a href="#solucoes" class="hover:text-brand-red transition-colors duration-200">Soluções</a>
+                class="hidden md:flex items-center gap-8 text-xs font-semibold uppercase tracking-widest text-brand-muted">
+                <a href="#solucoes" class="hover:text-brand-red transition-colors duration-200">SoluÃ§Ãµes</a>
                 <a href="#metodologia" class="hover:text-brand-red transition-colors duration-200">Metodologia</a>
                 <a href="#setores" class="hover:text-brand-red transition-colors duration-200">Setores</a>
                 <a href="#sobre" class="hover:text-brand-red transition-colors duration-200">Sobre</a>
-                <a href="#contato" class="hover:text-brand-red transition-colors duration-200">Contato</a>
+                <a href="./html/catalog.html" class="hover:text-brand-red transition-colors duration-200">ServiÃ§os</a>
             </nav>
 
-            <!-- Botão Superior -->
-            <a href="#contato"
-                class="hidden sm:inline-flex items-center gap-2.5 px-6 py-3 bg-brand-black text-white hover:bg-brand-red text-xs font-semibold uppercase tracking-widest transition-all duration-300">
-                <i data-lucide="message-square" class="w-3.5 h-3.5 stroke-[1.5]"></i>
-                Falar com a Del
-            </a>
+            <!-- AÃ§Ãµes do Header -->
+            <div class="hidden sm:flex items-center gap-3">
+                <!-- Carrinho -->
+                <a href="./html/cart.html"
+                    class="relative flex items-center gap-2 px-4 py-2.5 border border-brand-border hover:border-brand-black text-brand-black text-xs font-semibold uppercase tracking-widest transition-all duration-300">
+                    <i data-lucide="shopping-bag" class="w-3.5 h-3.5 stroke-[1.5]"></i>
+                    Carrinho
+                    <span id="nav-carrinho-count"
+                        class="hidden absolute -top-2 -right-2 min-w-[18px] h-[18px] bg-brand-red text-white text-[9px] font-bold flex items-center justify-center px-1">
+                    </span>
+                </a>
+                <!-- Login / Área do Cliente -->
+                <a href="./html/login.html" id="nav-conta"
+                    class="inline-flex items-center gap-2 px-5 py-2.5 bg-brand-black text-white hover:bg-brand-red text-xs font-semibold uppercase tracking-widest transition-all duration-300">
+                    <i data-lucide="log-in" class="w-3.5 h-3.5 stroke-[1.5]"></i>
+                    Entrar
+                </a>
+            </div>
         </div>
     </header>
 
     <!-- Hero Section Editorial com Dark Glass e Destaque Vermelho -->
     <section class="relative min-h-[85vh] flex items-center justify-center text-center px-6 overflow-hidden">
-        <!-- Imagem de Fundo de Alta Resolução -->
+        <!-- Imagem de Fundo de Alta ResoluÃ§Ã£o -->
         <div class="absolute inset-0 z-0">
             <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop"
                 alt="Estrutura Corporativa" class="w-full h-full object-cover object-center grayscale contrast-125">
@@ -100,39 +116,39 @@
             </div>
         </div>
 
-        <!-- Conteúdo Central do Hero -->
+        <!-- ConteÃºdo Central do Hero -->
         <div class="relative z-10 max-w-4xl mx-auto flex flex-col items-center pt-8">
 
-            <!-- Tag de Categoria com Traço Vermelho -->
+            <!-- Tag de Categoria com TraÃ§o Vermelho -->
             <div
                 class="inline-flex items-center gap-2 px-4 py-1.5 border border-zinc-700 bg-zinc-900/70 backdrop-blur-md text-[11px] uppercase tracking-widest2 text-zinc-300 mb-8 font-light">
                 <span class="w-1.5 h-1.5 rounded-full bg-brand-red"></span>
-                Assessoria Especializada &amp; Inteligência em Editais
+                Assessoria Especializada &amp; InteligÃªncia em Editais
             </div>
 
-            <!-- Título Principal -->
+            <!-- TÃ­tulo Principal -->
             <h1 class="text-4xl sm:text-6xl md:text-7xl font-normal text-white leading-[1.15] tracking-tight">
-                Acesso estratégico aos <br class="hidden sm:inline" />
+                Acesso estratÃ©gico aos <br class="hidden sm:inline" />
                 <span class="font-serif italic font-normal text-brand-red text-5xl sm:text-7xl md:text-8xl">maiores
-                    contratos</span> públicos.
+                    contratos</span> pÃºblicos.
             </h1>
 
-            <!-- Subtítulo -->
+            <!-- SubtÃ­tulo -->
             <p class="mt-8 text-sm sm:text-base text-zinc-400 font-light max-w-2xl leading-relaxed tracking-wide">
-                Conectamos a sua empresa a processos licitatórios com conformidade técnica integral: da triagem e
-                análise de riscos até a disputa de lances e homologação final.
+                Conectamos a sua empresa a processos licitatÃ³rios com conformidade tÃ©cnica integral: da triagem e
+                anÃ¡lise de riscos atÃ© a disputa de lances e homologaÃ§Ã£o final.
             </p>
 
-            <!-- Grupo de Botões Minimalistas -->
+            <!-- Grupo de BotÃµes Minimalistas -->
             <div class="mt-10 flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
-                <a href="#solucoes"
+                <a href="./html/catalog.html"
                     class="w-full sm:w-auto px-8 py-4 bg-brand-red text-white hover:bg-brand-redHover text-xs uppercase tracking-widest font-semibold transition-all duration-300 shadow-lg shadow-brand-red/20">
-                    Conhecer Serviços
+                    Conhecer ServiÃ§os
                 </a>
-                <a href="#contato"
+                <a href="./html/contato.html"
                     class="w-full sm:w-auto px-8 py-4 border border-zinc-700 text-zinc-200 hover:border-zinc-400 hover:text-white text-xs uppercase tracking-widest font-light backdrop-blur-sm transition-all duration-300 flex items-center justify-center gap-2">
                     <i data-lucide="file-text" class="w-3.5 h-3.5 stroke-[1.5]"></i>
-                    Solicitar Orçamento
+                    Solicitar OrÃ§amento
                 </a>
             </div>
 
@@ -146,22 +162,22 @@
         </div>
     </section>
 
-    <!-- Seção de Soluções com Linhas Finas e Visual Editorial -->
+    <!-- SeÃ§Ã£o de SoluÃ§Ãµes com Linhas Finas e Visual Editorial -->
     <section id="solucoes" class="max-w-7xl mx-auto px-8 py-24 sm:py-32">
 
-        <!-- Cabeçalho da Seção -->
+        <!-- CabeÃ§alho da SeÃ§Ã£o -->
         <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 pb-6 border-b border-brand-border">
             <div>
-                <span class="text-xs uppercase tracking-widest2 text-brand-red font-bold">Serviços Especializados</span>
-                <h2 class="font-serif text-4xl sm:text-5xl font-normal text-brand-black mt-2">Soluções em Licitações
+                <span class="text-xs uppercase tracking-widest2 text-brand-red font-bold">ServiÃ§os Especializados</span>
+                <h2 class="font-serif text-4xl sm:text-5xl font-normal text-brand-black mt-2">SoluÃ§Ãµes em LicitaÃ§Ãµes
                 </h2>
-                <p class="text-xs sm:text-sm text-brand-muted font-light mt-3">Acompanhamento completo e rigor técnico
-                    para viabilizar contratos públicos.</p>
+                <p class="text-xs sm:text-sm text-brand-muted font-light mt-3">Acompanhamento completo e rigor tÃ©cnico
+                    para viabilizar contratos pÃºblicos.</p>
             </div>
 
-            <a href="#contato"
+            <a href="./html/catalog.html"
                 class="mt-6 md:mt-0 inline-flex items-center gap-2 text-xs uppercase tracking-widest font-semibold text-brand-black hover:text-brand-red transition-colors">
-                Ver Todos os Serviços
+                Ver todos os ServiÃ§os
                 <i data-lucide="arrow-right" class="w-4 h-4 stroke-[1.5]"></i>
             </a>
         </div>
@@ -183,14 +199,14 @@
                 </div>
                 <div class="p-8 flex flex-col flex-1">
                     <span class="text-[10px] uppercase tracking-widest text-brand-muted">Conformidade e
-                        Habilitação</span>
+                        HabilitaÃ§Ã£o</span>
                     <h3
                         class="font-serif text-2xl font-normal text-brand-black mt-2 group-hover:text-brand-red transition-colors">
-                        Organização &amp; Auditoria Documental
+                        OrganizaÃ§Ã£o &amp; Auditoria Documental
                     </h3>
                     <p class="text-xs text-brand-muted font-light mt-3 leading-relaxed">
-                        Diagnóstico rigoroso de certidões, atestados de capacidade técnica e registros cadastrais para
-                        evitar inabilitações desnecessárias.
+                        DiagnÃ³stico rigoroso de certidÃµes, atestados de capacidade tÃ©cnica e registros cadastrais para
+                        evitar inabilitaÃ§Ãµes desnecessÃ¡rias.
                     </p>
                 </div>
             </div>
@@ -200,22 +216,22 @@
                 class="group bg-brand-surface border border-brand-border flex flex-col transition-all duration-300 hover:border-brand-black hover:shadow-xl hover:shadow-black/5">
                 <div class="relative h-72 overflow-hidden bg-zinc-100">
                     <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=800&auto=format&fit=crop"
-                        alt="Análise de Editais"
+                        alt="AnÃ¡lise de Editais"
                         class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-out">
                     <span
                         class="absolute top-4 left-4 bg-brand-black text-white text-[10px] uppercase tracking-widest px-3 py-1 font-medium">
-                        Técnica &amp; Estratégia
+                        TÃ©cnica &amp; EstratÃ©gia
                     </span>
                 </div>
                 <div class="p-8 flex flex-col flex-1">
-                    <span class="text-[10px] uppercase tracking-widest text-brand-muted">Inteligência Jurídica</span>
+                    <span class="text-[10px] uppercase tracking-widest text-brand-muted">InteligÃªncia JurÃ­dica</span>
                     <h3
                         class="font-serif text-2xl font-normal text-brand-black mt-2 group-hover:text-brand-red transition-colors">
-                        Análise Minuciosa de Editais
+                        AnÃ¡lise Minuciosa de Editais
                     </h3>
                     <p class="text-xs text-brand-muted font-light mt-3 leading-relaxed">
-                        Identificação prévia de riscos, pedidos de esclarecimento, impugnações e garantia de que sua
-                        proposta cumpra todas as diretrizes do instrumento convocatório.
+                        IdentificaÃ§Ã£o prÃ©via de riscos, pedidos de esclarecimento, impugnaÃ§Ãµes e garantia de que sua
+                        proposta cumpra todas as diretrizes do instrumento convocatÃ³rio.
                     </p>
                 </div>
             </div>
@@ -225,11 +241,11 @@
                 class="group bg-brand-surface border border-brand-border flex flex-col transition-all duration-300 hover:border-brand-black hover:shadow-xl hover:shadow-black/5">
                 <div class="relative h-72 overflow-hidden bg-zinc-100">
                     <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800&auto=format&fit=crop"
-                        alt="Sessão Pública de Lances"
+                        alt="SessÃ£o PÃºblica de Lances"
                         class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-out">
                     <span
                         class="absolute top-4 left-4 bg-brand-black text-white text-[10px] uppercase tracking-widest px-3 py-1 font-medium">
-                        Operação
+                        OperaÃ§Ã£o
                     </span>
                 </div>
                 <div class="p-8 flex flex-col flex-1">
@@ -239,7 +255,7 @@
                         Acompanhamento &amp; Lances em Tempo Real
                     </h3>
                     <p class="text-xs text-brand-muted font-light mt-3 leading-relaxed">
-                        Representação ativa nos portais de compras públicas, condução de lances e elaboração imediata de
+                        RepresentaÃ§Ã£o ativa nos portais de compras pÃºblicas, conduÃ§Ã£o de lances e elaboraÃ§Ã£o imediata de
                         recursos administrativos.
                     </p>
                 </div>
@@ -249,14 +265,14 @@
 
     </section>
 
-    <!-- Botão Flutuante de Contato WhatsApp -->
+    <!-- BotÃ£o Flutuante de Contato WhatsApp -->
     <a href="#contato"
         class="fixed bottom-8 right-8 z-40 w-14 h-14 bg-brand-black border border-brand-border hover:bg-brand-red text-white flex items-center justify-center shadow-2xl transition-all duration-300 hover:scale-105"
         title="Falar no WhatsApp">
         <i data-lucide="message-circle" class="w-6 h-6 stroke-[1.5]"></i>
     </a>
 
-    <!-- Script de Inicialização dos Ícones -->
+    <!-- Script de InicializaÃ§Ã£o dos Ãcones -->
     <script>
         lucide.createIcons();
     </script>
