@@ -58,41 +58,24 @@ function exigirAdmin() {
     }
 }
 
-// Atualiza os links do header conforme o estado de login (chamar em todas as páginas)
+// Atualiza o botão de conta no header conforme o estado de login (chamar em todas as páginas)
 function atualizarNavSessao() {
     const usuario = getUsuarioLogado();
     const linkConta = document.getElementById('nav-conta');
-    const linkCadastro = document.getElementById('nav-cadastro');
 
     if (linkConta) {
         if (usuario) {
             const primeiroNome = (usuario.nome || 'Minha Conta').split(' ')[0];
-            linkConta.textContent = `Olá, ${primeiroNome}`;
+            linkConta.innerHTML = `<i data-lucide="user" class="w-3.5 h-3.5 stroke-[1.5]"></i> Olá, ${primeiroNome}`;
             linkConta.title = 'Ver meus pedidos e processos';
             linkConta.href = getRelativePath('orders');
+            // Reinicializa ícones Lucide para o novo ícone
+            if (typeof lucide !== 'undefined') lucide.createIcons();
         } else {
-            linkConta.textContent = 'Entrar';
+            linkConta.innerHTML = `<i data-lucide="log-in" class="w-3.5 h-3.5 stroke-[1.5]"></i> Entrar`;
             linkConta.removeAttribute('title');
             linkConta.href = getRelativePath('login');
-        }
-    }
-
-    if (linkCadastro) {
-        if (usuario) {
-            linkCadastro.textContent = 'Sair';
-            linkCadastro.href = '#';
-            linkCadastro.onclick = (e) => {
-                e.preventDefault();
-                logout();
-            };
-            linkCadastro.classList.remove('bg-[#d62828]', 'hover:bg-[#c82323]', 'px-4', 'py-2', 'rounded-full');
-            linkCadastro.classList.add('hover:text-[#d62828]', 'transition-colors', 'text-white/60');
-        } else {
-            linkCadastro.textContent = 'Criar Conta';
-            linkCadastro.href = getRelativePath('register');
-            linkCadastro.onclick = null;
-            linkCadastro.classList.add('bg-[#d62828]', 'hover:bg-[#c82323]', 'text-white', 'px-4', 'py-2', 'rounded-full', 'transition-colors');
-            linkCadastro.classList.remove('text-white/60');
+            if (typeof lucide !== 'undefined') lucide.createIcons();
         }
     }
 }

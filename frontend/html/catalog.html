@@ -6,17 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Serviços de Licitação | Del Company</title>
 
-    <!-- Google Fonts: Cormorant Garamond & Plus Jakarta Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
 
-    <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -48,7 +45,6 @@
         }
     </script>
 
-    <!-- Scripts do Sistema -->
     <script src="../js/config.js" defer></script>
     <script src="../js/api.js" defer></script>
     <script src="../js/auth.js" defer></script>
@@ -58,7 +54,6 @@
 
 <body class="bg-brand-canvas text-brand-dark font-sans antialiased selection:bg-brand-red selection:text-white min-h-screen flex flex-col">
 
-    <!-- Header -->
     <header class="w-full border-b border-brand-border bg-white/95 backdrop-blur-md sticky top-0 z-50 transition-all">
         <div class="max-w-7xl mx-auto px-6 sm:px-8 h-24 flex items-center justify-between">
             <a href="../index.html" class="flex items-center gap-3.5 group">
@@ -71,26 +66,32 @@
                 </div>
             </a>
 
-            <nav class="hidden md:flex items-center gap-10 text-xs font-semibold uppercase tracking-widest text-brand-muted">
+            <nav class="hidden md:flex items-center gap-8 text-xs font-semibold uppercase tracking-widest text-brand-muted">
                 <a href="../index.html#solucoes" class="hover:text-brand-red transition-colors duration-200">Soluções</a>
-                <a href="../index.html#metodologia" class="hover:text-brand-red transition-colors duration-200">Metodologia</a>
-                <a href="../index.html#setores" class="hover:text-brand-red transition-colors duration-200">Setores</a>
-                <a href="../index.html#sobre" class="hover:text-brand-red transition-colors duration-200">Sobre</a>
+                <a href="./catalog.html" class="text-brand-red font-bold transition-colors duration-200">Serviços</a>
                 <a href="./contato.html" class="hover:text-brand-red transition-colors duration-200">Contato</a>
             </nav>
 
-            <a href="./contato.html"
-                class="hidden sm:inline-flex items-center gap-2.5 px-6 py-3 bg-brand-black text-white hover:bg-brand-red text-xs font-semibold uppercase tracking-widest transition-all duration-300">
-                <i data-lucide="message-square" class="w-3.5 h-3.5 stroke-[1.5]"></i>
-                Falar com a Del
-            </a>
+            <div class="hidden sm:flex items-center gap-3">
+                <a href="./cart.html"
+                    class="relative flex items-center gap-2 px-4 py-2.5 border border-brand-border hover:border-brand-black text-brand-black text-xs font-semibold uppercase tracking-widest transition-all duration-300">
+                    <i data-lucide="shopping-bag" class="w-3.5 h-3.5 stroke-[1.5]"></i>
+                    Carrinho
+                    <span id="nav-carrinho-count"
+                        class="hidden absolute -top-2 -right-2 min-w-[18px] h-[18px] bg-brand-red text-white text-[9px] font-bold flex items-center justify-center px-1">
+                    </span>
+                </a>
+                <a href="./login.html" id="nav-conta"
+                    class="inline-flex items-center gap-2 px-5 py-2.5 bg-brand-black text-white hover:bg-brand-red text-xs font-semibold uppercase tracking-widest transition-all duration-300">
+                    <i data-lucide="log-in" class="w-3.5 h-3.5 stroke-[1.5]"></i>
+                    Entrar
+                </a>
+            </div>
         </div>
     </header>
 
-    <!-- Conteúdo Principal -->
     <main class="max-w-7xl mx-auto px-6 sm:px-8 py-16 sm:py-24 w-full flex-1">
 
-        <!-- Cabeçalho da Página -->
         <div class="flex flex-col md:flex-row md:items-end justify-between mb-14 pb-6 border-b border-brand-border">
             <div>
                 <span class="text-xs uppercase tracking-widest2 text-brand-red font-bold">Catálogo Completo</span>
@@ -106,7 +107,6 @@
             </a>
         </div>
 
-        <!-- Filtros -->
         <div class="flex flex-col sm:flex-row gap-4 mb-10">
             <div class="relative flex-1">
                 <i data-lucide="search" class="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-brand-muted stroke-[1.5]"></i>
@@ -122,7 +122,6 @@
             </div>
         </div>
 
-        <!-- Grid de Serviços (carregado via JS) -->
         <div id="catalogo-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             <div class="col-span-full flex flex-col items-center justify-center py-20 text-brand-muted">
                 <i data-lucide="loader-2" class="w-6 h-6 animate-spin stroke-[1.5] mb-3"></i>
@@ -132,7 +131,6 @@
 
     </main>
 
-    <!-- Footer -->
     <footer class="w-full border-t border-brand-border bg-white py-8">
         <div class="max-w-7xl mx-auto px-6 sm:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-brand-muted font-light">
             <div class="flex items-center gap-2">
