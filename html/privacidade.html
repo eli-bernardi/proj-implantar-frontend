@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Política de Privacidade | Del Company — Assessoria em Licitações</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['"Cormorant Garamond"', 'serif'],
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            black: '#0D0D0E',
+                            dark: '#161618',
+                            surface: '#FFFFFF',
+                            canvas: '#F6F6F7',
+                            border: '#E4E4E7',
+                            borderDark: '#27272A',
+                            muted: '#71717A',
+                            red: '#C92A2A',
+                            redHover: '#A61E1E',
+                            redLight: '#FFF5F5'
+                        }
+                    },
+                    letterSpacing: {
+                        widest2: '0.22em',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <script src="../js/config.js" defer></script>
+    <script src="../js/api.js" defer></script>
+    <script src="../js/auth.js" defer></script>
+    <script src="../js/cart-store.js" defer></script>
+</head>
+
+<body class="bg-brand-canvas text-brand-dark font-sans antialiased selection:bg-brand-red selection:text-white min-h-screen flex flex-col justify-between">
+
+    <header class="w-full border-b border-brand-border bg-white/95 backdrop-blur-md sticky top-0 z-50 transition-all">
+        <div class="max-w-7xl mx-auto px-6 sm:px-8 h-24 flex items-center justify-between">
+            <a href="../index.html" class="flex items-center gap-3.5 group">
+                <div class="w-10 h-10 bg-brand-black flex items-center justify-center text-brand-red font-serif text-2xl font-bold border border-brand-border group-hover:border-brand-red transition-colors">
+                    D
+                </div>
+                <div class="flex flex-col tracking-widest uppercase">
+                    <span class="font-serif text-xl tracking-[0.2em] font-semibold text-brand-black leading-none">DEL COMPANY</span>
+                    <span class="text-[9px] tracking-[0.35em] text-brand-muted font-normal mt-1">ASSESSORIA EM LICITAÇÕES</span>
+                </div>
+            </a>
+
+            <nav class="hidden md:flex items-center gap-8 text-xs font-semibold uppercase tracking-widest text-brand-muted">
+                <a href="../index.html#solucoes" class="hover:text-brand-red transition-colors duration-200">Soluções</a>
+                <a href="./catalog.html" class="hover:text-brand-red transition-colors duration-200">Serviços</a>
+                <a href="./contato.html" class="hover:text-brand-red transition-colors duration-200">Contato</a>
+            </nav>
+
+            <div class="hidden sm:flex items-center gap-3">
+                <a href="./cart.html"
+                    class="relative flex items-center gap-2 px-4 py-2.5 border border-brand-border hover:border-brand-black text-brand-black text-xs font-semibold uppercase tracking-widest transition-all duration-300">
+                    <i data-lucide="shopping-bag" class="w-3.5 h-3.5 stroke-[1.5]"></i>
+                    Carrinho
+                    <span id="nav-carrinho-count"
+                        class="hidden absolute -top-2 -right-2 min-w-[18px] h-[18px] bg-brand-red text-white text-[9px] font-bold flex items-center justify-center px-1">
+                    </span>
+                </a>
+                <a href="./login.html" id="nav-conta"
+                    class="inline-flex items-center gap-2 px-5 py-2.5 bg-brand-black text-white hover:bg-brand-red text-xs font-semibold uppercase tracking-widest transition-all duration-300">
+                    <i data-lucide="log-in" class="w-3.5 h-3.5 stroke-[1.5]"></i>
+                    Entrar
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-6 sm:px-8 py-16 sm:py-24 w-full flex-1">
+
+        <div class="max-w-3xl mb-14">
+            <span class="text-xs uppercase tracking-widest2 text-brand-red font-bold">Proteção de Dados</span>
+            <h1 class="font-serif text-4xl sm:text-6xl font-normal text-brand-black mt-3 leading-tight">
+                Política de <span class="italic text-brand-red">Privacidade</span> e Proteção de Dados
+            </h1>
+            <p class="text-sm sm:text-base text-brand-muted font-light mt-4 leading-relaxed">
+                Última atualização: [DATA]. Este documento explica, de forma clara e em conformidade com a Lei nº 13.709/2018 (LGPD), como a Del Company coleta, utiliza, compartilha e protege os dados pessoais de seus usuários.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
+
+            <aside class="lg:col-span-3 hidden lg:block">
+                <div class="sticky top-32 border border-brand-border bg-white p-6">
+                    <span class="text-[10px] uppercase tracking-widest2 text-brand-muted">Sumário</span>
+                    <nav class="mt-4 flex flex-col gap-3 text-xs text-brand-muted">
+                        <a href="#s1" class="hover:text-brand-red transition-colors">1. Quem somos</a>
+                        <a href="#s2" class="hover:text-brand-red transition-colors">2. Dados que coletamos</a>
+                        <a href="#s3" class="hover:text-brand-red transition-colors">3. Finalidades</a>
+                        <a href="#s4" class="hover:text-brand-red transition-colors">4. Bases legais (LGPD)</a>
+                        <a href="#s5" class="hover:text-brand-red transition-colors">5. Seus direitos</a>
+                        <a href="#s6" class="hover:text-brand-red transition-colors">6. Compartilhamento</a>
+                        <a href="#s7" class="hover:text-brand-red transition-colors">7. Cookies</a>
+                        <a href="#s8" class="hover:text-brand-red transition-colors">8. Segurança</a>
+                        <a href="#s9" class="hover:text-brand-red transition-colors">9. Retenção</a>
+                        <a href="#s10" class="hover:text-brand-red transition-colors">10. Transferência internacional</a>
+                        <a href="#s11" class="hover:text-brand-red transition-colors">11. Alterações</a>
+                        <a href="#s12" class="hover:text-brand-red transition-colors">12. Contato e Encarregado</a>
+                        <a href="#pendencias" class="hover:text-brand-red transition-colors font-semibold text-brand-black">Pendências de publicação</a>
+                    </nav>
+                </div>
+            </aside>
+
+            <div class="lg:col-span-9 bg-brand-surface border border-brand-border p-8 sm:p-12 space-y-12">
+
+                <section id="s1">
+                    <h2 class="font-serif text-2xl sm:text-3xl font-normal text-brand-black mb-4">1. Quem somos</h2>
+                    <p class="text-sm text-brand-muted leading-relaxed">
+                        A <strong class="text-brand-black">Del Company</strong> ("Del Company", "nós") é uma empresa brasileira que presta serviços de assessoria técnica em licitações públicas, incluindo análise de editais, auditoria documental, acompanhamento de processos licitatórios e elaboração de impugnações e recursos, contratados por meio deste site.
+                    </p>
+                    <p class="text-sm text-brand-muted leading-relaxed mt-3">
+                        Para os fins da LGPD, a Del Company atua como <strong class="text-brand-black">Controladora</strong> dos dados pessoais tratados nesta plataforma.
+                    </p>
+                    <div class="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-brand-muted bg-brand-canvas border border-brand-border p-5">
+                        <p><span class="text-brand-black font-semibold">Razão social:</span> [RAZÃO SOCIAL]</p>
+                        <p><span class="text-brand-black font-semibold">CNPJ:</span> [CNPJ]</p>
+                        <p><span class="text-brand-black font-semibold">Endereço:</span> [ENDEREÇO]</p>
+                        <p><span class="text-brand-black font-semibold">Cidade/UF:</span> [CIDADE/UF]</p>
+                        <p><span class="text-brand-black font-semibold">E-mail de atendimento:</span> contato@delcompany.com.br</p>
+                        <p><span class="text-brand-black font-semibold">E-mail de privacidade/LGPD:</span> [E-MAIL DE PRIVACIDADE / ENCARREGADO LGPD]</p>
+                    </div>
+                </section>
+
+                <section id="s2">
+                    <h2 class="font-serif text-2xl sm:text-3xl font-normal text-brand-black mb-4">2. Dados pessoais que coletamos</h2>
+
+                    <h3 class="text-xs uppercase tracking-widest font-semibold text-brand-red mb-2">2.1 Dados fornecidos diretamente por você</h3>
+                    <p class="text-sm text-brand-muted leading-relaxed mb-3">
+                        Ao criar uma conta, você nos informa: nome completo, e-mail, senha (armazenada de forma criptografada), CPF e endereço (CEP, rua, bairro e cidade). Ao utilizar o formulário de contato, você poderá informar também nome da empresa, telefone e o conteúdo da sua mensagem.
+                    </p>
+
+                    <h3 class="text-xs uppercase tracking-widest font-semibold text-brand-red mb-2">2.2 Dados relacionados aos serviços contratados</h3>
+                    <p class="text-sm text-brand-muted leading-relaxed mb-3">
+                        Ao finalizar um pedido, coletamos informações sobre o processo licitatório objeto da contratação — como o órgão responsável, o objeto da licitação, a modalidade, as datas de abertura e encerramento, os documentos necessários e o responsável pelo acompanhamento —, além do histórico de pedidos, status de andamento e valores envolvidos.
+                    </p>
+
+                    <h3 class="text-xs uppercase tracking-widest font-semibold text-brand-red mb-2">2.3 Dados coletados automaticamente</h3>
+                    <p class="text-sm text-brand-muted leading-relaxed mb-3">
+                        Durante a navegação, coletamos endereço IP, dados do dispositivo, navegador, sistema operacional, cookies, logs de acesso e data/horário de utilização, para fins de segurança, auditoria e funcionamento da plataforma.
+                    </p>
+
+                    <h3 class="text-xs uppercase tracking-widest font-semibold text-brand-red mb-2">2.4 Documentos e informações de fontes públicas</h3>
+                    <p class="text-sm text-brand-muted leading-relaxed">
+                        Para a prestação dos serviços contratados, podemos tratar documentos e informações que você nos envia (como editais e anexos) e dados de acesso público disponibilizados por órgãos e portais oficiais de compras públicas relacionados ao processo licitatório em questão.
+                    </p>
+                </section>
+
+                <section id="s3">
+                    <h2 class="font-serif text-2xl sm:text-3xl font-normal text-brand-black mb-4">3. Para que usamos seus dados</h2>
+                    <ul class="list-disc pl-5 space-y-2 text-sm text-brand-muted leading-relaxed">
+                        <li>Criar, autenticar e gerenciar sua conta;</li>
+                        <li>Processar pedidos de serviços, catálogo, carrinho e checkout;</li>
+                        <li>Prestar a assessoria contratada (análise de editais, auditoria, acompanhamento, recursos e impugnações);</li>
+                        <li>Responder a solicitações enviadas pelo formulário de contato;</li>
+                        <li>Emitir cobranças e manter o histórico financeiro dos pedidos;</li>
+                        <li>Prevenir fraudes e garantir a segurança da plataforma;</li>
+                        <li>Cumprir obrigações legais, regulatórias, fiscais e contábeis;</li>
+                        <li>Melhorar nossos serviços e desenvolver novas funcionalidades;</li>
+                        <li>Exercer ou defender direitos em processos judiciais, administrativos ou arbitrais;</li>
+                        <li>Enviar comunicações operacionais sobre o andamento dos seus pedidos.</li>
+                    </ul>
+                    <p class="text-sm text-brand-muted leading-relaxed mt-3">
+                        Caso venhamos a enviar comunicações comerciais ou novidades sobre a plataforma, você poderá cancelar o recebimento a qualquer momento pelos canais indicados na Seção 12.
+                    </p>
+                </section>
+
+                <section id="s4">
+                    <h2 class="font-serif text-2xl sm:text-3xl font-normal text-brand-black mb-4">4. Bases legais que sustentam o tratamento</h2>
+                    <p class="text-sm text-brand-muted leading-relaxed mb-3">
+                        Nos termos do art. 7º da LGPD, tratamos seus dados com base em:
+                    </p>
+                    <ul class="list-disc pl-5 space-y-2 text-sm text-brand-muted leading-relaxed">
+                        <li><strong class="text-brand-black">Execução de contrato ou de procedimentos preliminares:</strong> para viabilizar seu cadastro, o processamento de pedidos e a prestação dos serviços de assessoria contratados;</li>
+                        <li><strong class="text-brand-black">Cumprimento de obrigação legal ou regulatória:</strong> para atender exigências fiscais, contábeis e obrigações impostas por autoridades competentes;</li>
+                        <li><strong class="text-brand-black">Legítimo interesse:</strong> para segurança da plataforma, prevenção a fraudes e melhoria dos nossos serviços, sempre de forma proporcional e respeitando seus direitos e expectativas;</li>
+                        <li><strong class="text-brand-black">Exercício regular de direitos:</strong> em processos judiciais, administrativos ou arbitrais;</li>
+                        <li><strong class="text-brand-black">Consentimento:</strong> quando exigido para finalidades específicas, como o envio de comunicações de marketing, hipótese em que você poderá revogá-lo a qualquer momento.</li>
+                    </ul>
+                </section>
+
+                <section id="s5">
+                    <h2 class="font-serif text-2xl sm:text-3xl font-normal text-brand-black mb-4">5. Seus direitos como titular de dados</h2>
+                    <p class="text-sm text-brand-muted leading-relaxed mb-3">
+                        Nos termos do art. 18 da LGPD, você pode solicitar, a qualquer momento:
+                    </p>
+                    <ul class="list-disc pl-5 space-y-2 text-sm text-brand-muted leading-relaxed">
+                        <li>Confirmação da existência de tratamento de dados;</li>
+                        <li>Acesso aos seus dados pessoais;</li>
+                        <li>Correção de dados incompletos, inexatos ou desatualizados;</li>
+                        <li>Anonimização, bloqueio ou eliminação de dados desnecessários ou excessivos;</li>
+                        <li>Portabilidade dos dados a outro fornecedor de serviço, mediante requisição expressa;</li>
+                        <li>Eliminação dos dados tratados com base em consentimento, quando aplicável;</li>
+                        <li>Informação sobre entidades públicas e privadas com as quais compartilhamos dados;</li>
+                        <li>Informação sobre a possibilidade de não fornecer consentimento e as consequências disso;</li>
+                        <li>Revogação do consentimento, quando esta for a base legal aplicável;</li>
+                        <li>Oposição a tratamento realizado com base em hipótese de dispensa de consentimento.</li>
+                    </ul>
+                    <p class="text-sm text-brand-muted leading-relaxed mt-3">
+                        Para exercer qualquer desses direitos, envie sua solicitação para <strong class="text-brand-black">[E-MAIL DE PRIVACIDADE / ENCARREGADO LGPD]</strong>, informando seu nome completo e o direito que deseja exercer. Responderemos dentro dos prazos estabelecidos pela LGPD, podendo solicitar informações adicionais para confirmar sua identidade.
+                    </p>
+                </section>
+
+                <section id="s6">
+                    <h2 class="font-serif text-2xl sm:text-3xl font-normal text-brand-black mb-4">6. Com quem compartilhamos seus dados</h2>
+                    <p class="text-sm text-brand-muted leading-relaxed mb-3">
+                        A Del Company <strong class="text-brand-black">não comercializa</strong> dados pessoais de seus usuários. Dados podem ser compartilhados, na medida estritamente necessária, com:
+                    </p>
+                    <ul class="list-disc pl-5 space-y-2 text-sm text-brand-muted leading-relaxed">
+                        <li>Provedores de hospedagem e infraestrutura em nuvem;</li>
+                        <li>Provedores de banco de dados e armazenamento;</li>
+                        <li>Provedores de e-mail transacional (como o envio de mensagens do formulário de contato);</li>
+                        <li>Ferramentas de segurança da informação e prevenção a fraudes;</li>
+                        <li>Processadores de pagamento, caso e quando a plataforma passe a oferecer pagamento on-line;</li>
+                        <li>Autoridades públicas, quando houver obrigação legal, ordem judicial ou requisição válida.</li>
+                    </ul>
+                    <p class="text-sm text-brand-muted leading-relaxed mt-3">
+                        Conforme a situação, esses terceiros poderão atuar como operadores (tratando dados em nosso nome) ou como controladores independentes de suas próprias atividades.
+                    </p>
+                </section>
+
+                <section id="s7">
+                    <h2 class="font-serif text-2xl sm:text-3xl font-normal text-brand-black mb-4">7. Cookies e tecnologias semelhantes</h2>
+                    <p class="text-sm text-brand-muted leading-relaxed mb-3">
+                        Utilizamos cookies e tecnologias similares para viabilizar o funcionamento do site e melhorar sua experiência, incluindo:
+                    </p>
+                    <ul class="list-disc pl-5 space-y-2 text-sm text-brand-muted leading-relaxed">
+                        <li><strong class="text-brand-black">Cookies necessários:</strong> essenciais para login, autenticação e funcionamento do carrinho de serviços;</li>
+                        <li><strong class="text-brand-black">Cookies de segurança:</strong> para proteção contra acessos indevidos;</li>
+                        <li><strong class="text-brand-black">Cookies funcionais e de preferências:</strong> para lembrar configurações da sua navegação.</li>
+                    </ul>
+                    <p class="text-sm text-brand-muted leading-relaxed mt-3">
+                        Cookies não essenciais, como os de finalidade analítica ou publicitária, somente serão ativados mediante seu consentimento, conforme a legislação aplicável. [CONFIRMAR SE HÁ FERRAMENTAS DE ANÁLISE/ANALYTICS EM USO].
+                    </p>
+                </section>
+
+                <section id="s8">
+                    <h2 class="font-serif text-2xl sm:text-3xl font-normal text-brand-black mb-4">8. Como protegemos seus dados</h2>
+                    <p class="text-sm text-brand-muted leading-relaxed">
+                        Adotamos medidas técnicas e administrativas razoáveis para proteger seus dados pessoais, como controle de acesso, autenticação, senhas criptografadas, registros de acesso (logs), backups e monitoramento contra acessos não autorizados. Ainda assim, nenhum sistema é absolutamente seguro, e trabalhamos continuamente para reduzir riscos e responder prontamente a eventuais incidentes de segurança.
+                    </p>
+                </section>
+
+                <section id="s9">
+                    <h2 class="font-serif text-2xl sm:text-3xl font-normal text-brand-black mb-4">9. Por quanto tempo guardamos seus dados</h2>
+                    <p class="text-sm text-brand-muted leading-relaxed">
+                        Mantemos seus dados pelo tempo necessário para a prestação dos serviços, manutenção da sua conta, cumprimento de obrigações legais, fiscais e contábeis, prevenção a fraudes, auditoria e exercício regular de direitos, respeitando os prazos prescricionais aplicáveis. Encerrado esse período, os dados são eliminados ou anonimizados, salvo quando a lei exigir sua conservação por prazo diverso. [CONFIRMAR PRAZO ESPECÍFICO DE RETENÇÃO, SE HOUVER].
+                    </p>
+                </section>
+
+                <section id="s10">
+                    <h2 class="font-serif text-2xl sm:text-3xl font-normal text-brand-black mb-4">10. Transferência internacional de dados</h2>
+                    <p class="text-sm text-brand-muted leading-relaxed">
+                        Alguns dos fornecedores de tecnologia e infraestrutura que utilizamos podem armazenar ou processar dados fora do território brasileiro. Nesses casos, adotamos as salvaguardas exigidas pela LGPD e pela regulamentação da Autoridade Nacional de Proteção de Dados (ANPD) aplicável a este tipo de transferência.
+                    </p>
+                </section>
+
+                <section id="s11">
+                    <h2 class="font-serif text-2xl sm:text-3xl font-normal text-brand-black mb-4">11. Alterações desta política</h2>
+                    <p class="text-sm text-brand-muted leading-relaxed">
+                        Esta Política pode ser atualizada periodicamente, para refletir mudanças em nossos serviços ou na legislação aplicável. Alterações relevantes serão comunicadas por meios razoáveis, como aviso no site ou e-mail. Recomendamos a revisão periódica deste documento.
+                    </p>
+                </section>
+
+                <section id="s12">
+                    <h2 class="font-serif text-2xl sm:text-3xl font-normal text-brand-black mb-4">12. Fale com nosso Encarregado (DPO)</h2>
+                    <p class="text-sm text-brand-muted leading-relaxed">
+                        Dúvidas, solicitações ou reclamações relacionadas a esta Política e ao tratamento de dados pessoais podem ser encaminhadas para <strong class="text-brand-black">[E-MAIL DE PRIVACIDADE / ENCARREGADO LGPD]</strong>. Para assuntos comerciais gerais, utilize contato@delcompany.com.br.
+                    </p>
+                </section>
+
+                <section id="pendencias" class="pt-8 border-t border-brand-border">
+                    <h2 class="font-serif text-xl font-normal text-brand-black mb-3">Pontos que o responsável pela Del Company precisa preencher ou confirmar antes da publicação</h2>
+                    <ul class="list-disc pl-5 space-y-2 text-sm text-brand-muted leading-relaxed">
+                        <li>Razão social, CNPJ, endereço completo e cidade/UF da empresa;</li>
+                        <li>E-mail dedicado ao encarregado de proteção de dados (DPO);</li>
+                        <li>Confirmação dos fornecedores efetivamente utilizados (hospedagem, e-mail transacional, banco de dados etc.), para eventual menção nominal;</li>
+                        <li>Se há, hoje ou em breve, ferramentas de análise/analytics ou publicidade que utilizem cookies não essenciais;</li>
+                        <li>Se e quando um processador de pagamentos on-line passará a ser utilizado;</li>
+                        <li>Prazo específico de retenção de dados, caso a empresa deseje fixar um período determinado;</li>
+                        <li>Data de publicação, para preencher o campo "Última atualização".</li>
+                    </ul>
+                </section>
+
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="w-full border-t border-brand-border bg-white py-8">
+        <div class="max-w-7xl mx-auto px-6 sm:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-brand-muted font-light">
+            <div class="flex items-center gap-2">
+                <span class="font-semibold text-brand-black">DEL COMPANY</span>
+                <span>© 2026. Todos os direitos reservados.</span>
+            </div>
+            <div class="flex items-center gap-6 uppercase tracking-widest text-[10px]">
+                <a href="./termos.html" class="hover:text-brand-black transition-colors">Termos de Uso</a>
+                <a href="./privacidade.html" class="text-brand-red font-bold transition-colors">Privacidade &amp; LGPD</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>

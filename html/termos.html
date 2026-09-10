@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Termos de Uso | Del Company — Assessoria em Licitações</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['"Cormorant Garamond"', 'serif'],
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            black: '#0D0D0E',
+                            dark: '#161618',
+                            surface: '#FFFFFF',
+                            canvas: '#F6F6F7',
+                            border: '#E4E4E7',
+                            borderDark: '#27272A',
+                            muted: '#71717A',
+                            red: '#C92A2A',
+                            redHover: '#A61E1E',
+                            redLight: '#FFF5F5'
+                        }
+                    },
+                    letterSpacing: {
+                        widest2: '0.22em',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <script src="../js/config.js" defer></script>
+    <script src="../js/api.js" defer></script>
+    <script src="../js/auth.js" defer></script>
+    <script src="../js/cart-store.js" defer></script>
+</head>
+
+<body class="bg-brand-canvas text-brand-dark font-sans antialiased selection:bg-brand-red selection:text-white min-h-screen flex flex-col justify-between">
+
+    <header class="w-full border-b border-brand-border bg-white/95 backdrop-blur-md sticky top-0 z-50 transition-all">
+        <div class="max-w-7xl mx-auto px-6 sm:px-8 h-24 flex items-center justify-between">
+            <a href="../index.html" class="flex items-center gap-3.5 group">
+                <div class="w-10 h-10 bg-brand-black flex items-center justify-center text-brand-red font-serif text-2xl font-bold border border-brand-border group-hover:border-brand-red transition-colors">
+                    D
+                </div>
+                <div class="flex flex-col tracking-widest uppercase">
+                    <span class="font-serif text-xl tracking-[0.2em] font-semibold text-brand-black leading-none">DEL COMPANY</span>
+                    <span class="text-[9px] tracking-[0.35em] text-brand-muted font-normal mt-1">ASSESSORIA EM LICITAÇÕES</span>
+                </div>
+            </a>
+
+            <nav class="hidden md:flex items-center gap-8 text-xs font-semibold uppercase tracking-widest text-brand-muted">
+                <a href="../index.html#solucoes" class="hover:text-brand-red transition-colors duration-200">Soluções</a>
+                <a href="./catalog.html" class="hover:text-brand-red transition-colors duration-200">Serviços</a>
+                <a href="./contato.html" class="hover:text-brand-red transition-colors duration-200">Contato</a>
+            </nav>
+
+            <div class="hidden sm:flex items-center gap-3">
+                <a href="./cart.html"
+                    class="relative flex items-center gap-2 px-4 py-2.5 border border-brand-border hover:border-brand-black text-brand-black text-xs font-semibold uppercase tracking-widest transition-all duration-300">
+                    <i data-lucide="shopping-bag" class="w-3.5 h-3.5 stroke-[1.5]"></i>
+                    Carrinho
+                    <span id="nav-carrinho-count"
+                        class="hidden absolute -top-2 -right-2 min-w-[18px] h-[18px] bg-brand-red text-white text-[9px] font-bold flex items-center justify-center px-1">
+                    </span>
+                </a>
+                <a href="./login.html" id="nav-conta"
+                    class="inline-flex items-center gap-2 px-5 py-2.5 bg-brand-black text-white hover:bg-brand-red text-xs font-semibold uppercase tracking-widest transition-all duration-300">
+                    <i data-lucide="log-in" class="w-3.5 h-3.5 stroke-[1.5]"></i>
+                    Entrar
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-6 sm:px-8 py-16 sm:py-24 w-full flex-1">
+
+        <div class="max-w-3xl mb-14">
+            <span class="text-xs uppercase tracking-widest2 text-brand-red font-bold">Condições Contratuais</span>
+            <h1 class="font-serif text-4xl sm:text-6xl font-normal text-brand-black mt-3 leading-tight">
+                Termos de <span class="italic text-brand-red">Uso</span> e de Serviço
+            </h1>
+            <p class="text-sm sm:text-base text-brand-muted font-light mt-4 leading-relaxed">
+                Última atualização: [DATA]. Estes Termos regulam o acesso e a utilização da plataforma Del Company e a contratação dos serviços de assessoria em licitações aqui oferecidos.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
+
+            <aside class="lg:col-span-3 hidden lg:block">
+                <div class="sticky top-32 border border-brand-border bg-white p-6">
+                    <span class="text-[10px] uppercase tracking-widest2 text-brand-muted">Sumário</span>
+                    <nav class="mt-4 flex flex-col gap-2.5 text-xs text-brand-muted max-h-[60vh] overflow-y-auto pr-2">
+                        <a href="#t1" class="hover:text-brand-red transition-colors">1. Aceitação</a>
+                        <a href="#t2" class="hover:text-brand-red transition-colors">2. Objeto</a>
+                        <a href="#t3" class="hover:text-brand-red transition-colors">3. Cadastro e conta</a>
+                        <a href="#t4" class="hover:text-brand-red transition-colors">4. Catálogo, pedidos e checkout</a>
+                        <a href="#t5" class="hover:text-brand-red transition-colors">5. Natureza da assessoria</a>
+                        <a href="#t6" class="hover:text-brand-red transition-colors">6. Fontes oficiais</a>
+                        <a href="#t7" class="hover:text-brand-red transition-colors">7. Ausência de garantia</a>
+                        <a href="#t8" class="hover:text-brand-red transition-colors">8. Responsabilidade do usuário</a>
+                        <a href="#t9" class="hover:text-brand-red transition-colors">9. Comunicações e prazos</a>
+                        <a href="#t10" class="hover:text-brand-red transition-colors">10. Condutas proibidas</a>
+                        <a href="#t11" class="hover:text-brand-red transition-colors">11. Propriedade intelectual</a>
+                        <a href="#t12" class="hover:text-brand-red transition-colors">12. Disponibilidade</a>
+                        <a href="#t13" class="hover:text-brand-red transition-colors">13. Pagamento e cancelamento</a>
+                        <a href="#t14" class="hover:text-brand-red transition-colors">14. Suspensão e encerramento</a>
+                        <a href="#t15" class="hover:text-brand-red transition-colors">15. Alterações</a>
+                        <a href="#t16" class="hover:text-brand-red transition-colors">16. Limitação de responsabilidade</a>
+                        <a href="#t17" class="hover:text-brand-red transition-colors">17. Indenização</a>
+                        <a href="#t18" class="hover:text-brand-red transition-colors">18. Legislação e foro</a>
+                        <a href="#t19" class="hover:text-brand-red transition-colors">19. Disposições gerais</a>
+                        <a href="#pendencias" class="hover:text-brand-red transition-colors font-semibold text-brand-black">Pendências de publicação</a>
+                    </nav>
+                </div>
+            </aside>
+
+            <div class="lg:col-span-9 bg-brand-surface border border-brand-border p-8 sm:p-12 space-y-12">
+
+                <section id="t1">
+                    <h2 class="font-serif text-2xl sm:text-3xl font-normal text-brand-black mb-4">1. Aceitação dos Termos</h2>
+                    <p class="text-sm text-brand-muted leading-relaxed">
+                        Ao acessar, cadastrar-se ou utilizar a plataforma Del Company, você declara que leu, compreendeu e concorda integralmente com estes Termos de Uso e com a <a href="./privacidade.html" class="text-brand-red hover:underline">Política de Privacidade</a>. Caso não concorde com qualquer disposição, você não deve utilizar a plataforma.
+                    </p>
+                </section>
+
+                <section id="t2">
+                    <h2 class="font-serif text-2xl sm:text-3xl font-normal text-brand-black mb-4">2. Objeto</h2>
+                    <p class="text-sm text-brand-muted leading-relaxed">
+                        A Del Company é uma plataforma que disponibiliza, mediante contratação, serviços de assessoria técnica em licitações públicas — como análise e parecer técnico de edital, organização e auditoria documental, acompanhamento completo de processos licitatórios e elaboração de impugnações ou recursos — comercializados por meio de um catálogo de serviços, carrinho de compras e checkout.
+                    </p>
+                    <p class="text-sm text-brand-muted leading-relaxed mt-3">
+                        A Del Company <strong class="text-brand-black">não é</strong> um órgão público, não representa nenhum órgão licitante e não substitui os canais oficiais de acompanhamento de licitações.
+                    </p>
+                </section>
+
+                <section id="t3">
+                    <h2 class="font-serif text-2xl sm:text-3xl font-normal text-brand-black mb-4">3. Cadastro e conta de usuário</h2>
+                    <p class="text-sm text-brand-muted leading-relaxed">
+                        Para contratar serviços, é necessário criar uma conta, informando nome completo, e-mail, CPF, senha e endereço. Você é responsável por fornecer informações verdadeiras, completas e atualizadas, e por manter a confidencialidade de sua senha. A conta é pessoal e intransferível, e todas as atividades realizadas nela são de sua responsabilidade.
+                    </p>
+                </section>
+
+                <section id="t4">
+                    <h2 class="font-serif text-2xl sm:text-3xl font-normal text-brand-black mb-4">4. Catálogo, pedidos e checkout</h2>
+                    <p class="text-sm text-brand-muted leading-relaxed">
+                        A plataforma disponibiliza um catálogo de serviços que podem ser adicionados a um carrinho e finalizados por meio do checkout. Ao concluir um pedido, você deverá informar dados do processo licitatório vinculado à contratação (como órgão responsável, objeto, modalidade e datas relevantes), necessários para a prestação do serviço. Cada pedido gera um registro consultável na área "Meus Pedidos", com o respectivo status de andamento.
+                    </p>
+                </section>
+
+                <section id="t5">
+                    <h2 class="font-serif text-2xl sm:text-3xl font-normal text-brand-black mb-4">5. Natureza dos serviços de assessoria</h2>
+                    <p class="text-sm text-brand-muted leading-relaxed">
+                        Os serviços prestados pela Del Company têm natureza de apoio técnico e consultivo. Eles não substituem análise jurídica, contábil, técnica ou administrativa especializada que o usuário entenda necessária, nem eliminam a responsabilidade do usuário de conduzir sua própria participação no processo licitatório.
+                    </p>
+                </section>
+
+                <section id="t6">
+                    <h2 class="font-serif text-2xl sm:text-3xl font-normal text-brand-black mb-4">6. Fontes oficiais e divergências</h2>
+                    <p class="text-sm text-brand-muted leading-relaxed">
+                        As análises da Del Company podem ter como base documentos fornecidos por você e informações disponíveis em portais, diários oficiais e sistemas de compras públicas. Em caso de qualquer divergência entre as informações apresentadas pela Del Company e as informações constantes da fonte oficial do órgão licitante, <strong class="text-brand-black">prevalecerão sempre as informações da fonte oficial</strong>. É responsabilidade do usuário conferir diretamente no órgão competente prazos, alterações e demais condições do edital.
+                    </p>
+                </section>
+
+                <section id="t7">
+                    <h2 class="font-serif text-2xl sm:text-3xl font-normal text-brand-black mb-4">7. Ausência de garantia de participação ou resultado</h2>
+                    <p class="text-sm text-brand-muted leading-relaxed mb-3">A Del Company não garante:</p>
+                    <ul class="list-disc pl-5 space-y-2 text-sm text-brand-muted leading-relaxed">
+                        <li>Habilitação, adjudicação, homologação ou vitória em qualquer licitação;</li>
+                        <li>Ausência de recursos, impugnações ou alterações do edital por terceiros;</li>
+                        <li>Manutenção das condições originais da licitação;</li>
+                        <li>Contratação ou recebimento decorrente do processo licitatório;</li>
+                        <li>Exatidão absoluta de informações originadas de fontes de terceiros ou de órgãos públicos.</li>
+                    </ul>
+                </section>
+
+                <section id="t8">
+                    <h2 class="font-serif text-2xl sm:text-3xl font-normal text-brand-black mb-4">8. Responsabilidade do usuário</h2>
+                    <p class="text-sm text-brand-muted leading-relaxed mb-3">É responsabilidade do usuário:</p>
+                    <ul class="list-disc pl-5 space-y-2 text-sm text-brand-muted leading-relaxed">
+                        <li>Analisar integralmente o edital e seus anexos;</li>
+                        <li>Conferir prazos, documentos exigidos e requisitos de habilitação;</li>
+                        <li>Acompanhar esclarecimentos, impugnações e recursos junto ao órgão competente;</li>
+                        <li>Verificar alterações publicadas na fonte oficial;</li>
+                        <li>Avaliar sua própria capacidade jurídica, técnica, econômica, fiscal e operacional para participar do processo licitatório;</li>
+                        <li>Fornecer informações verídicas e atualizadas sobre o processo licitatório objeto da contratação.</li>
+                    </ul>
+                </section>
+
+                <section id="t9">
+                    <h2 class="font-serif text-2xl sm:text-3xl font-normal text-brand-black mb-4">9. Comunicações e prazos</h2>
+                    <p class="text-sm text-brand-muted leading-relaxed">
+                        Eventuais comunicações sobre o andamento dos pedidos, enviadas por e-mail, WhatsApp ou pela área "Meus Pedidos", são uma funcionalidade auxiliar e não substituem o acompanhamento direto do usuário junto às fontes oficiais. Falhas de e-mail, indisponibilidade temporária ou atraso na atualização de status podem eventualmente ocorrer e não afastam a responsabilidade do usuário quanto a prazos do processo licitatório.
+                    </p>
+                </section>
+
+                <section id="t10">
+                    <h2 class="font-serif text-2xl sm:text-3xl font-normal text-brand-black mb-4">10. Condutas proibidas</h2>
+                    <p class="text-sm text-brand-muted leading-relaxed mb-3">É vedado ao usuário:</p>
+                    <ul class="list-disc pl-5 space-y-2 text-sm text-brand-muted leading-relaxed">
+                        <li>Tentar invadir ou burlar a segurança da plataforma;</li>
+                        <li>Realizar coleta automatizada abusiva de dados (scraping);</li>
+                        <li>Praticar ataques, fraudes ou inserir códigos maliciosos;</li>
+                        <li>Realizar engenharia reversa indevida do sistema;</li>
+                        <li>Compartilhar credenciais de acesso com terceiros;</li>
+                        <li>Copiar, reproduzir ou explorar indevidamente o sistema ou o banco de dados da Del Company;</li>
+                        <li>Utilizar a plataforma para fins ilegais ou fraudulentos.</li>
+                    </ul>
+                    <p class="text-sm text-brand-muted leading-relaxed mt-3">
+                        Excetuam-se as condutas expressamente amparadas por lei.
+                    </p>
+                </section>
+
+                <section id="t11">
+                    <h2 class="font-serif text-2xl sm:text-3xl font-normal text-brand-black mb-4">11. Propriedade intelectual</h2>
+                    <p class="text-sm text-brand-muted leading-relaxed">
+                        A marca Del Company, sua identidade visual, o código-fonte, o banco de dados, a estrutura, o layout, as funcionalidades e os textos e materiais próprios da plataforma são protegidos por direitos de propriedade intelectual e não podem ser reproduzidos ou explorados sem autorização prévia. Editais, documentos e informações de terceiros permanecem sujeitos aos direitos e à natureza jurídica de suas respectivas fontes.
+                    </p>
+                </section>
+
+                <section id="t12">
+                    <h2 class="font-serif text-2xl sm:text-3xl font-normal text-brand-black mb-4">12. Disponibilidade da plataforma</h2>
+                    <p class="text-sm text-brand-muted leading-relaxed">
+                        A Del Company envida esforços para manter a plataforma disponível, mas não garante funcionamento ininterrupto. O acesso pode ser temporariamente afetado por manutenção, atualizações, falhas técnicas, falhas de terceiros ou eventos de força maior.
+                    </p>
+                </section>
+
+                <section id="t13">
+                    <h2 class="font-serif text-2xl sm:text-3xl font-normal text-brand-black mb-4">13. Pagamento, cobrança e cancelamento</h2>
+                    <p class="text-sm text-brand-muted leading-relaxed">
+                        Os valores dos serviços são exibidos no catálogo e consolidados no pedido no momento do checkout. [DESCREVER FORMA DE COBRANÇA/FATURAMENTO E EVENTUAL PROCESSADOR DE PAGAMENTO ON-LINE, QUANDO DEFINIDOS]. Condições de cancelamento, reembolso ou alteração de um pedido já confirmado seguem a política vigente no momento da contratação, disponível mediante consulta aos nossos canais de atendimento. [DEFINIR POLÍTICA ESPECÍFICA DE CANCELAMENTO/REEMBOLSO].
+                    </p>
+                </section>
+
+                <section id="t14">
+                    <h2 class="font-serif text-2xl sm:text-3xl font-normal text-brand-black mb-4">14. Suspensão e encerramento de conta</h2>
+                    <p class="text-sm text-brand-muted leading-relaxed">
+                        A Del Company poderá suspender ou encerrar contas em casos de violação destes Termos, fraude, uso abusivo, risco à segurança da plataforma, determinação judicial ou exigência legal. O usuário também pode solicitar o encerramento da própria conta a qualquer momento, pelos canais de atendimento indicados no site.
+                    </p>
+                </section>
+
+                <section id="t15">
+                    <h2 class="font-serif text-2xl sm:text-3xl font-normal text-brand-black mb-4">15. Alterações da plataforma e destes Termos</h2>
+                    <p class="text-sm text-brand-muted leading-relaxed">
+                        A Del Company poderá adicionar, modificar ou remover funcionalidades da plataforma para fins de evolução tecnológica, segurança ou aprimoramento do serviço. Estes Termos também poderão ser atualizados periodicamente; alterações relevantes serão comunicadas por meios razoáveis, como aviso no site ou e-mail.
+                    </p>
+                </section>
+
+                <section id="t16">
+                    <h2 class="font-serif text-2xl sm:text-3xl font-normal text-brand-black mb-4">16. Limitação de responsabilidade</h2>
+                    <p class="text-sm text-brand-muted leading-relaxed">
+                        Nos limites permitidos pela legislação brasileira, a Del Company não se responsabiliza por danos indiretos, lucros cessantes ou perda de oportunidade decorrentes de decisões tomadas pelo usuário no processo licitatório, de alterações promovidas pelo órgão licitante ou de indisponibilidades de terceiros alheias ao nosso controle. Nada nestes Termos pretende excluir responsabilidades que a legislação brasileira não permita afastar, especialmente em relações de consumo.
+                    </p>
+                </section>
+
+                <section id="t17">
+                    <h2 class="font-serif text-2xl sm:text-3xl font-normal text-brand-black mb-4">17. Indenização por uso irregular</h2>
+                    <p class="text-sm text-brand-muted leading-relaxed">
+                        O usuário responderá, nos limites da legislação aplicável, por prejuízos causados à Del Company ou a terceiros decorrentes de uso ilegal, fraudulento ou em violação a estes Termos.
+                    </p>
+                </section>
+
+                <section id="t18">
+                    <h2 class="font-serif text-2xl sm:text-3xl font-normal text-brand-black mb-4">18. Legislação aplicável e foro</h2>
+                    <p class="text-sm text-brand-muted leading-relaxed">
+                        Estes Termos são regidos pela legislação brasileira. Fica eleito o foro do domicílio do usuário para dirimir eventuais controvérsias, nos casos em que a legislação consumerista ou outra norma aplicável assim determinar; nos demais casos, fica eleito o foro da comarca de [CIDADE/UF], sem prejuízo de foro de eleição diverso quando exigido por norma de ordem pública.
+                    </p>
+                </section>
+
+                <section id="t19">
+                    <h2 class="font-serif text-2xl sm:text-3xl font-normal text-brand-black mb-4">19. Disposições gerais</h2>
+                    <p class="text-sm text-brand-muted leading-relaxed">
+                        Caso qualquer disposição destes Termos seja considerada nula ou ineficaz, as demais permanecerão em pleno vigor. A tolerância quanto ao eventual descumprimento de qualquer cláusula não implicará renúncia ao direito de exigi-la posteriormente. Dúvidas sobre estes Termos podem ser enviadas para contato@delcompany.com.br.
+                    </p>
+                </section>
+
+                <section id="pendencias" class="pt-8 border-t border-brand-border">
+                    <h2 class="font-serif text-xl font-normal text-brand-black mb-3">Pontos que o responsável pela Del Company precisa preencher ou confirmar antes da publicação</h2>
+                    <ul class="list-disc pl-5 space-y-2 text-sm text-brand-muted leading-relaxed">
+                        <li>Cidade/UF do foro de eleição (Seção 18);</li>
+                        <li>Forma de cobrança dos serviços e eventual processador de pagamento on-line, quando definidos (Seção 13);</li>
+                        <li>Política específica de cancelamento e reembolso de pedidos (Seção 13);</li>
+                        <li>Razão social, CNPJ e endereço, a serem incluídos de forma consistente com a Política de Privacidade;</li>
+                        <li>Data de publicação, para preencher o campo "Última atualização".</li>
+                    </ul>
+                </section>
+
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="w-full border-t border-brand-border bg-white py-8">
+        <div class="max-w-7xl mx-auto px-6 sm:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-brand-muted font-light">
+            <div class="flex items-center gap-2">
+                <span class="font-semibold text-brand-black">DEL COMPANY</span>
+                <span>© 2026. Todos os direitos reservados.</span>
+            </div>
+            <div class="flex items-center gap-6 uppercase tracking-widest text-[10px]">
+                <a href="./termos.html" class="text-brand-red font-bold transition-colors">Termos de Uso</a>
+                <a href="./privacidade.html" class="hover:text-brand-black transition-colors">Privacidade &amp; LGPD</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>

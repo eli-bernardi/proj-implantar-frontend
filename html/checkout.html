@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Serviços de Licitação | Del Company</title>
+    <title>Abrir Processo | Del Company</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -49,7 +49,10 @@
     <script src="../js/api.js" defer></script>
     <script src="../js/auth.js" defer></script>
     <script src="../js/cart-store.js" defer></script>
-    <script src="../js/catalog.js" defer></script>
+    <script src="../js/checkout.js" defer></script>
+    <style>
+        #checkout-alert { display: none; }
+    </style>
 </head>
 
 <body class="bg-brand-canvas text-brand-dark font-sans antialiased selection:bg-brand-red selection:text-white min-h-screen flex flex-col">
@@ -68,7 +71,7 @@
 
             <nav class="hidden md:flex items-center gap-8 text-xs font-semibold uppercase tracking-widest text-brand-muted">
                 <a href="../index.html#solucoes" class="hover:text-brand-red transition-colors duration-200">Soluções</a>
-                <a href="./catalog.html" class="text-brand-red font-bold transition-colors duration-200">Serviços</a>
+                <a href="./catalog.html" class="hover:text-brand-red transition-colors duration-200">Serviços</a>
                 <a href="./contato.html" class="hover:text-brand-red transition-colors duration-200">Contato</a>
             </nav>
 
@@ -90,42 +93,22 @@
         </div>
     </header>
 
-    <main class="max-w-7xl mx-auto px-6 sm:px-8 py-16 sm:py-24 w-full flex-1">
+    <main class="max-w-3xl mx-auto px-6 sm:px-8 py-16 sm:py-24 w-full flex-1">
 
-        <div class="flex flex-col md:flex-row md:items-end justify-between mb-14 pb-6 border-b border-brand-border">
-            <div>
-                <span class="text-xs uppercase tracking-widest2 text-brand-red font-bold">Catálogo Completo</span>
-                <h1 class="font-serif text-4xl sm:text-5xl font-normal text-brand-black mt-2">Serviços de Licitação</h1>
-                <p class="text-xs sm:text-sm text-brand-muted font-light mt-3 max-w-xl">
-                    Análise de editais, organização de documentos e acompanhamento completo do seu processo licitatório.
-                </p>
-            </div>
-            <a href="./cart.html"
-                class="mt-6 md:mt-0 inline-flex items-center gap-2 text-xs uppercase tracking-widest font-semibold text-brand-black hover:text-brand-red transition-colors">
-                <i data-lucide="shopping-bag" class="w-4 h-4 stroke-[1.5]"></i>
-                Ver Carrinho
-            </a>
+        <div class="mb-14 pb-6 border-b border-brand-border">
+            <span class="text-xs uppercase tracking-widest2 text-brand-red font-bold">Finalização</span>
+            <h1 class="font-serif text-4xl sm:text-5xl font-normal text-brand-black mt-2">Abrir Processo</h1>
+            <p class="text-xs sm:text-sm text-brand-muted font-light mt-3">
+                Confirme os serviços contratados e informe os dados da licitação que vamos acompanhar.
+            </p>
         </div>
 
-        <div class="flex flex-col sm:flex-row gap-4 mb-10">
-            <div class="relative flex-1">
-                <i data-lucide="search" class="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-brand-muted stroke-[1.5]"></i>
-                <input type="text" id="filtro-busca" placeholder="Buscar serviço por nome..."
-                    class="w-full bg-brand-surface border border-brand-border pl-11 pr-4 py-3.5 text-xs text-brand-dark placeholder:text-zinc-400 focus:outline-none focus:border-brand-black focus:bg-white transition-all">
-            </div>
-            <div class="relative">
-                <select id="filtro-categoria"
-                    class="bg-brand-surface border border-brand-border px-4 py-3.5 pr-10 text-xs text-brand-dark focus:outline-none focus:border-brand-black focus:bg-white appearance-none transition-all cursor-pointer min-w-[220px]">
-                    <option value="">Todas as categorias</option>
-                </select>
-                <i data-lucide="chevron-down" class="w-4 h-4 text-brand-muted absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none stroke-[1.5]"></i>
-            </div>
-        </div>
+        <div id="checkout-alert" class="mb-6 bg-brand-redLight border border-brand-red/20 text-brand-red text-xs px-5 py-4 font-medium"></div>
 
-        <div id="catalogo-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div class="col-span-full flex flex-col items-center justify-center py-20 text-brand-muted">
+        <div id="checkout-content">
+            <div class="flex flex-col items-center justify-center py-20 text-brand-muted">
                 <i data-lucide="loader-2" class="w-6 h-6 animate-spin stroke-[1.5] mb-3"></i>
-                <p class="text-xs uppercase tracking-widest font-light">Carregando serviços...</p>
+                <p class="text-xs uppercase tracking-widest font-light">Carregando...</p>
             </div>
         </div>
 
@@ -138,8 +121,8 @@
                 <span>© 2026. Todos os direitos reservados.</span>
             </div>
             <div class="flex items-center gap-6 uppercase tracking-widest text-[10px]">
-                <a href="#" class="hover:text-brand-black transition-colors">Termos de Uso</a>
-                <a href="#" class="hover:text-brand-black transition-colors">Privacidade &amp; LGPD</a>
+                <a href="./termos.html" class="hover:text-brand-black transition-colors">Termos de Uso</a>
+                <a href="./privacidade.html" class="hover:text-brand-black transition-colors">Privacidade &amp; LGPD</a>
             </div>
         </div>
     </footer>
