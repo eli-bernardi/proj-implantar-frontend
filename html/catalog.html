@@ -139,7 +139,21 @@
         </div>
         <div class="mt-20 pt-14 border-t border-brand-border">
             <h2 class="font-serif text-3xl font-normal text-brand-black mb-8">Licitações em Andamento — Tijucas/SC</h2>
-            <div id="licitacoes-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+
+            <div class="flex flex-col md:flex-row gap-4 mb-8">
+                <input type="text" id="licitacoes-busca" placeholder="Buscar licitação por nome ou objeto..."
+                    class="flex-1 border border-brand-border rounded-md px-4 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-brand-red">
+                <select id="licitacoes-cidade" class="border border-brand-border rounded-md px-4 py-2 text-sm bg-white"
+                    disabled>
+                    <option value="tijucas">Tijucas/SC</option>
+                </select>
+                <select id="licitacoes-situacao"
+                    class="border border-brand-border rounded-md px-4 py-2 text-sm bg-white">
+                    <option value="">Todas as situações</option>
+                </select>
+            </div>
+
+            <div id="licitacoes-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
         </div>
     </main>
 
