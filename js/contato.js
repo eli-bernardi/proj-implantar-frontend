@@ -1,5 +1,4 @@
-// ⚠️ Troque pela URL do seu backend publicado no Railway (ex: 'https://del-backend.up.railway.app')
-const API_BASE_URL = 'http://localhost:3000'
+const API_BASE_URL = 'https://projimplantar-production-80b5.up.railway.app'
 
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('contato-form')
