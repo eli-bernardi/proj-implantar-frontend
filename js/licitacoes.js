@@ -63,19 +63,21 @@ function renderizarLicitacoes(lista) {
     }
 
     container.innerHTML = lista.map((l, i) => `
-        <article class="product-card border border-brand-border rounded-lg overflow-hidden">
-            <button class="w-full text-left p-5 licitacao-toggle" data-index="${i}">
+    <article class="border border-brand-border rounded-lg overflow-hidden border-l-4 border-l-brand-red">
+        <button class="w-full flex items-center justify-between text-left p-4 licitacao-toggle" data-index="${i}">
+            <div>
                 <span class="product-card__category block text-xs uppercase tracking-widest text-brand-muted">${l.modalidade || 'Modalidade não informada'}</span>
                 <h3 class="product-card__name font-serif text-lg mt-1">Licitação ${l.licitacao_numero || '-'}/${l.licitacao_ano || '-'}</h3>
-                <span class="text-xs text-brand-red mt-2 inline-block">Ver mais ▾</span>
-            </button>
-            <div class="licitacao-detalhes hidden px-5 pb-5 text-sm text-brand-muted border-t border-brand-border pt-4">
-                <p class="mb-2">${l.objeto || 'Sem descrição disponível.'}</p>
-                <p><strong>Órgão:</strong> ${l.unidade_gestora || '-'}</p>
-                <p><strong>Situação:</strong> ${l.situacao || '-'}</p>
             </div>
-        </article>
-    `).join('')
+            <span class="text-xs text-brand-red whitespace-nowrap ml-4">Ver mais ▾</span>
+        </button>
+        <div class="licitacao-detalhes hidden px-4 pb-4 text-sm text-brand-muted border-t border-brand-border pt-4">
+            <p class="mb-2">${l.objeto || 'Sem descrição disponível.'}</p>
+            <p><strong>Órgão:</strong> ${l.unidade_gestora || '-'}</p>
+            <p><strong>Situação:</strong> ${l.situacao || '-'}</p>
+        </div>
+    </article>
+`).join('')
 
     container.querySelectorAll('.licitacao-toggle').forEach(botao => {
         botao.addEventListener('click', () => {
