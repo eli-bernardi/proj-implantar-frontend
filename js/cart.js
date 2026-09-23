@@ -70,6 +70,39 @@ function renderizarCarrinho() {
     `
 }
 
+function renderizarFavoritos() {
+    const container = document.getElementById('favoritos-content')
+    if (!container) return
+
+    const favoritos = getFavoritos()
+
+    if (favoritos.length === 0) {
+        container.innerHTML = `<p class="text-sm text-brand-muted font-light">Você ainda não favoritou nenhuma licitação.</p>`
+        return
+    }
+
+    container.innerHTML = favoritos.map(f => `
+        <div class="flex items-center justify-between gap-4 bg-white border border-brand-border px-6 py-5 mb-3">
+            <div class="flex-1 min-w-0">
+                <p class="text-xs uppercase tracking-widest text-brand-muted">${f.modalidade || 'Modalidade não informada'}</p>
+                <p class="text-sm font-semibold text-brand-black mt-1">Licitação ${f.numero || '-'}/${f.ano || '-'} — ${f.unidadeGestora || '-'}</p>
+            </div>
+            <button
+                data-chave="${f.chave}"
+                class="remover-favorito text-xs uppercase tracking-widest text-brand-muted hover:text-brand-red font-medium transition-colors">
+                Remover
+            </button>
+        </div>
+    `).join('')
+
+    container.querySelectorAll('.remover-favorito').forEach(botao => {
+        botao.addEventListener('click', () => {
+            alternarFavorito(botao.dataset.chave, {})
+            renderizarFavoritos()
+        })
+    })
+}
+
 function irParaCheckout() {
     if (!estaLogado()) {
         sessionStorage.setItem('del_redirect_after_login', './checkout.html')
@@ -79,4 +112,7 @@ function irParaCheckout() {
     window.location.href = './checkout.html'
 }
 
-document.addEventListener('DOMContentLoaded', renderizarCarrinho)
+document.addEventListener('DOMContentLoaded', () => {
+    renderizarCarrinho()
+    renderizarFavoritos()
+})

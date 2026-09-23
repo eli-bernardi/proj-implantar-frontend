@@ -81,7 +81,7 @@ function renderizarLicitacoes(lista) {
                     <span class="text-xs text-brand-red whitespace-nowrap ml-4">Ver mais ▾</span>
                 </button>
                 <button class="favorito-toggle px-4 shrink-0" data-index="${i}" aria-label="Favoritar licitação">
-                    <i data-lucide="heart" class="w-5 h-5 stroke-[1.5] ${favoritado ? 'fill-brand-red stroke-brand-red' : 'stroke-brand-muted'}"></i>
+                    <i data-lucide="heart" class="icone-favorito w-5 h-5 stroke-[1.5] ${favoritado ? 'fill-brand-red stroke-brand-red' : 'stroke-brand-muted'}"></i>
                 </button>
             </div>
             <div class="licitacao-detalhes hidden px-4 pb-4 text-sm text-brand-muted border-t border-brand-border pt-4">
@@ -109,7 +109,7 @@ function renderizarLicitacoes(lista) {
             const index = Number(botao.dataset.index)
             const l = lista[index]
             const chave = chaveLicitacao(l)
-            const icone = botao.querySelector('i')
+            const icone = botao.querySelector('.icone-favorito')
 
             const agoraFavorito = alternarFavorito(chave, {
                 modalidade: l.modalidade,
