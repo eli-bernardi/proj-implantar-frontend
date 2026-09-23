@@ -144,17 +144,37 @@
             <div class="flex flex-col md:flex-row gap-4 mb-8">
                 <input type="text" id="licitacoes-busca" placeholder="Buscar licitação por nome ou objeto..."
                     class="flex-1 border border-brand-border rounded-md px-4 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-brand-red">
-                <select id="licitacoes-cidade" class="border border-brand-border rounded-md px-4 py-2 text-sm bg-white"
-                    disabled>
-                    <option value="tijucas">Tijucas/SC</option>
-                </select>
-                <select id="licitacoes-situacao"
-                    class="border border-brand-border rounded-md px-4 py-2 text-sm bg-white">
-                    <option value="">Todas as situações</option>
-                </select>
-            </div>
 
-            <div id="licitacoes-grid" class="flex flex-col gap-4"></div>
+                <select id="licitacoes-cidade" class="border border-brand-border rounded-md px-4 py-2 text-sm bg-white">
+                    <option value="tijucas">Tijucas/SC</option>
+                    <option value="florianopolis" disabled>Florianópolis/SC (em breve)</option>
+                    <option value="itajai" disabled>Itajaí/SC (em breve)</option>
+                    <option value="balneario-camboriu" disabled>Balneário Camboriú/SC (em breve)</option>
+                    <option value="camboriu" disabled>Camboriú/SC (em breve)</option>
+                    <option value="brusque" disabled>Brusque/SC (em breve)</option>
+                    <option value="biguacu" disabled>Biguaçu/SC (em breve)</option>
+                    <option value="sao-jose" disabled>São José/SC (em breve)</option>
+                    <option value="palhoca" disabled>Palhoça/SC (em breve)</option>
+                    <option value="itapema" disabled>Itapema/SC (em breve)</option>
+                    <option value="nova-trento" disabled>Nova Trento/SC (em breve)</option>
+                    <option value="canelinha" disabled>Canelinha/SC (em breve)</option>
+                    <option value="gaspar" disabled>Gaspar/SC (em breve)</option>
+                </select>
+
+                <div class="relative" id="licitacoes-situacao-wrapper">
+                    <button type="button" id="licitacoes-situacao-btn"
+                        class="border border-brand-border rounded-md px-4 py-2 text-sm bg-white flex items-center gap-2 min-w-[190px] justify-between">
+                        <span id="licitacoes-situacao-label">Todas as situações</span>
+                        <i data-lucide="chevron-down" class="w-4 h-4 stroke-[1.5]"></i>
+                    </button>
+                    <div id="licitacoes-situacao-panel"
+                        class="hidden absolute z-20 mt-1 right-0 bg-white border border-brand-border rounded-md shadow-lg p-3 w-60 max-h-72 overflow-y-auto">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="licitacoes-grid" class="flex flex-col gap-4"></div>
         </div>
     </main>
 

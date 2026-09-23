@@ -1,33 +1,61 @@
 let licitacoesDebounce = null
+let situacoesSelecionadas = []
 
 async function carregarSituacoes() {
-    const select = document.getElementById('licitacoes-situacao')
-    if (!select) return
+    const panel = document.getElementById('licitacoes-situacao-panel')
+    if (!panel) return
 
     try {
         const resposta = await fetch(`${LICITACOES_API_URL}/api/situacoes`)
         const situacoes = await resposta.json()
         const lista = situacoes.data || situacoes
 
-        lista.forEach(s => {
-            const option = document.createElement('option')
-            option.value = s
-            option.textContent = s
-            select.appendChild(option)
+        panel.innerHTML = lista.map(s => `
+            <label class="flex items-center gap-2 py-1.5 text-sm text-brand-black cursor-pointer">
+                <input type="checkbox" value="${s}" class="situacao-checkbox">
+                ${s}
+            </label>
+        `).join('')
+
+        panel.querySelectorAll('.situacao-checkbox').forEach(cb => {
+            cb.addEventListener('change', () => {
+                situacoesSelecionadas = Array.from(panel.querySelectorAll('.situacao-checkbox:checked')).map(c => c.value)
+                atualizarLabelSituacao()
+                buscarLicitacoes()
+            })
         })
     } catch (err) {
-        // Se não conseguir carregar as situações, o filtro só fica com "Todas as situações" mesmo — sem quebrar a página
+        // Se não conseguir carregar as situações, o painel fica vazio — sem quebrar a página
     }
 }
 
-function montarQueryParams() {
-    const busca = document.getElementById('licitacoes-busca')?.value.trim()
-    const situacao = document.getElementById('licitacoes-situacao')?.value
+function atualizarLabelSituacao() {
+    const label = document.getElementById('licitacoes-situacao-label')
+    if (!label) return
 
-    const params = new URLSearchParams()
-    if (situacao) params.set('situacao', situacao)
+    if (situacoesSelecionadas.length === 0) {
+        label.textContent = 'Todas as situações'
+    } else if (situacoesSelecionadas.length === 1) {
+        label.textContent = situacoesSelecionadas[0]
+    } else {
+        label.textContent = `${situacoesSelecionadas.length} situações`
+    }
+}
 
-    return { busca, params }
+function configurarDropdownSituacao() {
+    const btn = document.getElementById('licitacoes-situacao-btn')
+    const panel = document.getElementById('licitacoes-situacao-panel')
+    if (!btn || !panel) return
+
+    btn.addEventListener('click', () => {
+        panel.classList.toggle('hidden')
+    })
+
+    document.addEventListener('click', (e) => {
+        if (!btn.contains(e.target) && !panel.contains(e.target)) {
+            panel.classList.add('hidden')
+        }
+    })
 }
 
 async function buscarLicitacoes() {
@@ -36,18 +64,41 @@ async function buscarLicitacoes() {
 
     container.innerHTML = '<p class="state-message">Carregando licitações...</p>'
 
-    const { busca, params } = montarQueryParams()
+    const busca = document.getElementById('licitacoes-busca')?.value.trim()
 
     try {
-        const url = busca
-            ? `${LICITACOES_API_URL}/licitacoes/search?q=${encodeURIComponent(busca)}&${params.toString()}`
-            : `${LICITACOES_API_URL}/licitacoes?${params.toString()}`
+        // Sem situação selecionada (ou todas) = uma busca só.
+        // Com uma ou mais situações marcadas, busca cada uma e junta o resultado,
+        // porque não sabemos se a API aceita múltiplos valores numa query só.
+        const situacoesParaBuscar = situacoesSelecionadas.length > 0 ? situacoesSelecionadas : [null]
 
-        const resposta = await fetch(url)
-        const dados = await resposta.json()
-        const lista = dados.data || dados.licitacoes || dados
+        const resultados = await Promise.all(situacoesParaBuscar.map(async situacao => {
+            const params = new URLSearchParams()
+            if (situacao) params.set('situacao', situacao)
 
-        renderizarLicitacoes(lista)
+            const url = busca
+                ? `${LICITACOES_API_URL}/licitacoes/search?q=${encodeURIComponent(busca)}&${params.toString()}`
+                : `${LICITACOES_API_URL}/licitacoes?${params.toString()}`
+
+            const resposta = await fetch(url)
+            const dados = await resposta.json()
+            return dados.data || dados.licitacoes || dados
+        }))
+
+        // Junta e remove duplicados (caso a mesma licitação apareça em mais de uma busca)
+        let listaFinal = resultados.flat()
+
+        if (situacoesParaBuscar.length > 1) {
+            const vistos = new Set()
+            listaFinal = listaFinal.filter(l => {
+                const chave = chaveLicitacao(l)
+                if (vistos.has(chave)) return false
+                vistos.add(chave)
+                return true
+            })
+        }
+
+        renderizarLicitacoes(listaFinal)
     } catch (err) {
         container.innerHTML = '<p class="state-message">Não foi possível carregar as licitações agora.</p>'
     }
@@ -129,6 +180,7 @@ function renderizarLicitacoes(lista) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    configurarDropdownSituacao()
     carregarSituacoes()
     buscarLicitacoes()
 
@@ -138,10 +190,5 @@ document.addEventListener('DOMContentLoaded', () => {
             clearTimeout(licitacoesDebounce)
             licitacoesDebounce = setTimeout(buscarLicitacoes, 400)
         })
-    }
-
-    const situacao = document.getElementById('licitacoes-situacao')
-    if (situacao) {
-        situacao.addEventListener('change', buscarLicitacoes)
     }
 })
