@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR" class="scroll-smooth">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
@@ -12,171 +12,128 @@
         href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
 
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/login.css">
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        serif: ['"Cormorant Garamond"', 'serif'],
-                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-                    },
-                    colors: {
-                        brand: {
-                            black: '#0D0D0E',
-                            dark: '#161618',
-                            surface: '#FFFFFF',
-                            canvas: '#F6F6F7',
-                            border: '#E4E4E7',
-                            borderDark: '#27272A',
-                            muted: '#71717A',
-                            red: '#C92A2A',
-                            redHover: '#A61E1E',
-                            redLight: '#FFF5F5'
-                        }
-                    },
-                    letterSpacing: {
-                        widest2: '0.22em',
-                    }
-                }
-            }
-        }
-    </script>
+    <script src="https://unpkg.com/lucide@latest"></script>
 
     <script src="../js/config.js" defer></script>
     <script src="../js/api.js" defer></script>
     <script src="../js/auth.js" defer></script>
     <script src="../js/cart-store.js" defer></script>
     <script src="../js/login.js" defer></script>
-    <style>
-        #login-alert { display: none; }
-        #login-alert.show { display: block; }
-    </style>
 </head>
 
-<body class="bg-brand-canvas text-brand-dark font-sans antialiased selection:bg-brand-red selection:text-white min-h-screen flex flex-col">
+<body style="min-height: 100vh; display: flex; flex-direction: column;">
 
-    <header class="w-full border-b border-brand-border bg-white/95 backdrop-blur-md sticky top-0 z-50 transition-all">
-        <div class="max-w-7xl mx-auto px-6 sm:px-8 h-24 flex items-center justify-between">
-            <a href="../index.html" class="flex items-center gap-3.5 group">
-                <div class="w-10 h-10 bg-brand-black flex items-center justify-center text-brand-red font-serif text-2xl font-bold border border-brand-border group-hover:border-brand-red transition-colors">
-                    D
-                </div>
-                <div class="flex flex-col tracking-widest uppercase">
-                    <span class="font-serif text-xl tracking-[0.2em] font-semibold text-brand-black leading-none">DEL COMPANY</span>
-                    <span class="text-[9px] tracking-[0.35em] text-brand-muted font-normal mt-1">ASSESSORIA EM LICITAÇÕES</span>
+    <header class="header">
+        <div class="container header-inner">
+            <a href="../index.html" class="logo">
+                <div class="logo-mark">D</div>
+                <div class="logo-text">
+                    <span class="logo-title">DEL COMPANY</span>
+                    <span class="logo-subtitle">ASSESSORIA EM LICITAÇÕES</span>
                 </div>
             </a>
 
-            <nav class="hidden md:flex items-center gap-8 text-xs font-semibold uppercase tracking-widest text-brand-muted">
-                <a href="../index.html#solucoes" class="hover:text-brand-red transition-colors duration-200">Soluções</a>
-                <a href="./catalog.html" class="hover:text-brand-red transition-colors duration-200">Serviços</a>
-                <a href="./contato.html" class="hover:text-brand-red transition-colors duration-200">Contato</a>
+            <nav class="nav">
+                <a href="../index.html#solucoes">Soluções</a>
+                <a href="./catalog.html">Serviços</a>
+                <a href="./contato.html">Contato</a>
             </nav>
 
-            <div class="hidden sm:flex items-center gap-3">
-                <a href="./cart.html"
-                    class="relative flex items-center gap-2 px-4 py-2.5 border border-brand-border hover:border-brand-black text-brand-black text-xs font-semibold uppercase tracking-widest transition-all duration-300">
-                    <i data-lucide="shopping-bag" class="w-3.5 h-3.5 stroke-[1.5]"></i>
+            <div class="header-actions">
+                <a href="./cart.html" class="btn btn-outline cart-link">
+                    <i data-lucide="shopping-bag" class="icon"></i>
                     Carrinho
-                    <span id="nav-carrinho-count"
-                        class="hidden absolute -top-2 -right-2 min-w-[18px] h-[18px] bg-brand-red text-white text-[9px] font-bold flex items-center justify-center px-1">
-                    </span>
+                    <span id="nav-carrinho-count" class="cart-badge"></span>
                 </a>
-                <a href="./login.html" id="nav-conta"
-                    class="inline-flex items-center gap-2 px-5 py-2.5 bg-brand-black text-white hover:bg-brand-red text-xs font-semibold uppercase tracking-widest transition-all duration-300">
-                    <i data-lucide="log-in" class="w-3.5 h-3.5 stroke-[1.5]"></i>
+                <a href="./login.html" id="nav-conta" class="btn btn-dark">
+                    <i data-lucide="log-in" class="icon"></i>
                     Entrar
                 </a>
             </div>
         </div>
     </header>
 
-    <main class="flex-1 flex items-center justify-center px-6 sm:px-8 py-16">
-        <div class="w-full max-w-md">
+    <main class="auth-main">
+        <div class="auth-box">
 
-            <div class="bg-brand-surface border border-brand-border p-8 sm:p-10 shadow-sm">
+            <div class="auth-card">
 
-                <div class="text-center mb-8">
-                    <div class="w-12 h-12 bg-brand-black flex items-center justify-center text-brand-red font-serif text-2xl font-bold mx-auto mb-4">
-                        D
-                    </div>
-                    <h1 class="font-serif text-3xl font-normal text-brand-black">Entrar na sua conta</h1>
-                    <p class="text-xs text-brand-muted font-light mt-2">Acesse para acompanhar seus serviços e processos</p>
+                <div class="auth-header">
+                    <div class="auth-logo-mark">D</div>
+                    <h1 class="auth-title">Entrar na sua conta</h1>
+                    <p class="auth-subtitle">Acesse para acompanhar seus serviços e processos</p>
                 </div>
 
-                <div id="login-alert" class="mb-6 bg-brand-redLight border border-brand-red/20 text-brand-red text-xs px-4 py-3 font-medium">
+                <div id="login-alert" class="auth-alert">
                     E-mail ou senha inválidos. Tente novamente.
                 </div>
 
-                <form id="form-login" class="space-y-5" novalidate>
+                <form id="form-login" class="form" novalidate>
 
-                    <div class="flex flex-col gap-2">
-                        <label for="email" class="text-xs uppercase tracking-widest font-semibold text-brand-black">E-mail</label>
-                        <input type="email" id="email" name="email" placeholder="seuemail@exemplo.com" required autocomplete="email"
-                            class="w-full bg-brand-canvas border border-brand-border px-4 py-3.5 text-xs text-brand-dark placeholder:text-zinc-400 focus:outline-none focus:border-brand-black focus:bg-white transition-all">
-                        <span class="field-error hidden text-[11px] text-brand-red font-medium" id="email-error">Informe um e-mail válido.</span>
+                    <div class="form-group">
+                        <label for="email" class="form-label">E-mail</label>
+                        <input type="email" id="email" name="email" placeholder="seuemail@exemplo.com" required
+                            autocomplete="email" class="form-input">
+                        <span class="field-error" id="email-error">Informe um e-mail válido.</span>
                     </div>
 
-                    <div class="flex flex-col gap-2">
-                        <label for="senha" class="text-xs uppercase tracking-widest font-semibold text-brand-black">Senha</label>
-                        <div class="relative">
-                            <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required autocomplete="current-password"
-                                class="w-full bg-brand-canvas border border-brand-border px-4 py-3.5 pr-20 text-xs text-brand-dark placeholder:text-zinc-400 focus:outline-none focus:border-brand-black focus:bg-white transition-all">
+                    <div class="form-group">
+                        <label for="senha" class="form-label">Senha</label>
+                        <div class="password-wrapper">
+                            <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required
+                                autocomplete="current-password" class="form-input">
                             <button type="button" id="toggle-senha" tabindex="-1"
-                                class="absolute right-3 top-1/2 -translate-y-1/2 text-[10px] uppercase tracking-widest text-brand-muted hover:text-brand-black font-semibold transition-colors cursor-pointer">
-                                Mostrar
-                            </button>
+                                class="password-toggle">Mostrar</button>
                         </div>
-                        <span class="field-error hidden text-[11px] text-brand-red font-medium" id="senha-error">Informe sua senha.</span>
+                        <span class="field-error" id="senha-error">Informe sua senha.</span>
                     </div>
 
-                    <div class="flex items-center justify-between text-xs">
-                        <label class="flex items-center gap-2 text-brand-muted cursor-pointer">
-                            <input type="checkbox" id="lembrar" name="lembrar" class="accent-brand-red w-3.5 h-3.5">
+                    <div class="form-row">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="lembrar" name="lembrar">
                             Lembrar-me
                         </label>
-                        <a href="./contato.html" class="text-brand-red hover:text-brand-redHover font-medium transition-colors">Esqueci minha senha</a>
+                        <a href="./contato.html" class="link-red">Esqueci minha senha</a>
                     </div>
 
-                    <button type="submit" id="btn-login"
-                        class="w-full py-4 bg-brand-red hover:bg-brand-redHover text-white text-xs uppercase tracking-widest font-semibold transition-all duration-300 shadow-md shadow-brand-red/20 flex items-center justify-center gap-2 cursor-pointer">
+                    <button type="submit" id="btn-login" class="btn btn-primary btn-block">
                         <span>Entrar</span>
-                        <i data-lucide="arrow-right" class="w-4 h-4 stroke-[1.5]"></i>
+                        <i data-lucide="arrow-right" class="icon"></i>
                     </button>
                 </form>
 
-                <div class="flex items-center gap-4 my-6">
-                    <div class="flex-1 h-px bg-brand-border"></div>
-                    <span class="text-[10px] uppercase tracking-widest text-brand-muted font-light">ou</span>
-                    <div class="flex-1 h-px bg-brand-border"></div>
+                <div class="divider">
+                    <div class="divider-line"></div>
+                    <span class="divider-text">ou</span>
+                    <div class="divider-line"></div>
                 </div>
 
-                <p class="text-center text-xs text-brand-muted font-light">
+                <p class="auth-footer-text">
                     Ainda não tem conta?
-                    <a href="./register.html" class="text-brand-red hover:text-brand-redHover font-semibold transition-colors">Criar conta</a>
+                    <a href="./register.html" class="link-red">Criar conta</a>
                 </p>
             </div>
 
-            <a href="../index.html" class="mt-6 inline-flex items-center gap-2 text-xs uppercase tracking-widest text-brand-muted hover:text-brand-black font-medium transition-colors">
-                <i data-lucide="arrow-left" class="w-3.5 h-3.5 stroke-[1.5]"></i>
+            <a href="../index.html" class="back-link">
+                <i data-lucide="arrow-left" class="icon"></i>
                 Voltar para o início
             </a>
 
         </div>
     </main>
 
-    <footer class="w-full border-t border-brand-border bg-white py-8">
-        <div class="max-w-7xl mx-auto px-6 sm:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-brand-muted font-light">
-            <div class="flex items-center gap-2">
-                <span class="font-semibold text-brand-black">DEL COMPANY</span>
+    <footer class="footer">
+        <div class="container footer-inner">
+            <div class="footer-brand">
+                <strong>DEL COMPANY</strong>
                 <span>© 2026. Todos os direitos reservados.</span>
             </div>
-            <div class="flex items-center gap-6 uppercase tracking-widest text-[10px]">
-                <a href="./termos.html" class="hover:text-brand-black transition-colors">Termos de Uso</a>
-                <a href="./privacidade.html" class="hover:text-brand-black transition-colors">Privacidade &amp; LGPD</a>
+            <div class="footer-links">
+                <a href="./termos.html">Termos de Uso</a>
+                <a href="./privacidade.html">Privacidade &amp; LGPD</a>
             </div>
         </div>
     </footer>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR" class="scroll-smooth">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
@@ -12,53 +12,10 @@
         href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
 
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./css/home.css">
+
     <script src="https://unpkg.com/lucide@latest"></script>
-
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        serif: ['"Cormorant Garamond"', 'serif'],
-                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-                    },
-                    colors: {
-                        brand: {
-                            black: '#0D0D0E',
-                            dark: '#161618',
-                            surface: '#FFFFFF',
-                            canvas: '#F6F6F7',
-                            border: '#E4E4E7',
-                            borderDark: '#27272A',
-                            muted: '#71717A',
-                            red: '#C92A2A',
-                            redHover: '#A61E1E',
-                            redLight: '#FFF5F5'
-                        }
-                    },
-                    letterSpacing: {
-                        widest2: '0.22em',
-                    }
-                }
-            }
-        }
-    </script>
-
-    <style>
-        /* Esconde a barra de rolagem visualmente, sem desativar a rolagem em si */
-        html {
-            scrollbar-width: none;
-            /* Firefox */
-            -ms-overflow-style: none;
-            /* Internet Explorer / Edge legado */
-        }
-
-        html::-webkit-scrollbar {
-            display: none;
-            /* Chrome, Safari, Edge modernos */
-        }
-    </style>
 
     <script src="./js/config.js" defer></script>
     <script src="./js/api.js" defer></script>
@@ -67,425 +24,316 @@
     <script src="./js/home.js" defer></script>
 </head>
 
-<body class="bg-brand-canvas text-brand-dark font-sans antialiased selection:bg-brand-red selection:text-white">
+<body>
 
-    <header class="w-full border-b border-brand-border bg-white/90 backdrop-blur-md sticky top-0 z-50 transition-all">
-        <div class="max-w-7xl mx-auto px-6 sm:px-8 h-24 flex items-center justify-between">
+    <header class="header">
+        <div class="container header-inner">
 
-            <a href="./index.html" class="flex items-center gap-3.5 group">
-                <div
-                    class="w-10 h-10 bg-brand-black flex items-center justify-center text-brand-red font-serif text-2xl font-bold border border-brand-border group-hover:border-brand-red transition-colors">
-                    D
-                </div>
-                <div class="flex flex-col tracking-widest uppercase">
-                    <span class="font-serif text-xl tracking-[0.2em] font-semibold text-brand-black leading-none">DEL
-                        COMPANY</span>
-                    <span class="text-[9px] tracking-[0.35em] text-brand-muted font-normal mt-1">ASSESSORIA EM
-                        LICITAÇÕES</span>
+            <a href="./index.html" class="logo">
+                <div class="logo-mark">D</div>
+                <div class="logo-text">
+                    <span class="logo-title">DEL COMPANY</span>
+                    <span class="logo-subtitle">ASSESSORIA EM LICITAÇÕES</span>
                 </div>
             </a>
 
-            <nav
-                class="hidden md:flex items-center gap-8 text-xs font-semibold uppercase tracking-widest text-brand-muted">
-                <a href="#solucoes" class="hover:text-brand-red transition-colors duration-200">Soluções</a>
-                <a href="#como-funciona" class="hover:text-brand-red transition-colors duration-200">Como Funciona</a>
-                <a href="./html/catalog.html" class="hover:text-brand-red transition-colors duration-200">Serviços</a>
-                <a href="#faq" class="hover:text-brand-red transition-colors duration-200">Dúvidas</a>
-                <a href="#contato" class="hover:text-brand-red transition-colors duration-200">Contato</a>
+            <nav class="nav">
+                <a href="#solucoes">Soluções</a>
+                <a href="#como-funciona">Como Funciona</a>
+                <a href="./html/catalog.html">Serviços</a>
+                <a href="#faq">Dúvidas</a>
+                <a href="#contato">Contato</a>
             </nav>
 
-            <div class="hidden sm:flex items-center gap-3">
-                <a href="./html/cart.html"
-                    class="relative flex items-center gap-2 px-4 py-2.5 border border-brand-border hover:border-brand-black text-brand-black text-xs font-semibold uppercase tracking-widest transition-all duration-300">
-                    <i data-lucide="shopping-bag" class="w-3.5 h-3.5 stroke-[1.5]"></i>
+            <div class="header-actions">
+                <a href="./html/cart.html" class="btn btn-outline cart-link">
+                    <i data-lucide="shopping-bag" class="icon"></i>
                     Carrinho
-                    <span id="nav-carrinho-count"
-                        class="hidden absolute -top-2 -right-2 min-w-[18px] h-[18px] bg-brand-red text-white text-[9px] font-bold flex items-center justify-center px-1">
-                    </span>
+                    <span id="nav-carrinho-count" class="cart-badge"></span>
                 </a>
-                <a href="./html/login.html" id="nav-conta"
-                    class="inline-flex items-center gap-2 px-5 py-2.5 bg-brand-black text-white hover:bg-brand-red text-xs font-semibold uppercase tracking-widest transition-all duration-300">
-                    <i data-lucide="log-in" class="w-3.5 h-3.5 stroke-[1.5]"></i>
+                <a href="./html/login.html" id="nav-conta" class="btn btn-dark">
+                    <i data-lucide="log-in" class="icon"></i>
                     Entrar
                 </a>
             </div>
         </div>
     </header>
 
-    <section class="relative min-h-[85vh] flex items-center justify-center text-center px-6 overflow-hidden">
-        <div class="absolute inset-0 z-0">
-            <img src="./img/hero-corporate.jpg" alt="Estrutura Corporativa"
-                class="w-full h-full object-cover object-center grayscale contrast-125">
-            <div class="absolute inset-0 bg-gradient-to-b from-brand-black/90 via-brand-black/80 to-brand-black/95">
-            </div>
+    <section class="hero">
+        <div class="hero-bg">
+            <img src="./img/hero-corporate.jpg" alt="Estrutura Corporativa">
+            <div class="hero-overlay"></div>
         </div>
 
-        <div class="relative z-10 max-w-4xl mx-auto flex flex-col items-center pt-8">
-
-            <div
-                class="inline-flex items-center gap-2 px-4 py-1.5 border border-zinc-700 bg-zinc-900/70 backdrop-blur-md text-[11px] uppercase tracking-widest2 text-zinc-300 mb-8 font-light">
-                <span class="w-1.5 h-1.5 rounded-full bg-brand-red"></span>
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="hero-dot"></span>
                 Assessoria Especializada &amp; Inteligência em Editais
             </div>
 
-            <h1 class="text-4xl sm:text-6xl md:text-7xl font-normal text-white leading-[1.15] tracking-tight">
-                Acesso estratégico aos <br class="hidden sm:inline" />
-                <span class="font-serif italic font-normal text-brand-red text-5xl sm:text-7xl md:text-8xl">maiores
-                    contratos</span> públicos.
+            <h1 class="hero-title">
+                Acesso estratégico aos<br>
+                <em>maiores contratos</em> públicos.
             </h1>
 
-            <p class="mt-8 text-sm sm:text-base text-zinc-400 font-light max-w-2xl leading-relaxed tracking-wide">
+            <p class="hero-subtitle">
                 Conectamos a sua empresa a processos licitatórios com conformidade técnica integral: da triagem e
                 análise de riscos até a disputa de lances e homologação final.
             </p>
 
-            <div class="mt-10 flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
-                <a href="./html/catalog.html"
-                    class="w-full sm:w-auto px-8 py-4 bg-brand-red text-white hover:bg-brand-redHover text-xs uppercase tracking-widest font-semibold transition-all duration-300 shadow-lg shadow-brand-red/20">
-                    Conhecer Serviços
-                </a>
-                <a href="#contato"
-                    class="w-full sm:w-auto px-8 py-4 border border-zinc-700 text-zinc-200 hover:border-zinc-400 hover:text-white text-xs uppercase tracking-widest font-light backdrop-blur-sm transition-all duration-300 flex items-center justify-center gap-2">
-                    <i data-lucide="file-text" class="w-3.5 h-3.5 stroke-[1.5]"></i>
+            <div class="hero-actions">
+                <a href="./html/catalog.html" class="btn btn-primary">Conhecer Serviços</a>
+                <a href="#contato" class="btn btn-outline-dark">
+                    <i data-lucide="file-text" class="icon"></i>
                     Solicitar Orçamento
                 </a>
             </div>
-
         </div>
 
-        <div
-            class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 opacity-50 hover:opacity-100 transition-opacity">
-            <span class="text-[9px] tracking-widest uppercase text-zinc-400 font-light">Explorar</span>
-            <i data-lucide="chevron-down" class="w-4 h-4 text-white animate-bounce stroke-[1.5]"></i>
+        <div class="scroll-indicator">
+            <span>Explorar</span>
+            <i data-lucide="chevron-down" class="icon"></i>
         </div>
     </section>
 
-    <section id="solucoes" class="max-w-7xl mx-auto px-8 py-24 sm:py-32">
-
-        <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 pb-6 border-b border-brand-border">
+    <section id="solucoes" class="section">
+        <div class="section-header">
             <div>
-                <span class="text-xs uppercase tracking-widest2 text-brand-red font-bold">Serviços Especializados</span>
-                <h2 class="font-serif text-4xl sm:text-5xl font-normal text-brand-black mt-2">Soluções em Licitações
-                </h2>
-                <p class="text-xs sm:text-sm text-brand-muted font-light mt-3">Acompanhamento completo e rigor técnico
-                    para viabilizar contratos públicos.</p>
+                <span class="eyebrow">Serviços Especializados</span>
+                <h2 class="section-title">Soluções em Licitações</h2>
+                <p class="section-desc">Acompanhamento completo e rigor técnico para viabilizar contratos públicos.</p>
             </div>
-
-            <a href="./html/catalog.html"
-                class="mt-6 md:mt-0 inline-flex items-center gap-2 text-xs uppercase tracking-widest font-semibold text-brand-black hover:text-brand-red transition-colors">
+            <a href="./html/catalog.html" class="link-arrow">
                 Ver todos os Serviços
-                <i data-lucide="arrow-right" class="w-4 h-4 stroke-[1.5]"></i>
+                <i data-lucide="arrow-right" class="icon"></i>
             </a>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="cards-grid">
 
-            <div
-                class="group bg-brand-surface border border-brand-border flex flex-col transition-all duration-300 hover:border-brand-black hover:shadow-xl hover:shadow-black/5">
-                <div class="relative h-72 overflow-hidden bg-zinc-100">
-                    <img src="./img/card-auditoria.jpg" alt="Auditoria Documental"
-                        class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-out">
-                    <span
-                        class="absolute top-4 left-4 bg-brand-black text-white text-[10px] uppercase tracking-widest px-3 py-1 font-medium">
-                        Fase Preliminar
-                    </span>
+            <div class="card">
+                <div class="card-image">
+                    <img src="./img/card-auditoria.jpg" alt="Auditoria Documental">
+                    <span class="card-tag">Fase Preliminar</span>
                 </div>
-                <div class="p-8 flex flex-col flex-1">
-                    <span class="text-[10px] uppercase tracking-widest text-brand-muted">Conformidade e
-                        Habilitação</span>
-                    <h3
-                        class="font-serif text-2xl font-normal text-brand-black mt-2 group-hover:text-brand-red transition-colors">
-                        Organização &amp; Auditoria Documental
-                    </h3>
-                    <p class="text-xs text-brand-muted font-light mt-3 leading-relaxed">
+                <div class="card-body">
+                    <span class="card-category">Conformidade e Habilitação</span>
+                    <h3 class="card-title">Organização &amp; Auditoria Documental</h3>
+                    <p class="card-desc">
                         Diagnóstico rigoroso de certidões, atestados de capacidade técnica e registros cadastrais para
                         evitar inabilitações desnecessárias.
                     </p>
                 </div>
             </div>
 
-            <div
-                class="group bg-brand-surface border border-brand-border flex flex-col transition-all duration-300 hover:border-brand-black hover:shadow-xl hover:shadow-black/5">
-                <div class="relative h-72 overflow-hidden bg-zinc-100">
-                    <img src="./img/card-analise-editais.jpg" alt="Análise de Editais"
-                        class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-out">
-                    <span
-                        class="absolute top-4 left-4 bg-brand-black text-white text-[10px] uppercase tracking-widest px-3 py-1 font-medium">
-                        Técnica &amp; Estratégia
-                    </span>
+            <div class="card">
+                <div class="card-image">
+                    <img src="./img/card-analise-editais.jpg" alt="Análise de Editais">
+                    <span class="card-tag">Técnica &amp; Estratégia</span>
                 </div>
-                <div class="p-8 flex flex-col flex-1">
-                    <span class="text-[10px] uppercase tracking-widest text-brand-muted">Inteligência Jurídica</span>
-                    <h3
-                        class="font-serif text-2xl font-normal text-brand-black mt-2 group-hover:text-brand-red transition-colors">
-                        Análise Minuciosa de Editais
-                    </h3>
-                    <p class="text-xs text-brand-muted font-light mt-3 leading-relaxed">
+                <div class="card-body">
+                    <span class="card-category">Inteligência Jurídica</span>
+                    <h3 class="card-title">Análise Minuciosa de Editais</h3>
+                    <p class="card-desc">
                         Identificação prévia de riscos, pedidos de esclarecimento, impugnações e garantia de que sua
                         proposta cumpra todas as diretrizes do instrumento convocatório.
                     </p>
                 </div>
             </div>
 
-            <div
-                class="group bg-brand-surface border border-brand-border flex flex-col transition-all duration-300 hover:border-brand-black hover:shadow-xl hover:shadow-black/5">
-                <div class="relative h-72 overflow-hidden bg-zinc-100">
-                    <img src="./img/card-lances.jpg" alt="Sessão Pública de Lances"
-                        class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-out">
-                    <span
-                        class="absolute top-4 left-4 bg-brand-black text-white text-[10px] uppercase tracking-widest px-3 py-1 font-medium">
-                        Operação
-                    </span>
+            <div class="card">
+                <div class="card-image">
+                    <img src="./img/card-lances.jpg" alt="Sessão Pública de Lances">
+                    <span class="card-tag">Operação</span>
                 </div>
-                <div class="p-8 flex flex-col flex-1">
-                    <span class="text-[10px] uppercase tracking-widest text-brand-muted">Disputa &amp; Recursos</span>
-                    <h3
-                        class="font-serif text-2xl font-normal text-brand-black mt-2 group-hover:text-brand-red transition-colors">
-                        Acompanhamento &amp; Lances em Tempo Real
-                    </h3>
-                    <p class="text-xs text-brand-muted font-light mt-3 leading-relaxed">
-                        Representação ativa nos portais de compras públicas, condução de lances e elaboração imediata de
-                        recursos administrativos.
+                <div class="card-body">
+                    <span class="card-category">Disputa &amp; Recursos</span>
+                    <h3 class="card-title">Acompanhamento &amp; Lances em Tempo Real</h3>
+                    <p class="card-desc">
+                        Representação ativa nos portais de compras públicas, condução de lances e elaboração imediata
+                        de recursos administrativos.
                     </p>
                 </div>
-            </div>
-
-        </div>
-
-    </section>
-
-    <section id="como-funciona" class="bg-brand-black py-24 sm:py-32">
-        <div class="max-w-7xl mx-auto px-8">
-
-            <div class="max-w-2xl mb-16">
-                <span class="text-xs uppercase tracking-widest2 text-brand-red font-bold">Processo</span>
-                <h2 class="font-serif text-4xl sm:text-5xl font-normal text-white mt-2">Como Funciona</h2>
-                <p class="text-xs sm:text-sm text-zinc-400 font-light mt-3">
-                    Do primeiro contato até a homologação do contrato, cada etapa é conduzida com acompanhamento técnico
-                    dedicado.
-                </p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-
-                <div class="relative pl-6 border-l border-zinc-800">
-                    <span class="font-serif text-5xl text-brand-red/40">01</span>
-                    <div
-                        class="w-10 h-10 flex items-center justify-center bg-zinc-900 border border-zinc-800 mt-4 mb-4">
-                        <i data-lucide="search" class="w-4 h-4 text-brand-red stroke-[1.5]"></i>
-                    </div>
-                    <h3 class="font-serif text-xl text-white font-normal">Diagnóstico Inicial</h3>
-                    <p class="text-xs text-zinc-400 font-light mt-2 leading-relaxed">
-                        Levantamos o perfil da sua empresa e identificamos as licitações com maior aderência ao seu ramo
-                        de atuação.
-                    </p>
-                </div>
-
-                <div class="relative pl-6 border-l border-zinc-800">
-                    <span class="font-serif text-5xl text-brand-red/40">02</span>
-                    <div
-                        class="w-10 h-10 flex items-center justify-center bg-zinc-900 border border-zinc-800 mt-4 mb-4">
-                        <i data-lucide="file-check" class="w-4 h-4 text-brand-red stroke-[1.5]"></i>
-                    </div>
-                    <h3 class="font-serif text-xl text-white font-normal">Habilitação Documental</h3>
-                    <p class="text-xs text-zinc-400 font-light mt-2 leading-relaxed">
-                        Organizamos certidões, atestados e registros para que sua proposta não seja desclassificada por
-                        questões formais.
-                    </p>
-                </div>
-
-                <div class="relative pl-6 border-l border-zinc-800">
-                    <span class="font-serif text-5xl text-brand-red/40">03</span>
-                    <div
-                        class="w-10 h-10 flex items-center justify-center bg-zinc-900 border border-zinc-800 mt-4 mb-4">
-                        <i data-lucide="trending-up" class="w-4 h-4 text-brand-red stroke-[1.5]"></i>
-                    </div>
-                    <h3 class="font-serif text-xl text-white font-normal">Disputa &amp; Lances</h3>
-                    <p class="text-xs text-zinc-400 font-light mt-2 leading-relaxed">
-                        Acompanhamos a sessão pública em tempo real, com estratégia de lances definida junto com você
-                        antes da disputa.
-                    </p>
-                </div>
-
-                <div class="relative pl-6 border-l border-zinc-800">
-                    <span class="font-serif text-5xl text-brand-red/40">04</span>
-                    <div
-                        class="w-10 h-10 flex items-center justify-center bg-zinc-900 border border-zinc-800 mt-4 mb-4">
-                        <i data-lucide="award" class="w-4 h-4 text-brand-red stroke-[1.5]"></i>
-                    </div>
-                    <h3 class="font-serif text-xl text-white font-normal">Homologação</h3>
-                    <p class="text-xs text-zinc-400 font-light mt-2 leading-relaxed">
-                        Damos suporte até a assinatura do contrato, incluindo recursos administrativos caso sejam
-                        necessários.
-                    </p>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <section class="max-w-7xl mx-auto px-8 py-24 sm:py-32">
-
-        <div class="max-w-2xl mb-16">
-            <span class="text-xs uppercase tracking-widest2 text-brand-red font-bold">Diferenciais</span>
-            <h2 class="font-serif text-4xl sm:text-5xl font-normal text-brand-black mt-2">Por que a Del Company</h2>
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-
-            <div class="flex flex-col gap-3">
-                <i data-lucide="shield-check" class="w-6 h-6 text-brand-red stroke-[1.5]"></i>
-                <h3 class="font-serif text-lg text-brand-black font-normal">Conformidade Técnica</h3>
-                <p class="text-xs text-brand-muted font-light leading-relaxed">
-                    Cada etapa segue rigorosamente a Lei 14.133/2021 e as exigências específicas de cada edital.
-                </p>
-            </div>
-
-            <div class="flex flex-col gap-3">
-                <i data-lucide="clock" class="w-6 h-6 text-brand-red stroke-[1.5]"></i>
-                <h3 class="font-serif text-lg text-brand-black font-normal">Prazos Monitorados</h3>
-                <p class="text-xs text-brand-muted font-light leading-relaxed">
-                    Nenhuma data de abertura, esclarecimento ou recurso passa despercebida — acompanhamento ativo de
-                    todo o cronograma.
-                </p>
-            </div>
-
-            <div class="flex flex-col gap-3">
-                <i data-lucide="headphones" class="w-6 h-6 text-brand-red stroke-[1.5]"></i>
-                <h3 class="font-serif text-lg text-brand-black font-normal">Atendimento Direto</h3>
-                <p class="text-xs text-brand-muted font-light leading-relaxed">
-                    Canal de comunicação próximo, sem intermediários — dúvidas respondidas por quem está conduzindo o
-                    processo.
-                </p>
-            </div>
-
-            <div class="flex flex-col gap-3">
-                <i data-lucide="lock" class="w-6 h-6 text-brand-red stroke-[1.5]"></i>
-                <h3 class="font-serif text-lg text-brand-black font-normal">Confidencialidade</h3>
-                <p class="text-xs text-brand-muted font-light leading-relaxed">
-                    Informações estratégicas e documentos da sua empresa tratados com sigilo em todas as etapas.
-                </p>
             </div>
 
         </div>
     </section>
 
-    <section id="faq" class="bg-brand-canvas border-t border-brand-border py-24 sm:py-32">
-        <div class="max-w-4xl mx-auto px-8">
-
-            <div class="mb-16 text-center">
-                <span class="text-xs uppercase tracking-widest2 text-brand-red font-bold">Dúvidas Frequentes</span>
-                <h2 class="font-serif text-4xl sm:text-5xl font-normal text-brand-black mt-2">Perguntas Comuns</h2>
+    <section id="como-funciona" class="dark-section">
+        <div class="container">
+            <div class="dark-intro">
+                <span class="eyebrow">Processo</span>
+                <h2 class="section-title">Como Funciona</h2>
+                <p class="section-desc">
+                    Do primeiro contato até a homologação do contrato, cada etapa é conduzida com acompanhamento
+                    técnico dedicado.
+                </p>
             </div>
 
-            <div class="flex flex-col divide-y divide-brand-border border-t border-b border-brand-border">
+            <div class="steps-grid">
+                <div class="step">
+                    <span class="step-number">01</span>
+                    <div class="step-icon"><i data-lucide="search" class="icon"></i></div>
+                    <h3 class="step-title">Diagnóstico Inicial</h3>
+                    <p class="step-desc">Levantamos o perfil da sua empresa e identificamos as licitações com maior
+                        aderência ao seu ramo de atuação.</p>
+                </div>
+                <div class="step">
+                    <span class="step-number">02</span>
+                    <div class="step-icon"><i data-lucide="file-check" class="icon"></i></div>
+                    <h3 class="step-title">Habilitação Documental</h3>
+                    <p class="step-desc">Organizamos certidões, atestados e registros para que sua proposta não seja
+                        desclassificada por questões formais.</p>
+                </div>
+                <div class="step">
+                    <span class="step-number">03</span>
+                    <div class="step-icon"><i data-lucide="trending-up" class="icon"></i></div>
+                    <h3 class="step-title">Disputa &amp; Lances</h3>
+                    <p class="step-desc">Acompanhamos a sessão pública em tempo real, com estratégia de lances
+                        definida junto com você antes da disputa.</p>
+                </div>
+                <div class="step">
+                    <span class="step-number">04</span>
+                    <div class="step-icon"><i data-lucide="award" class="icon"></i></div>
+                    <h3 class="step-title">Homologação</h3>
+                    <p class="step-desc">Damos suporte até a assinatura do contrato, incluindo recursos
+                        administrativos caso sejam necessários.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                <details class="group py-6">
-                    <summary
-                        class="flex items-center justify-between cursor-pointer list-none text-sm font-semibold text-brand-black">
+    <section class="section">
+        <div class="dark-intro" style="margin-bottom: 64px;">
+            <span class="eyebrow">Diferenciais</span>
+            <h2 class="section-title" style="color: var(--brand-black);">Por que a Del Company</h2>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature">
+                <i data-lucide="shield-check" class="icon"></i>
+                <h3 class="feature-title">Conformidade Técnica</h3>
+                <p class="feature-desc">Cada etapa segue rigorosamente a Lei 14.133/2021 e as exigências específicas
+                    de cada edital.</p>
+            </div>
+            <div class="feature">
+                <i data-lucide="clock" class="icon"></i>
+                <h3 class="feature-title">Prazos Monitorados</h3>
+                <p class="feature-desc">Nenhuma data de abertura, esclarecimento ou recurso passa despercebida —
+                    acompanhamento ativo de todo o cronograma.</p>
+            </div>
+            <div class="feature">
+                <i data-lucide="headphones" class="icon"></i>
+                <h3 class="feature-title">Atendimento Direto</h3>
+                <p class="feature-desc">Canal de comunicação próximo, sem intermediários — dúvidas respondidas por
+                    quem está conduzindo o processo.</p>
+            </div>
+            <div class="feature">
+                <i data-lucide="lock" class="icon"></i>
+                <h3 class="feature-title">Confidencialidade</h3>
+                <p class="feature-desc">Informações estratégicas e documentos da sua empresa tratados com sigilo em
+                    todas as etapas.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="faq-section">
+        <div class="faq-container">
+            <div class="faq-intro">
+                <span class="eyebrow">Dúvidas Frequentes</span>
+                <h2 class="section-title">Perguntas Comuns</h2>
+            </div>
+
+            <div class="faq-list">
+                <details class="faq-item">
+                    <summary class="faq-question">
                         Minha empresa precisa ter experiência prévia em licitações?
-                        <i data-lucide="plus" class="w-4 h-4 stroke-[1.5] text-brand-muted group-open:hidden"></i>
-                        <i data-lucide="minus"
-                            class="w-4 h-4 stroke-[1.5] text-brand-muted hidden group-open:block"></i>
+                        <i data-lucide="plus" class="faq-icon-plus"></i>
+                        <i data-lucide="minus" class="faq-icon-minus"></i>
                     </summary>
-                    <p class="text-xs text-brand-muted font-light mt-3 leading-relaxed">
-                        Não. Trabalhamos desde a organização documental inicial para empresas que nunca participaram de
-                        um processo licitatório até a condução completa para quem já tem histórico na área.
+                    <p class="faq-answer">
+                        Não. Trabalhamos desde a organização documental inicial para empresas que nunca participaram
+                        de um processo licitatório até a condução completa para quem já tem histórico na área.
                     </p>
                 </details>
 
-                <details class="group py-6">
-                    <summary
-                        class="flex items-center justify-between cursor-pointer list-none text-sm font-semibold text-brand-black">
+                <details class="faq-item">
+                    <summary class="faq-question">
                         Quanto tempo leva o processo de habilitação?
-                        <i data-lucide="plus" class="w-4 h-4 stroke-[1.5] text-brand-muted group-open:hidden"></i>
-                        <i data-lucide="minus"
-                            class="w-4 h-4 stroke-[1.5] text-brand-muted hidden group-open:block"></i>
+                        <i data-lucide="plus" class="faq-icon-plus"></i>
+                        <i data-lucide="minus" class="faq-icon-minus"></i>
                     </summary>
-                    <p class="text-xs text-brand-muted font-light mt-3 leading-relaxed">
+                    <p class="faq-answer">
                         Varia conforme a situação documental da empresa e o prazo definido no edital. No diagnóstico
                         inicial já indicamos um prazo estimado para o seu caso específico.
                     </p>
                 </details>
 
-                <details class="group py-6">
-                    <summary
-                        class="flex items-center justify-between cursor-pointer list-none text-sm font-semibold text-brand-black">
+                <details class="faq-item">
+                    <summary class="faq-question">
                         Vocês acompanham licitações de qualquer órgão público?
-                        <i data-lucide="plus" class="w-4 h-4 stroke-[1.5] text-brand-muted group-open:hidden"></i>
-                        <i data-lucide="minus"
-                            class="w-4 h-4 stroke-[1.5] text-brand-muted hidden group-open:block"></i>
+                        <i data-lucide="plus" class="faq-icon-plus"></i>
+                        <i data-lucide="minus" class="faq-icon-minus"></i>
                     </summary>
-                    <p class="text-xs text-brand-muted font-light mt-3 leading-relaxed">
-                        Hoje nosso acompanhamento de dados públicos está concentrado no Município de Tijucas/SC. Outras
-                        cidades e órgãos podem ser atendidos mediante consulta direta.
+                    <p class="faq-answer">
+                        Hoje nosso acompanhamento de dados públicos está concentrado no Município de Tijucas/SC.
+                        Outras cidades e órgãos podem ser atendidos mediante consulta direta.
                     </p>
                 </details>
 
-                <details class="group py-6">
-                    <summary
-                        class="flex items-center justify-between cursor-pointer list-none text-sm font-semibold text-brand-black">
+                <details class="faq-item">
+                    <summary class="faq-question">
                         Como funciona a contratação dos serviços?
-                        <i data-lucide="plus" class="w-4 h-4 stroke-[1.5] text-brand-muted group-open:hidden"></i>
-                        <i data-lucide="minus"
-                            class="w-4 h-4 stroke-[1.5] text-brand-muted hidden group-open:block"></i>
+                        <i data-lucide="plus" class="faq-icon-plus"></i>
+                        <i data-lucide="minus" class="faq-icon-minus"></i>
                     </summary>
-                    <p class="text-xs text-brand-muted font-light mt-3 leading-relaxed">
-                        Você escolhe os serviços diretamente no catálogo, adiciona ao carrinho e finaliza a solicitação
-                        — nossa equipe entra em contato para dar início ao processo.
+                    <p class="faq-answer">
+                        Você escolhe os serviços diretamente no catálogo, adiciona ao carrinho e finaliza a
+                        solicitação — nossa equipe entra em contato para dar início ao processo.
                     </p>
                 </details>
-
             </div>
         </div>
     </section>
 
-    <section id="contato" class="max-w-7xl mx-auto px-8 py-24 sm:py-32">
-        <div class="bg-brand-black px-8 py-16 sm:p-16 flex flex-col md:flex-row items-center justify-between gap-10">
-            <div class="max-w-xl">
-                <span class="text-xs uppercase tracking-widest2 text-brand-red font-bold">Fale Conosco</span>
-                <h2 class="font-serif text-3xl sm:text-4xl font-normal text-white mt-2">
-                    Pronto para dar o próximo passo no seu processo licitatório?
-                </h2>
-                <p class="text-xs sm:text-sm text-zinc-400 font-light mt-4 leading-relaxed">
+    <section id="contato" class="section">
+        <div class="cta-box">
+            <div class="cta-content">
+                <span class="eyebrow">Fale Conosco</span>
+                <h2 class="section-title">Pronto para dar o próximo passo no seu processo licitatório?</h2>
+                <p class="section-desc">
                     Fale diretamente com nossa equipe e entenda como podemos ajudar sua empresa a competir com mais
                     segurança.
                 </p>
             </div>
-            <div class="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
-                <a href="https://wa.me/5548991004282" target="_blank"
-                    class="w-full sm:w-auto px-8 py-4 bg-brand-red text-white hover:bg-brand-redHover text-xs uppercase tracking-widest font-semibold transition-all duration-300 flex items-center justify-center gap-2">
-                    <i data-lucide="message-circle" class="w-4 h-4 stroke-[1.5]"></i>
+            <div class="cta-actions">
+                <a href="https://wa.me/5548991004282" target="_blank" class="btn btn-primary">
+                    <i data-lucide="message-circle" class="icon"></i>
                     Falar no WhatsApp
                 </a>
-                <a href="./html/contato.html"
-                    class="w-full sm:w-auto px-8 py-4 border border-zinc-700 text-zinc-200 hover:border-zinc-400 hover:text-white text-xs uppercase tracking-widest font-light transition-all duration-300 flex items-center justify-center gap-2">
-                    <i data-lucide="mail" class="w-4 h-4 stroke-[1.5]"></i>
+                <a href="./html/contato.html" class="btn btn-outline-dark">
+                    <i data-lucide="mail" class="icon"></i>
                     Outros Canais
                 </a>
             </div>
         </div>
     </section>
 
-    <footer class="w-full border-t border-brand-border bg-white py-8">
-        <div
-            class="max-w-7xl mx-auto px-6 sm:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-brand-muted font-light">
-            <div class="flex items-center gap-2">
-                <span class="font-semibold text-brand-black">DEL COMPANY</span>
+    <footer class="footer">
+        <div class="container footer-inner">
+            <div class="footer-brand">
+                <strong>DEL COMPANY</strong>
                 <span>© 2026. Todos os direitos reservados.</span>
             </div>
-            <div class="flex items-center gap-6 uppercase tracking-widest text-[10px]">
-                <a href="./html/termos.html" class="hover:text-brand-black transition-colors">Termos de Uso</a>
-                <a href="./html/privacidade.html" class="hover:text-brand-black transition-colors">Privacidade &amp;
-                    LGPD</a>
+            <div class="footer-links">
+                <a href="./html/termos.html">Termos de Uso</a>
+                <a href="./html/privacidade.html">Privacidade &amp; LGPD</a>
             </div>
         </div>
     </footer>
 
-    <a href="https://wa.me/5548991004282" target="_blank"
-        class="fixed bottom-8 right-8 z-40 w-14 h-14 bg-brand-black border border-brand-border hover:bg-brand-red text-white flex items-center justify-center shadow-2xl transition-all duration-300 hover:scale-105"
-        title="Falar no WhatsApp">
-        <i data-lucide="message-circle" class="w-6 h-6 stroke-[1.5]"></i>
+    <a href="https://wa.me/5548991004282" target="_blank" class="whatsapp-float" title="Falar no WhatsApp">
+        <i data-lucide="message-circle" class="icon"></i>
     </a>
 
     <script>
