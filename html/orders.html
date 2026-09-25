@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR" class="scroll-smooth">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
@@ -12,38 +12,11 @@
         href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
 
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/cart.css">
+    <link rel="stylesheet" href="../css/orders.css">
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        serif: ['"Cormorant Garamond"', 'serif'],
-                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-                    },
-                    colors: {
-                        brand: {
-                            black: '#0D0D0E',
-                            dark: '#161618',
-                            surface: '#FFFFFF',
-                            canvas: '#F6F6F7',
-                            border: '#E4E4E7',
-                            borderDark: '#27272A',
-                            muted: '#71717A',
-                            red: '#C92A2A',
-                            redHover: '#A61E1E',
-                            redLight: '#FFF5F5'
-                        }
-                    },
-                    letterSpacing: {
-                        widest2: '0.22em',
-                    }
-                }
-            }
-        }
-    </script>
+    <script src="https://unpkg.com/lucide@latest"></script>
 
     <script src="../js/config.js" defer></script>
     <script src="../js/api.js" defer></script>
@@ -52,92 +25,78 @@
     <script src="../js/orders.js" defer></script>
 </head>
 
-<body
-    class="bg-brand-canvas text-brand-dark font-sans antialiased selection:bg-brand-red selection:text-white min-h-screen flex flex-col">
+<body style="min-height: 100vh; display: flex; flex-direction: column;">
 
-    <header class="w-full border-b border-brand-border bg-white/95 backdrop-blur-md sticky top-0 z-50 transition-all">
-        <div class="max-w-7xl mx-auto px-6 sm:px-8 h-24 flex items-center justify-between">
-            <a href="../index.html" class="flex items-center gap-3.5 group">
-                <div
-                    class="w-10 h-10 bg-brand-black flex items-center justify-center text-brand-red font-serif text-2xl font-bold border border-brand-border group-hover:border-brand-red transition-colors">
-                    D
-                </div>
-                <div class="flex flex-col tracking-widest uppercase">
-                    <span class="font-serif text-xl tracking-[0.2em] font-semibold text-brand-black leading-none">DEL
-                        COMPANY</span>
-                    <span class="text-[9px] tracking-[0.35em] text-brand-muted font-normal mt-1">ASSESSORIA EM
-                        LICITAÇÕES</span>
+    <header class="header">
+        <div class="container header-inner">
+            <a href="../index.html" class="logo">
+                <div class="logo-mark">D</div>
+                <div class="logo-text">
+                    <span class="logo-title">DEL COMPANY</span>
+                    <span class="logo-subtitle">ASSESSORIA EM LICITAÇÕES</span>
                 </div>
             </a>
 
-            <nav
-                class="hidden md:flex items-center gap-8 text-xs font-semibold uppercase tracking-widest text-brand-muted">
-                <a href="../index.html#solucoes"
-                    class="hover:text-brand-red transition-colors duration-200">Soluções</a>
-                <a href="./catalog.html" class="hover:text-brand-red transition-colors duration-200">Serviços</a>
-                <a href="./contato.html" class="hover:text-brand-red transition-colors duration-200">Contato</a>
+            <nav class="nav">
+                <a href="../index.html#solucoes">Soluções</a>
+                <a href="./catalog.html">Serviços</a>
+                <a href="./contato.html">Contato</a>
             </nav>
 
-            <div class="hidden sm:flex items-center gap-3">
-                <a href="./cart.html"
-                    class="relative flex items-center gap-2 px-4 py-2.5 border border-brand-border hover:border-brand-black text-brand-black text-xs font-semibold uppercase tracking-widest transition-all duration-300">
-                    <i data-lucide="shopping-bag" class="w-3.5 h-3.5 stroke-[1.5]"></i>
+            <div class="header-actions">
+                <a href="./cart.html" class="btn btn-outline cart-link">
+                    <i data-lucide="shopping-bag" class="icon"></i>
                     Carrinho
-                    <span id="nav-carrinho-count"
-                        class="hidden absolute -top-2 -right-2 min-w-[18px] h-[18px] bg-brand-red text-white text-[9px] font-bold flex items-center justify-center px-1">
-                    </span>
+                    <span id="nav-carrinho-count" class="cart-badge"></span>
                 </a>
-                <a href="./login.html" id="nav-conta"
-                    class="inline-flex items-center gap-2 px-5 py-2.5 bg-brand-black text-white hover:bg-brand-red text-xs font-semibold uppercase tracking-widest transition-all duration-300">
-                    <i data-lucide="log-in" class="w-3.5 h-3.5 stroke-[1.5]"></i>
+                <a href="./login.html" id="nav-conta" class="btn btn-dark">
+                    <i data-lucide="log-in" class="icon"></i>
                     Entrar
                 </a>
             </div>
         </div>
     </header>
 
-    <main class="max-w-4xl mx-auto px-6 sm:px-8 py-16 sm:py-24 w-full flex-1">
+    <main class="section" style="max-width: 896px; flex: 1; width: 100%;">
 
-        <div class="flex flex-col md:flex-row md:items-end justify-between mb-14 pb-6 border-b border-brand-border">
+        <div class="page-title-row"
+            style="border-bottom: 1px solid var(--brand-border); padding-bottom: 24px; margin-bottom: 56px;">
             <div>
-                <span class="text-xs uppercase tracking-widest2 text-brand-red font-bold">Área do Cliente</span>
-                <h1 class="font-serif text-4xl sm:text-5xl font-normal text-brand-black mt-2">Meus Processos</h1>
-                <p class="text-xs sm:text-sm text-brand-muted font-light mt-3 max-w-xl">
-                    Acompanhe o andamento dos serviços contratados e o status de cada licitação.
-                </p>
+                <span class="eyebrow">Área do Cliente</span>
+                <h1 class="section-title">Meus Processos</h1>
+                <p class="section-desc">Acompanhe o andamento dos serviços contratados e o status de cada licitação.</p>
             </div>
-            <a href="./catalog.html"
-                class="mt-6 md:mt-0 inline-flex items-center gap-2 text-xs uppercase tracking-widest font-semibold text-brand-black hover:text-brand-red transition-colors">
-                <i data-lucide="plus" class="w-4 h-4 stroke-[1.5]"></i>
-                Contratar Serviço
-            </a>
-
-            <button onclick="logout()"
-                class="mt-3 md:mt-0 md:ml-6 inline-flex items-center gap-2 text-xs uppercase tracking-widest font-semibold text-brand-muted hover:text-brand-red transition-colors">
-                <i data-lucide="log-out" class="w-4 h-4 stroke-[1.5]"></i>
-                Sair
-            </button>
+            <div style="display: flex; align-items: center; gap: 24px;">
+                <a href="./catalog.html" class="link-arrow">
+                    <i data-lucide="plus" class="icon"></i>
+                    Contratar Serviço
+                </a>
+                <button onclick="logout()" class="link-arrow"
+                    style="background: none; border: none; cursor: pointer; color: var(--brand-muted); font-family: var(--font-sans);">
+                    <i data-lucide="log-out" class="icon"></i>
+                    Sair
+                </button>
+            </div>
         </div>
 
         <div id="orders-content">
-            <div class="flex flex-col items-center justify-center py-20 text-brand-muted">
-                <i data-lucide="loader-2" class="w-6 h-6 animate-spin stroke-[1.5] mb-3"></i>
-                <p class="text-xs uppercase tracking-widest font-light">Carregando...</p>
+            <div class="loading-box">
+                <i data-lucide="loader-2" class="icon"></i>
+                <p>Carregando...</p>
             </div>
         </div>
 
     </main>
 
-    <footer class="w-full border-t border-brand-border bg-white py-8">
-        <div
-            class="max-w-7xl mx-auto px-6 sm:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-brand-muted font-light">
-            <div class="flex items-center gap-2">
-                <span class="font-semibold text-brand-black">DEL COMPANY</span>
+    <footer class="footer">
+        <div class="container footer-inner">
+            <div class="footer-brand">
+                <strong>DEL COMPANY</strong>
                 <span>© 2026. Todos os direitos reservados.</span>
             </div>
-            <div class="flex items-center gap-6 uppercase tracking-widest text-[10px]">
-                <a href="./termos.html" class="hover:text-brand-black transition-colors">Termos de Uso</a>
-                <a href="./privacidade.html" class="hover:text-brand-black transition-colors">Privacidade &amp; LGPD</a>
+            <div class="footer-links">
+                <a href="./termos.html">Termos de Uso</a>
+                <a href="./privacidade.html">Privacidade &amp; LGPD</a>
             </div>
         </div>
     </footer>
