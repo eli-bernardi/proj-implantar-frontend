@@ -6,13 +6,10 @@ function renderizarCarrinho() {
 
     if (itens.length === 0) {
         container.innerHTML = `
-            <div class="flex flex-col items-center justify-center py-20 text-brand-muted text-center">
-                <span class="text-5xl mb-4">🗂️</span>
-                <p class="text-sm font-light text-brand-muted mb-6">Seu carrinho está vazio.</p>
-                <a href="./catalog.html"
-                    class="inline-flex items-center gap-2 px-6 py-3 bg-brand-red hover:bg-brand-redHover text-white text-xs uppercase tracking-widest font-semibold transition-all duration-300">
-                    Ver serviços disponíveis
-                </a>
+            <div class="cart-empty">
+                <span class="cart-empty-icon">🗂️</span>
+                <p>Seu carrinho está vazio.</p>
+                <a href="./catalog.html" class="btn btn-primary">Ver serviços disponíveis</a>
             </div>
         `
         return
@@ -21,47 +18,39 @@ function renderizarCarrinho() {
     const total = totalCarrinho()
 
     container.innerHTML = `
-        <div class="flex flex-col lg:flex-row gap-8">
-            <div class="flex-1 flex flex-col gap-3">
+        <div class="cart-layout">
+            <div class="cart-items">
                 ${itens.map(item => `
-                    <div class="flex items-center justify-between gap-4 bg-white border border-brand-border px-6 py-5">
-                        <div class="flex-1 min-w-0">
-                            <p class="text-sm font-semibold text-brand-black truncate">${item.nome}</p>
-                            <p class="text-xs text-brand-muted font-light mt-0.5">${formatarMoeda(item.preco)} cada</p>
+                    <div class="cart-item">
+                        <div class="cart-item-info">
+                            <p class="cart-item-name">${item.nome}</p>
+                            <p class="cart-item-price">${formatarMoeda(item.preco)} cada</p>
                         </div>
-                        <div class="flex items-center gap-2">
-                            <button
-                                onclick="alterarQuantidade(${item.idServico}, -1); renderizarCarrinho();"
-                                class="w-8 h-8 flex items-center justify-center border border-brand-border hover:border-brand-black text-brand-black text-sm font-medium transition-colors cursor-pointer">−</button>
-                            <span class="w-8 text-center text-sm font-semibold text-brand-black">${item.quantidade}</span>
-                            <button
-                                onclick="alterarQuantidade(${item.idServico}, 1); renderizarCarrinho();"
-                                class="w-8 h-8 flex items-center justify-center border border-brand-border hover:border-brand-black text-brand-black text-sm font-medium transition-colors cursor-pointer">+</button>
+                        <div class="cart-item-qty">
+                            <button onclick="alterarQuantidade(${item.idServico}, -1); renderizarCarrinho();">−</button>
+                            <span>${item.quantidade}</span>
+                            <button onclick="alterarQuantidade(${item.idServico}, 1); renderizarCarrinho();">+</button>
                         </div>
-                        <p class="text-sm font-semibold text-brand-black w-24 text-right">${formatarMoeda(item.preco * item.quantidade)}</p>
-                        <button
-                            onclick="removerDoCarrinho(${item.idServico}); renderizarCarrinho();"
-                            class="text-xs uppercase tracking-widest text-brand-muted hover:text-brand-red font-medium transition-colors cursor-pointer ml-2">
+                        <p class="cart-item-subtotal">${formatarMoeda(item.preco * item.quantidade)}</p>
+                        <button onclick="removerDoCarrinho(${item.idServico}); renderizarCarrinho();" class="cart-item-remove">
                             Remover
                         </button>
                     </div>
                 `).join('')}
             </div>
 
-            <aside class="w-full lg:w-72 flex-shrink-0">
-                <div class="bg-white border border-brand-border p-6 sticky top-28">
-                    <h3 class="text-xs uppercase tracking-widest font-semibold text-brand-black mb-5">Resumo</h3>
-                    <div class="flex justify-between items-center text-xs text-brand-muted mb-3">
+            <aside class="cart-summary">
+                <div class="cart-summary-box">
+                    <h3>Resumo</h3>
+                    <div class="cart-summary-row">
                         <span>Serviços selecionados</span>
-                        <span class="font-semibold text-brand-black">${itens.reduce((s, i) => s + i.quantidade, 0)}</span>
+                        <strong>${itens.reduce((s, i) => s + i.quantidade, 0)}</strong>
                     </div>
-                    <div class="flex justify-between items-center pt-4 border-t border-brand-border">
-                        <span class="text-xs uppercase tracking-widest font-semibold text-brand-black">Total</span>
-                        <span class="text-lg font-semibold text-brand-red">${formatarMoeda(total)}</span>
+                    <div class="cart-summary-total">
+                        <span>Total</span>
+                        <span>${formatarMoeda(total)}</span>
                     </div>
-                    <button
-                        onclick="irParaCheckout()"
-                        class="w-full mt-6 py-4 bg-brand-red hover:bg-brand-redHover text-white text-xs uppercase tracking-widest font-semibold transition-all duration-300 cursor-pointer shadow-md shadow-brand-red/20">
+                    <button onclick="irParaCheckout()" class="btn btn-primary">
                         Finalizar processo
                     </button>
                 </div>
@@ -77,21 +66,17 @@ function renderizarFavoritos() {
     const favoritos = getFavoritos()
 
     if (favoritos.length === 0) {
-        container.innerHTML = `<p class="text-sm text-brand-muted font-light">Você ainda não favoritou nenhuma licitação.</p>`
+        container.innerHTML = `<p class="empty-text">Você ainda não favoritou nenhuma licitação.</p>`
         return
     }
 
     container.innerHTML = favoritos.map(f => `
-        <div class="flex items-center justify-between gap-4 bg-white border border-brand-border px-6 py-5 mb-3">
-            <div class="flex-1 min-w-0">
-                <p class="text-xs uppercase tracking-widest text-brand-muted">${f.modalidade || 'Modalidade não informada'}</p>
-                <p class="text-sm font-semibold text-brand-black mt-1">Licitação ${f.numero || '-'}/${f.ano || '-'} — ${f.unidadeGestora || '-'}</p>
+        <div class="favorito-row">
+            <div>
+                <p class="favorito-modalidade">${f.modalidade || 'Modalidade não informada'}</p>
+                <p class="favorito-nome">Licitação ${f.numero || '-'}/${f.ano || '-'} — ${f.unidadeGestora || '-'}</p>
             </div>
-            <button
-                data-chave="${f.chave}"
-                class="remover-favorito text-xs uppercase tracking-widest text-brand-muted hover:text-brand-red font-medium transition-colors">
-                Remover
-            </button>
+            <button data-chave="${f.chave}" class="remover-favorito">Remover</button>
         </div>
     `).join('')
 
