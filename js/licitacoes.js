@@ -11,7 +11,7 @@ async function carregarSituacoes() {
         const lista = situacoes.data || situacoes
 
         panel.innerHTML = lista.map(s => `
-            <label class="flex items-center gap-2 py-1.5 text-sm text-brand-black cursor-pointer">
+            <label class="situacao-checkbox-label">
                 <input type="checkbox" value="${s}" class="situacao-checkbox">
                 ${s}
             </label>
@@ -48,12 +48,12 @@ function configurarDropdownSituacao() {
     if (!btn || !panel) return
 
     btn.addEventListener('click', () => {
-        panel.classList.toggle('hidden')
+        panel.classList.toggle('show')
     })
 
     document.addEventListener('click', (e) => {
         if (!btn.contains(e.target) && !panel.contains(e.target)) {
-            panel.classList.add('hidden')
+            panel.classList.remove('show')
         }
     })
 }
@@ -67,9 +67,6 @@ async function buscarLicitacoes() {
     const busca = document.getElementById('licitacoes-busca')?.value.trim()
 
     try {
-        // Sem situação selecionada (ou todas) = uma busca só.
-        // Com uma ou mais situações marcadas, busca cada uma e junta o resultado,
-        // porque não sabemos se a API aceita múltiplos valores numa query só.
         const situacoesParaBuscar = situacoesSelecionadas.length > 0 ? situacoesSelecionadas : [null]
 
         const resultados = await Promise.all(situacoesParaBuscar.map(async situacao => {
@@ -85,7 +82,6 @@ async function buscarLicitacoes() {
             return dados.data || dados.licitacoes || dados
         }))
 
-        // Junta e remove duplicados (caso a mesma licitação apareça em mais de uma busca)
         let listaFinal = resultados.flat()
 
         if (situacoesParaBuscar.length > 1) {
@@ -122,21 +118,21 @@ function renderizarLicitacoes(lista) {
         const favoritado = ehFavorito(chave)
 
         return `
-        <article class="border border-brand-border rounded-lg overflow-hidden border-l-4 border-l-brand-red">
-            <div class="flex items-center">
-                <button class="flex-1 flex items-center justify-between text-left p-4 licitacao-toggle" data-index="${i}">
+        <article class="licitacao-item">
+            <div class="licitacao-row">
+                <button class="licitacao-toggle" data-index="${i}">
                     <div>
-                        <span class="product-card__category block text-xs uppercase tracking-widest text-brand-muted">${l.modalidade || 'Modalidade não informada'}</span>
-                        <h3 class="product-card__name font-serif text-lg mt-1">Licitação ${l.licitacao_numero || '-'}/${l.licitacao_ano || '-'}</h3>
+                        <span class="licitacao-modalidade">${l.modalidade || 'Modalidade não informada'}</span>
+                        <h3 class="licitacao-nome">Licitação ${l.licitacao_numero || '-'}/${l.licitacao_ano || '-'}</h3>
                     </div>
-                    <span class="text-xs text-brand-red whitespace-nowrap ml-4">Ver mais ▾</span>
+                    <span class="licitacao-ver-mais">Ver mais ▾</span>
                 </button>
-                <button class="favorito-toggle px-4 shrink-0" data-index="${i}" aria-label="Favoritar licitação">
-                    <i data-lucide="heart" class="icone-favorito w-5 h-5 stroke-[1.5] ${favoritado ? 'fill-brand-red stroke-brand-red' : 'stroke-brand-muted'}"></i>
+                <button class="favorito-toggle" data-index="${i}" aria-label="Favoritar licitação">
+                    <i data-lucide="heart" class="icone-favorito ${favoritado ? 'favorito-ativo' : ''}"></i>
                 </button>
             </div>
-            <div class="licitacao-detalhes hidden px-4 pb-4 text-sm text-brand-muted border-t border-brand-border pt-4">
-                <p class="mb-2">${l.objeto || 'Sem descrição disponível.'}</p>
+            <div class="licitacao-detalhes">
+                <p>${l.objeto || 'Sem descrição disponível.'}</p>
                 <p><strong>Órgão:</strong> ${l.unidade_gestora || '-'}</p>
                 <p><strong>Situação:</strong> ${l.situacao || '-'}</p>
             </div>
@@ -148,9 +144,9 @@ function renderizarLicitacoes(lista) {
             const card = botao.closest('article')
             const detalhes = card.querySelector('.licitacao-detalhes')
             const label = botao.querySelector('span:last-child')
-            const abrindo = detalhes.classList.contains('hidden')
+            const abrindo = !detalhes.classList.contains('show')
 
-            detalhes.classList.toggle('hidden')
+            detalhes.classList.toggle('show')
             label.textContent = abrindo ? 'Ver menos ▴' : 'Ver mais ▾'
         })
     })
@@ -170,9 +166,7 @@ function renderizarLicitacoes(lista) {
                 unidadeGestora: l.unidade_gestora
             })
 
-            icone.classList.toggle('fill-brand-red', agoraFavorito)
-            icone.classList.toggle('stroke-brand-red', agoraFavorito)
-            icone.classList.toggle('stroke-brand-muted', !agoraFavorito)
+            icone.classList.toggle('favorito-ativo', agoraFavorito)
         })
     })
 

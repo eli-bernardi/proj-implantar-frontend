@@ -1,193 +1,129 @@
 <!DOCTYPE html>
-<html lang="pt-BR" class="scroll-smooth">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Serviços de Licitação | Del Company</title>
-    <script src="../js/favoritos-store.js" defer></script>
-    <script src="../js/licitacoes.js" defer></script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
 
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/shop.css">
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        serif: ['"Cormorant Garamond"', 'serif'],
-                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-                    },
-                    colors: {
-                        brand: {
-                            black: '#0D0D0E',
-                            dark: '#161618',
-                            surface: '#FFFFFF',
-                            canvas: '#F6F6F7',
-                            border: '#E4E4E7',
-                            borderDark: '#27272A',
-                            muted: '#71717A',
-                            red: '#C92A2A',
-                            redHover: '#A61E1E',
-                            redLight: '#FFF5F5'
-                        }
-                    },
-                    letterSpacing: {
-                        widest2: '0.22em',
-                    }
-                }
-            }
-        }
-    </script>
+    <script src="https://unpkg.com/lucide@latest"></script>
 
     <script src="../js/config.js" defer></script>
     <script src="../js/api.js" defer></script>
     <script src="../js/auth.js" defer></script>
     <script src="../js/cart-store.js" defer></script>
+    <script src="../js/favoritos-store.js" defer></script>
     <script src="../js/catalog.js" defer></script>
     <script src="../js/licitacoes.js" defer></script>
 </head>
 
-<body
-    class="bg-brand-canvas text-brand-dark font-sans antialiased selection:bg-brand-red selection:text-white min-h-screen flex flex-col">
+<body style="min-height: 100vh; display: flex; flex-direction: column;">
 
-    <header class="w-full border-b border-brand-border bg-white/95 backdrop-blur-md sticky top-0 z-50 transition-all">
-        <div class="max-w-7xl mx-auto px-6 sm:px-8 h-24 flex items-center justify-between">
-            <a href="../index.html" class="flex items-center gap-3.5 group">
-                <div
-                    class="w-10 h-10 bg-brand-black flex items-center justify-center text-brand-red font-serif text-2xl font-bold border border-brand-border group-hover:border-brand-red transition-colors">
-                    D
-                </div>
-                <div class="flex flex-col tracking-widest uppercase">
-                    <span class="font-serif text-xl tracking-[0.2em] font-semibold text-brand-black leading-none">DEL
-                        COMPANY</span>
-                    <span class="text-[9px] tracking-[0.35em] text-brand-muted font-normal mt-1">ASSESSORIA EM
-                        LICITAÇÕES</span>
+    <header class="header">
+        <div class="container header-inner">
+            <a href="../index.html" class="logo">
+                <div class="logo-mark">D</div>
+                <div class="logo-text">
+                    <span class="logo-title">DEL COMPANY</span>
+                    <span class="logo-subtitle">ASSESSORIA EM LICITAÇÕES</span>
                 </div>
             </a>
 
-            <nav
-                class="hidden md:flex items-center gap-8 text-xs font-semibold uppercase tracking-widest text-brand-muted">
-                <a href="../index.html#solucoes"
-                    class="hover:text-brand-red transition-colors duration-200">Soluções</a>
-                <a href="./catalog.html" class="text-brand-red font-bold transition-colors duration-200">Serviços</a>
-                <a href="./contato.html" class="hover:text-brand-red transition-colors duration-200">Contato</a>
+            <nav class="nav">
+                <a href="../index.html#solucoes">Soluções</a>
+                <a href="./catalog.html" style="color: var(--brand-red); font-weight: 700;">Serviços</a>
+                <a href="./contato.html">Contato</a>
             </nav>
 
-            <div class="hidden sm:flex items-center gap-3">
-                <a href="./cart.html"
-                    class="relative flex items-center gap-2 px-4 py-2.5 border border-brand-border hover:border-brand-black text-brand-black text-xs font-semibold uppercase tracking-widest transition-all duration-300">
-                    <i data-lucide="shopping-bag" class="w-3.5 h-3.5 stroke-[1.5]"></i>
+            <div class="header-actions">
+                <a href="./cart.html" class="btn btn-outline cart-link">
+                    <i data-lucide="shopping-bag" class="icon"></i>
                     Carrinho
-                    <span id="nav-carrinho-count"
-                        class="hidden absolute -top-2 -right-2 min-w-[18px] h-[18px] bg-brand-red text-white text-[9px] font-bold flex items-center justify-center px-1">
-                    </span>
+                    <span id="nav-carrinho-count" class="cart-badge"></span>
                 </a>
-                <a href="./login.html" id="nav-conta"
-                    class="inline-flex items-center gap-2 px-5 py-2.5 bg-brand-black text-white hover:bg-brand-red text-xs font-semibold uppercase tracking-widest transition-all duration-300">
-                    <i data-lucide="log-in" class="w-3.5 h-3.5 stroke-[1.5]"></i>
+                <a href="./login.html" id="nav-conta" class="btn btn-dark">
+                    <i data-lucide="log-in" class="icon"></i>
                     Entrar
                 </a>
             </div>
         </div>
     </header>
 
-    <main class="max-w-7xl mx-auto px-6 sm:px-8 py-16 sm:py-24 w-full flex-1">
+    <main class="section" style="flex: 1; width: 100%;">
 
-        <div class="flex flex-col md:flex-row md:items-end justify-between mb-14 pb-6 border-b border-brand-border">
+        <div class="page-title-row">
             <div>
-                <span class="text-xs uppercase tracking-widest2 text-brand-red font-bold">Catálogo Completo</span>
-                <h1 class="font-serif text-4xl sm:text-5xl font-normal text-brand-black mt-2">Serviços de Licitação</h1>
-                <p class="text-xs sm:text-sm text-brand-muted font-light mt-3 max-w-xl">
-                    Análise de editais, organização de documentos e acompanhamento completo do seu processo licitatório.
+                <span class="eyebrow">Catálogo Completo</span>
+                <h1 class="section-title">Serviços de Licitação</h1>
+                <p class="section-desc">
+                    Análise de editais, organização de documentos e acompanhamento completo do seu processo
+                    licitatório.
                 </p>
             </div>
-            <a href="./cart.html"
-                class="mt-6 md:mt-0 inline-flex items-center gap-2 text-xs uppercase tracking-widest font-semibold text-brand-black hover:text-brand-red transition-colors">
-                <i data-lucide="shopping-bag" class="w-4 h-4 stroke-[1.5]"></i>
+            <a href="./cart.html" class="link-arrow">
+                <i data-lucide="shopping-bag" class="icon"></i>
                 Ver Carrinho
             </a>
         </div>
 
-        <div class="flex flex-col sm:flex-row gap-4 mb-10">
-            <div class="relative flex-1">
-                <i data-lucide="search"
-                    class="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-brand-muted stroke-[1.5]"></i>
-                <input type="text" id="filtro-busca" placeholder="Buscar serviço por nome..."
-                    class="w-full bg-brand-surface border border-brand-border pl-11 pr-4 py-3.5 text-xs text-brand-dark placeholder:text-zinc-400 focus:outline-none focus:border-brand-black focus:bg-white transition-all">
+        <div class="shop-filters">
+            <div class="search-field">
+                <i data-lucide="search" class="icon"></i>
+                <input type="text" id="filtro-busca" placeholder="Buscar serviço por nome...">
             </div>
-            <div class="relative">
-                <select id="filtro-categoria"
-                    class="bg-brand-surface border border-brand-border px-4 py-3.5 pr-10 text-xs text-brand-dark focus:outline-none focus:border-brand-black focus:bg-white appearance-none transition-all cursor-pointer min-w-[220px]">
+            <div class="select-field">
+                <select id="filtro-categoria">
                     <option value="">Todas as categorias</option>
                 </select>
-                <i data-lucide="chevron-down"
-                    class="w-4 h-4 text-brand-muted absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none stroke-[1.5]"></i>
+                <i data-lucide="chevron-down" class="icon"></i>
             </div>
         </div>
 
-        <div id="catalogo-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div class="col-span-full flex flex-col items-center justify-center py-20 text-brand-muted">
-                <i data-lucide="loader-2" class="w-6 h-6 animate-spin stroke-[1.5] mb-3"></i>
-                <p class="text-xs uppercase tracking-widest font-light">Carregando serviços...</p>
-            </div>
+        <div id="catalogo-grid" class="product-grid">
+            <p class="state-message">Carregando serviços...</p>
         </div>
-        <div class="mt-20 pt-14 border-t border-brand-border">
-            <h2 class="font-serif text-3xl font-normal text-brand-black mb-8">Licitações em Andamento — Tijucas/SC</h2>
 
-            <div class="flex flex-col md:flex-row gap-4 mb-8">
-                <input type="text" id="licitacoes-busca" placeholder="Buscar licitação por nome ou objeto..."
-                    class="flex-1 border border-brand-border rounded-md px-4 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-brand-red">
+        <div class="licitacoes-section">
+            <h2 class="section-title" style="font-size: 32px;">Licitações em Andamento — Tijucas/SC</h2>
 
-                <select id="licitacoes-cidade" class="border border-brand-border rounded-md px-4 py-2 text-sm bg-white">
+            <div class="licitacoes-filters" style="margin-top: 32px;">
+                <input type="text" id="licitacoes-busca" placeholder="Buscar licitação por nome ou objeto...">
+
+                <select id="licitacoes-cidade" disabled>
                     <option value="tijucas">Tijucas/SC</option>
-                    <option value="florianopolis" disabled>Florianópolis/SC (em breve)</option>
-                    <option value="itajai" disabled>Itajaí/SC (em breve)</option>
-                    <option value="balneario-camboriu" disabled>Balneário Camboriú/SC (em breve)</option>
-                    <option value="camboriu" disabled>Camboriú/SC (em breve)</option>
-                    <option value="brusque" disabled>Brusque/SC (em breve)</option>
-                    <option value="biguacu" disabled>Biguaçu/SC (em breve)</option>
-                    <option value="sao-jose" disabled>São José/SC (em breve)</option>
-                    <option value="palhoca" disabled>Palhoça/SC (em breve)</option>
-                    <option value="itapema" disabled>Itapema/SC (em breve)</option>
-                    <option value="nova-trento" disabled>Nova Trento/SC (em breve)</option>
-                    <option value="canelinha" disabled>Canelinha/SC (em breve)</option>
-                    <option value="gaspar" disabled>Gaspar/SC (em breve)</option>
                 </select>
 
-                <div class="relative" id="licitacoes-situacao-wrapper">
-                    <button type="button" id="licitacoes-situacao-btn"
-                        class="border border-brand-border rounded-md px-4 py-2 text-sm bg-white flex items-center gap-2 min-w-[190px] justify-between">
+                <div class="situacao-dropdown">
+                    <button type="button" id="licitacoes-situacao-btn" class="situacao-btn">
                         <span id="licitacoes-situacao-label">Todas as situações</span>
-                        <i data-lucide="chevron-down" class="w-4 h-4 stroke-[1.5]"></i>
+                        <i data-lucide="chevron-down" class="icon"></i>
                     </button>
-                    <div id="licitacoes-situacao-panel"
-                        class="hidden absolute z-20 mt-1 right-0 bg-white border border-brand-border rounded-md shadow-lg p-3 w-60 max-h-72 overflow-y-auto">
-                    </div>
+                    <div id="licitacoes-situacao-panel" class="situacao-panel"></div>
                 </div>
             </div>
-        </div>
 
-        <div id="licitacoes-grid" class="flex flex-col gap-4"></div>
+            <div id="licitacoes-grid" class="licitacoes-list"></div>
         </div>
     </main>
 
-    <footer class="w-full border-t border-brand-border bg-white py-8">
-        <div
-            class="max-w-7xl mx-auto px-6 sm:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-brand-muted font-light">
-            <div class="flex items-center gap-2">
-                <span class="font-semibold text-brand-black">DEL COMPANY</span>
+    <footer class="footer">
+        <div class="container footer-inner">
+            <div class="footer-brand">
+                <strong>DEL COMPANY</strong>
                 <span>© 2026. Todos os direitos reservados.</span>
             </div>
-            <div class="flex items-center gap-6 uppercase tracking-widest text-[10px]">
-                <a href="./termos.html" class="hover:text-brand-black transition-colors">Termos de Uso</a>
-                <a href="./privacidade.html" class="hover:text-brand-black transition-colors">Privacidade &amp; LGPD</a>
+            <div class="footer-links">
+                <a href="./termos.html">Termos de Uso</a>
+                <a href="./privacidade.html">Privacidade &amp; LGPD</a>
             </div>
         </div>
     </footer>
