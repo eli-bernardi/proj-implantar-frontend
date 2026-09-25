@@ -243,3 +243,6 @@
     width: 14px;
     height: 14px;
 }
+.field-error.show {
+    display: block;
+}

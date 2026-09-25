@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR" class="scroll-smooth">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
@@ -12,38 +12,11 @@
         href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
 
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="../css/contato.css">
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        serif: ['"Cormorant Garamond"', 'serif'],
-                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-                    },
-                    colors: {
-                        brand: {
-                            black: '#0D0D0E',
-                            dark: '#161618',
-                            surface: '#FFFFFF',
-                            canvas: '#F6F6F7',
-                            border: '#E4E4E7',
-                            borderDark: '#27272A',
-                            muted: '#71717A',
-                            red: '#C92A2A',
-                            redHover: '#A61E1E',
-                            redLight: '#FFF5F5'
-                        }
-                    },
-                    letterSpacing: {
-                        widest2: '0.22em',
-                    }
-                }
-            }
-        }
-    </script>
+    <script src="https://unpkg.com/lucide@latest"></script>
 
     <script src="../js/config.js" defer></script>
     <script src="../js/api.js" defer></script>
@@ -52,99 +25,86 @@
     <script src="../js/contato.js" defer></script>
 </head>
 
-<body class="bg-brand-canvas text-brand-dark font-sans antialiased selection:bg-brand-red selection:text-white min-h-screen flex flex-col justify-between">
+<body style="min-height: 100vh; display: flex; flex-direction: column;">
 
-    <header class="w-full border-b border-brand-border bg-white/95 backdrop-blur-md sticky top-0 z-50 transition-all">
-        <div class="max-w-7xl mx-auto px-6 sm:px-8 h-24 flex items-center justify-between">
-            <a href="../index.html" class="flex items-center gap-3.5 group">
-                <div class="w-10 h-10 bg-brand-black flex items-center justify-center text-brand-red font-serif text-2xl font-bold border border-brand-border group-hover:border-brand-red transition-colors">
-                    D
-                </div>
-                <div class="flex flex-col tracking-widest uppercase">
-                    <span class="font-serif text-xl tracking-[0.2em] font-semibold text-brand-black leading-none">DEL COMPANY</span>
-                    <span class="text-[9px] tracking-[0.35em] text-brand-muted font-normal mt-1">ASSESSORIA EM LICITAÇÕES</span>
+    <header class="header">
+        <div class="container header-inner">
+            <a href="../index.html" class="logo">
+                <div class="logo-mark">D</div>
+                <div class="logo-text">
+                    <span class="logo-title">DEL COMPANY</span>
+                    <span class="logo-subtitle">ASSESSORIA EM LICITAÇÕES</span>
                 </div>
             </a>
 
-            <nav class="hidden md:flex items-center gap-8 text-xs font-semibold uppercase tracking-widest text-brand-muted">
-                <a href="../index.html#solucoes" class="hover:text-brand-red transition-colors duration-200">Soluções</a>
-                <a href="./catalog.html" class="hover:text-brand-red transition-colors duration-200">Serviços</a>
-                <a href="./contato.html" class="text-brand-red font-bold transition-colors duration-200">Contato</a>
+            <nav class="nav">
+                <a href="../index.html#solucoes">Soluções</a>
+                <a href="./catalog.html">Serviços</a>
+                <a href="./contato.html" style="color: var(--brand-red); font-weight: 700;">Contato</a>
             </nav>
 
-            <div class="hidden sm:flex items-center gap-3">
-                <a href="./cart.html"
-                    class="relative flex items-center gap-2 px-4 py-2.5 border border-brand-border hover:border-brand-black text-brand-black text-xs font-semibold uppercase tracking-widest transition-all duration-300">
-                    <i data-lucide="shopping-bag" class="w-3.5 h-3.5 stroke-[1.5]"></i>
+            <div class="header-actions">
+                <a href="./cart.html" class="btn btn-outline cart-link">
+                    <i data-lucide="shopping-bag" class="icon"></i>
                     Carrinho
-                    <span id="nav-carrinho-count"
-                        class="hidden absolute -top-2 -right-2 min-w-[18px] h-[18px] bg-brand-red text-white text-[9px] font-bold flex items-center justify-center px-1">
-                    </span>
+                    <span id="nav-carrinho-count" class="cart-badge"></span>
                 </a>
-                <a href="./login.html" id="nav-conta"
-                    class="inline-flex items-center gap-2 px-5 py-2.5 bg-brand-black text-white hover:bg-brand-red text-xs font-semibold uppercase tracking-widest transition-all duration-300">
-                    <i data-lucide="log-in" class="w-3.5 h-3.5 stroke-[1.5]"></i>
+                <a href="./login.html" id="nav-conta" class="btn btn-dark">
+                    <i data-lucide="log-in" class="icon"></i>
                     Entrar
                 </a>
             </div>
         </div>
     </header>
 
-    <main class="max-w-7xl mx-auto px-6 sm:px-8 py-16 sm:py-24 w-full flex-1">
+    <main class="section" style="flex: 1; width: 100%;">
 
-        <div class="max-w-3xl mb-14">
-            <span class="text-xs uppercase tracking-widest2 text-brand-red font-bold">Atendimento Estratégico</span>
-            <h1 class="font-serif text-4xl sm:text-6xl font-normal text-brand-black mt-3 leading-tight">
-                Inicie a sua jornada em <br />
-                <span class="italic text-brand-red">contratos públicos</span>.
-            </h1>
-            <p class="text-sm sm:text-base text-brand-muted font-light mt-4 leading-relaxed">
-                Preencha o formulário abaixo para solicitar um diagnóstico preliminar ou agendar uma reunião com nossa equipe técnica de licitações.
-            </p>
+        <div class="contato-hero">
+            <span class="eyebrow">Atendimento Estratégico</span>
+            <h1>Inicie a sua jornada em<br><em>contratos públicos</em>.</h1>
+            <p>Preencha o formulário abaixo para solicitar um diagnóstico preliminar ou agendar uma reunião com nossa
+                equipe técnica de licitações.</p>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+        <div class="contato-layout">
 
-            <div class="lg:col-span-7 bg-brand-surface border border-brand-border p-8 sm:p-12 shadow-sm">
+            <div class="contato-form-box">
 
-                <div id="form-alert" class="hidden mb-6 bg-brand-redLight border border-brand-red/20 text-brand-red text-xs px-4 py-3 font-medium"></div>
+                <div id="form-alert" class="auth-alert"></div>
 
-                <form id="contato-form" class="space-y-6">
+                <form id="contato-form" class="form">
 
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                        <div class="flex flex-col gap-2">
-                            <label for="nome" class="text-xs uppercase tracking-widest font-semibold text-brand-black">Nome Completo *</label>
+                    <div class="form-grid-2">
+                        <div class="form-group">
+                            <label for="nome" class="form-label">Nome Completo *</label>
                             <input type="text" id="nome" required placeholder="Ex: Carlos Eduardo Silveira"
-                                class="w-full bg-brand-canvas border border-brand-border px-4 py-3.5 text-xs text-brand-dark placeholder:text-zinc-400 focus:outline-none focus:border-brand-black focus:bg-white transition-all">
-                            <span class="hidden text-[11px] text-brand-red font-medium" id="nome-error">Informe seu nome.</span>
+                                class="form-input">
+                            <span class="field-error" id="nome-error">Informe seu nome.</span>
                         </div>
-                        <div class="flex flex-col gap-2">
-                            <label for="empresa" class="text-xs uppercase tracking-widest font-semibold text-brand-black">Nome da Empresa</label>
-                            <input type="text" id="empresa" placeholder="Ex: Construtora Alfa Ltda"
-                                class="w-full bg-brand-canvas border border-brand-border px-4 py-3.5 text-xs text-brand-dark placeholder:text-zinc-400 focus:outline-none focus:border-brand-black focus:bg-white transition-all">
+                        <div class="form-group">
+                            <label for="empresa" class="form-label">Nome da Empresa</label>
+                            <input type="text" id="empresa" placeholder="Ex: Construtora Alfa Ltda" class="form-input">
                         </div>
                     </div>
 
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                        <div class="flex flex-col gap-2">
-                            <label for="email" class="text-xs uppercase tracking-widest font-semibold text-brand-black">E-mail *</label>
+                    <div class="form-grid-2">
+                        <div class="form-group">
+                            <label for="email" class="form-label">E-mail *</label>
                             <input type="email" id="email" required placeholder="carlos@empresa.com.br"
-                                class="w-full bg-brand-canvas border border-brand-border px-4 py-3.5 text-xs text-brand-dark placeholder:text-zinc-400 focus:outline-none focus:border-brand-black focus:bg-white transition-all">
-                            <span class="hidden text-[11px] text-brand-red font-medium" id="email-error">Informe um e-mail válido.</span>
+                                class="form-input">
+                            <span class="field-error" id="email-error">Informe um e-mail válido.</span>
                         </div>
-                        <div class="flex flex-col gap-2">
-                            <label for="telefone" class="text-xs uppercase tracking-widest font-semibold text-brand-black">WhatsApp / Telefone</label>
-                            <input type="tel" id="telefone" placeholder="(48) 99999-9999"
-                                class="w-full bg-brand-canvas border border-brand-border px-4 py-3.5 text-xs text-brand-dark placeholder:text-zinc-400 focus:outline-none focus:border-brand-black focus:bg-white transition-all">
-                            <span class="hidden text-[11px] text-brand-red font-medium" id="telefone-error">Informe um telefone válido.</span>
+                        <div class="form-group">
+                            <label for="telefone" class="form-label">WhatsApp / Telefone</label>
+                            <input type="tel" id="telefone" placeholder="(48) 99999-9999" class="form-input">
+                            <span class="field-error" id="telefone-error">Informe um telefone válido.</span>
                         </div>
                     </div>
 
-                    <div class="flex flex-col gap-2">
-                        <label for="assunto" class="text-xs uppercase tracking-widest font-semibold text-brand-black">Principal Necessidade *</label>
-                        <div class="relative">
-                            <select id="assunto"
-                                class="w-full bg-brand-canvas border border-brand-border px-4 py-3.5 text-xs text-brand-dark focus:outline-none focus:border-brand-black focus:bg-white appearance-none transition-all cursor-pointer">
+                    <div class="form-group">
+                        <label for="assunto" class="form-label">Principal Necessidade *</label>
+                        <div class="select-field" style="width: 100%;">
+                            <select id="assunto" class="form-input" style="width: 100%; cursor: pointer;">
                                 <option value="">Selecione um assunto</option>
                                 <option value="analise_edital">Análise e Parecer Técnico de Edital</option>
                                 <option value="auditoria_documental">Organização e Auditoria Documental</option>
@@ -152,93 +112,84 @@
                                 <option value="impugnacao_recurso">Elaboração de Impugnação ou Recurso</option>
                                 <option value="outro">Outro / Dúvidas Gerais</option>
                             </select>
-                            <i data-lucide="chevron-down" class="w-4 h-4 text-brand-muted absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none stroke-[1.5]"></i>
                         </div>
-                        <span class="hidden text-[11px] text-brand-red font-medium" id="assunto-error">Selecione um assunto.</span>
+                        <span class="field-error" id="assunto-error">Selecione um assunto.</span>
                     </div>
 
-                    <div class="flex flex-col gap-2">
-                        <label for="mensagem" class="text-xs uppercase tracking-widest font-semibold text-brand-black">Detalhes da Demanda *</label>
+                    <div class="form-group">
+                        <label for="mensagem" class="form-label">Detalhes da Demanda *</label>
                         <textarea id="mensagem" rows="4" required
                             placeholder="Descreva brevemente o edital, o segmento ou a data prevista para a sessão..."
-                            class="w-full bg-brand-canvas border border-brand-border p-4 text-xs text-brand-dark placeholder:text-zinc-400 focus:outline-none focus:border-brand-black focus:bg-white transition-all resize-none"></textarea>
-                        <span class="hidden text-[11px] text-brand-red font-medium" id="mensagem-error">Descreva sua demanda.</span>
+                            class="form-input"></textarea>
+                        <span class="field-error" id="mensagem-error">Descreva sua demanda.</span>
                     </div>
 
-                    <label class="flex items-start gap-3 text-xs text-brand-muted cursor-pointer">
-                        <input type="checkbox" id="privacidade" class="accent-brand-red w-4 h-4 mt-0.5">
-                        <span>Concordo com a <a href="./privacidade.html" class="text-brand-red hover:underline">Política de Privacidade</a> e autorizo o uso dos dados para contato.</span>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" id="privacidade">
+                        <span>Concordo com a <a href="./privacidade.html">Política de Privacidade</a> e autorizo o uso
+                            dos dados para contato.</span>
                     </label>
 
-                    <button type="submit" id="btn-enviar"
-                        class="w-full py-4 bg-brand-red hover:bg-brand-redHover text-white text-xs uppercase tracking-widest font-semibold transition-all duration-300 shadow-md shadow-brand-red/20 flex items-center justify-center gap-2 cursor-pointer">
+                    <button type="submit" id="btn-enviar" class="btn btn-primary btn-block">
                         <span>Enviar Solicitação</span>
-                        <i data-lucide="arrow-right" class="w-4 h-4 stroke-[1.5]"></i>
+                        <i data-lucide="arrow-right" class="icon"></i>
                     </button>
 
-                    <p class="text-[11px] text-brand-muted text-center font-light">
-                        Garantimos sigilo e confidencialidade técnica integral de todas as informações.
-                    </p>
+                    <p class="form-note">Garantimos sigilo e confidencialidade técnica integral de todas as
+                        informações.</p>
 
                 </form>
             </div>
 
-            <div class="lg:col-span-5 flex flex-col gap-8">
+            <div class="contato-sidebar">
 
-                <div class="bg-brand-surface border border-brand-border p-8 sm:p-10">
-                    <span class="text-[10px] uppercase tracking-widest2 text-brand-muted">Canais Diretos</span>
-                    <h2 class="font-serif text-2xl font-normal text-brand-black mt-1 mb-6">Atendimento Consultivo</h2>
+                <div class="channels-box">
+                    <span class="eyebrow" style="font-size: 10px;">Canais Diretos</span>
+                    <h2>Atendimento Consultivo</h2>
 
-                    <div class="space-y-6">
-                        <a href="https://wa.me/5548991004282" target="_blank" class="flex items-start gap-4 group">
-                            <div class="w-10 h-10 bg-brand-canvas border border-brand-border flex items-center justify-center text-brand-red group-hover:bg-brand-black group-hover:text-white transition-colors">
-                                <i data-lucide="message-circle" class="w-4 h-4 stroke-[1.5]"></i>
-                            </div>
-                            <div>
-                                <span class="text-[11px] uppercase tracking-widest text-brand-muted block">WhatsApp Direto</span>
-                                <span class="text-xs font-semibold text-brand-black group-hover:text-brand-red transition-colors">+55 (48) 99100-4282</span>
-                                <p class="text-[11px] text-zinc-400 mt-0.5">Resposta ágil em horário comercial</p>
-                            </div>
-                        </a>
+                    <a href="https://wa.me/5548991004282" target="_blank" class="channel-item">
+                        <div class="channel-icon">
+                            <i data-lucide="message-circle" class="icon"></i>
+                        </div>
+                        <div>
+                            <span class="channel-label">WhatsApp Direto</span>
+                            <span class="channel-value">+55 (48) 99100-4282</span>
+                            <p class="channel-hint">Resposta ágil em horário comercial</p>
+                        </div>
+                    </a>
 
-                        <a href="mailto:contato@delcompany.com.br" class="flex items-start gap-4 group">
-                            <div class="w-10 h-10 bg-brand-canvas border border-brand-border flex items-center justify-center text-brand-red group-hover:bg-brand-black group-hover:text-white transition-colors">
-                                <i data-lucide="mail" class="w-4 h-4 stroke-[1.5]"></i>
-                            </div>
-                            <div>
-                                <span class="text-[11px] uppercase tracking-widest text-brand-muted block">E-mail Institucional</span>
-                                <span class="text-xs font-semibold text-brand-black group-hover:text-brand-red transition-colors">contato@delcompany.com.br</span>
-                                <p class="text-[11px] text-zinc-400 mt-0.5">Para envio de editais e termos de referência</p>
-                            </div>
-                        </a>
+                    <a href="mailto:contato@delcompany.com.br" class="channel-item">
+                        <div class="channel-icon">
+                            <i data-lucide="mail" class="icon"></i>
+                        </div>
+                        <div>
+                            <span class="channel-label">E-mail Institucional</span>
+                            <span class="channel-value">contato@delcompany.com.br</span>
+                            <p class="channel-hint">Para envio de editais e termos de referência</p>
+                        </div>
+                    </a>
 
-                        <div class="flex items-start gap-4">
-                            <div class="w-10 h-10 bg-brand-canvas border border-brand-border flex items-center justify-center text-brand-muted">
-                                <i data-lucide="clock" class="w-4 h-4 stroke-[1.5]"></i>
-                            </div>
-                            <div>
-                                <span class="text-[11px] uppercase tracking-widest text-brand-muted block">Horário Operacional</span>
-                                <span class="text-xs font-semibold text-brand-black">Segunda a Sexta, 08:30 às 18:00</span>
-                                <p class="text-[11px] text-zinc-400 mt-0.5">Plantão para pregões em andamento</p>
-                            </div>
+                    <div class="channel-item">
+                        <div class="channel-icon" style="color: var(--brand-muted);">
+                            <i data-lucide="clock" class="icon"></i>
+                        </div>
+                        <div>
+                            <span class="channel-label">Horário Operacional</span>
+                            <span class="channel-value">Segunda a Sexta, 08:30 às 18:00</span>
+                            <p class="channel-hint">Plantão para pregões em andamento</p>
                         </div>
                     </div>
                 </div>
 
-                <div class="bg-brand-black text-white p-8 sm:p-10 border border-brand-borderDark relative overflow-hidden">
-                    <div class="absolute -right-8 -bottom-8 opacity-5 text-white pointer-events-none">
-                        <i data-lucide="shield-check" class="w-44 h-44"></i>
-                    </div>
+                <div class="highlight-box">
+                    <span class="eyebrow" style="font-size: 10px;">Rigor &amp; Segurança</span>
+                    <h3>Análise Prévia Sem Custo</h3>
+                    <p>Envie o número do pregão ou edital de seu interesse. Nossa equipe realiza uma triagem prévia de
+                        viabilidade e requisitos técnicos sem compromisso inicial.</p>
 
-                    <span class="text-[10px] uppercase tracking-widest2 text-brand-red font-semibold">Rigor &amp; Segurança</span>
-                    <h3 class="font-serif text-2xl font-normal text-white mt-1 mb-3">Análise Prévia Sem Custo</h3>
-                    <p class="text-xs text-zinc-400 font-light leading-relaxed">
-                        Envie o número do pregão ou edital de seu interesse. Nossa equipe realiza uma triagem prévia de viabilidade e requisitos técnicos sem compromisso inicial.
-                    </p>
-
-                    <div class="mt-6 pt-6 border-t border-zinc-800 flex items-center gap-3">
-                        <div class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
-                        <span class="text-[11px] uppercase tracking-widest text-zinc-300 font-medium">Equipe Técnica Disponível</span>
+                    <div class="status-row">
+                        <div class="status-dot"></div>
+                        <span>Equipe Técnica Disponível</span>
                     </div>
                 </div>
 
@@ -248,15 +199,15 @@
 
     </main>
 
-    <footer class="w-full border-t border-brand-border bg-white py-8">
-        <div class="max-w-7xl mx-auto px-6 sm:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-brand-muted font-light">
-            <div class="flex items-center gap-2">
-                <span class="font-semibold text-brand-black">DEL COMPANY</span>
+    <footer class="footer">
+        <div class="container footer-inner">
+            <div class="footer-brand">
+                <strong>DEL COMPANY</strong>
                 <span>© 2026. Todos os direitos reservados.</span>
             </div>
-            <div class="flex items-center gap-6 uppercase tracking-widest text-[10px]">
-                <a href="./termos.html" class="hover:text-brand-black transition-colors">Termos de Uso</a>
-                <a href="./privacidade.html" class="hover:text-brand-black transition-colors">Privacidade &amp; LGPD</a>
+            <div class="footer-links">
+                <a href="./termos.html">Termos de Uso</a>
+                <a href="./privacidade.html">Privacidade &amp; LGPD</a>
             </div>
         </div>
     </footer>
