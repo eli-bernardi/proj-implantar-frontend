@@ -1,0 +1,103 @@
+.summary-box {
+    background: white;
+    border: 1px solid var(--brand-border);
+    padding: 32px;
+    margin-bottom: 32px;
+}
+
+.box-title {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+    color: var(--brand-black);
+    margin-bottom: 20px;
+}
+
+.summary-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--brand-border);
+    font-size: 13px;
+}
+
+.summary-line:last-child {
+    border-bottom: none;
+}
+
+.summary-line strong {
+    color: var(--brand-black);
+    font-weight: 600;
+}
+
+.summary-total-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+    margin-top: 8px;
+    border-top: 1px solid var(--brand-border);
+}
+
+.summary-total-row span:first-child {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+    color: var(--brand-black);
+}
+
+.summary-total-row span:last-child {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--brand-red);
+}
+
+.checkout-form-box {
+    background: white;
+    border: 1px solid var(--brand-border);
+    padding: 32px;
+}
+
+.confirm-box {
+    background: white;
+    border: 1px solid var(--brand-border);
+    padding: 64px 32px;
+    text-align: center;
+}
+
+.confirm-icon {
+    width: 64px;
+    height: 64px;
+    background: var(--brand-red-light);
+    border: 1px solid rgba(201, 42, 42, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 24px;
+}
+
+.confirm-icon span {
+    font-size: 24px;
+    color: var(--brand-red);
+    font-weight: 700;
+}
+
+.confirm-box h3 {
+    font-family: var(--font-serif);
+    font-size: 28px;
+    font-weight: 400;
+    color: var(--brand-black);
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+
+.confirm-box p {
+    font-size: 12px;
+    color: var(--brand-muted);
+    font-weight: 300;
+    max-width: 380px;
+    margin: 0 auto 32px;
+}
