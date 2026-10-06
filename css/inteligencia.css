@@ -1,0 +1,162 @@
+/* ===== Módulo Inteligência de Licitações: selos, filtros avançados, paginação ===== */
+
+/* Selos de enquadramento por valor */
+.selos-linha {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 8px;
+}
+
+.selo {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1.6;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    cursor: help;
+}
+
+.selo-verde    { background: #ECFDF3; color: #067647; border-color: #ABEFC6; }
+.selo-azul     { background: #EFF8FF; color: #175CD3; border-color: #B2DDFF; }
+.selo-laranja  { background: #FFF6ED; color: #B93815; border-color: #F9DBAF; }
+.selo-vermelho { background: #FEF3F2; color: #B42318; border-color: #FECDCA; }
+.selo-cinza    { background: #F4F4F5; color: #52525B; border-color: #E4E4E7; }
+
+.selo-indicativo { border-style: dashed; }
+
+/* Painel de filtros avançados */
+.filtros-avancados {
+    margin-top: 16px;
+    padding: 20px;
+    background: var(--brand-canvas);
+    border: 1px solid var(--brand-border);
+}
+
+.filtros-avancados-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 12px;
+}
+
+.filtro-campo {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.filtro-campo label {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--brand-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.filtro-campo select,
+.filtro-campo input {
+    padding: 9px 12px;
+    border: 1px solid var(--brand-border);
+    background: white;
+    font-size: 13px;
+    font-family: var(--font-sans);
+    width: 100%;
+}
+
+.filtros-acoes {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.filtros-botoes { display: flex; gap: 8px; }
+
+.btn-filtro {
+    padding: 9px 18px;
+    font-size: 13px;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    cursor: pointer;
+    border: 1px solid var(--brand-border);
+    background: white;
+    color: var(--brand-black);
+}
+
+.btn-filtro-primario {
+    background: var(--brand-red);
+    border-color: var(--brand-red);
+    color: white;
+}
+
+.btn-filtro-primario:hover { background: var(--brand-red-hover); }
+
+.licitacoes-contador {
+    font-size: 13px;
+    color: var(--brand-muted);
+    margin: 20px 0 12px;
+}
+
+/* Detalhes e valores */
+.licitacao-valores {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 12px;
+    margin: 12px 0;
+    padding: 12px;
+    background: var(--brand-canvas);
+}
+
+.licitacao-valores span {
+    display: block;
+    font-size: 11px;
+    color: var(--brand-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.licitacao-valores strong { font-size: 15px; }
+
+.licitacao-ramo {
+    display: inline-block;
+    margin-left: 8px;
+    padding: 2px 8px;
+    background: var(--brand-black);
+    color: white;
+    font-size: 10px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.selos-aviso {
+    margin-top: 16px;
+    font-size: 11px;
+    color: var(--brand-muted);
+}
+
+/* Paginação */
+.licitacoes-paginacao {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 24px;
+    font-size: 13px;
+    color: var(--brand-muted);
+}
+
+.licitacoes-paginacao button:disabled { opacity: 0.4; cursor: not-allowed; }
+
+@media (max-width: 640px) {
+    .filtros-avancados { padding: 14px; }
+    .filtros-acoes { flex-direction: column; align-items: stretch; }
+    .filtros-botoes { justify-content: stretch; }
+    .filtros-botoes .btn-filtro { flex: 1; }
+}

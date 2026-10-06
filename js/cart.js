@@ -75,6 +75,7 @@ function renderizarFavoritos() {
             <div>
                 <p class="favorito-modalidade">${f.modalidade || 'Modalidade não informada'}</p>
                 <p class="favorito-nome">Licitação ${f.numero || '-'}/${f.ano || '-'} — ${f.unidadeGestora || '-'}</p>
+                ${typeof renderizarSelos === 'function' ? renderizarSelos(f.selos) : ''}
             </div>
             <button data-chave="${f.chave}" class="remover-favorito">Remover</button>
         </div>

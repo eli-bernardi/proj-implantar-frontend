@@ -14,6 +14,7 @@
 
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/shop.css">
+    <link rel="stylesheet" href="../css/inteligencia.css">
 
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
 
@@ -24,6 +25,7 @@
     <script src="../js/auth.js" defer></script>
     <script src="../js/cart-store.js" defer></script>
     <script src="../js/favoritos-store.js" defer></script>
+    <script src="../js/selos.js" defer></script>
     <script src="../js/catalog.js" defer></script>
     <script src="../js/licitacoes.js" defer></script>
 </head>
@@ -113,7 +115,49 @@
                 </div>
             </div>
 
-            <div id="licitacoes-grid" class="licitacoes-list"></div>
+            <div id="filtros-avancados" class="filtros-avancados">
+                <div class="filtros-avancados-grid">
+                    <div class="filtro-campo">
+                        <label for="filtro-ramo">Ramo</label>
+                        <select id="filtro-ramo"><option value="">Todos os ramos</option></select>
+                    </div>
+                    <div class="filtro-campo">
+                        <label for="filtro-modalidade">Modalidade</label>
+                        <select id="filtro-modalidade"><option value="">Todas as modalidades</option></select>
+                    </div>
+                    <div class="filtro-campo">
+                        <label for="filtro-enquadramento">Enquadramento</label>
+                        <select id="filtro-enquadramento"><option value="">Todos os enquadramentos</option></select>
+                    </div>
+                    <div class="filtro-campo">
+                        <label for="filtro-valor-min">Valor estimado (mín.)</label>
+                        <input type="number" id="filtro-valor-min" min="0" step="0.01" placeholder="R$ 0,00">
+                    </div>
+                    <div class="filtro-campo">
+                        <label for="filtro-valor-max">Valor estimado (máx.)</label>
+                        <input type="number" id="filtro-valor-max" min="0" step="0.01" placeholder="R$ 100.000,00">
+                    </div>
+                    <div class="filtro-campo">
+                        <label for="filtro-publicacao-de">Publicação a partir de</label>
+                        <input type="date" id="filtro-publicacao-de">
+                    </div>
+                    <div class="filtro-campo">
+                        <label for="filtro-publicacao-ate">Publicação até</label>
+                        <input type="date" id="filtro-publicacao-ate">
+                    </div>
+                </div>
+                <div class="filtros-acoes">
+                    <span id="licitacoes-contador" class="licitacoes-contador" style="margin: 0;"></span>
+                    <div class="filtros-botoes">
+                        <button type="button" id="btn-limpar-filtros" class="btn-filtro">Limpar</button>
+                        <button type="button" id="btn-aplicar-filtros" class="btn-filtro btn-filtro-primario">Aplicar filtros</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="licitacoes-grid" class="licitacoes-list" style="margin-top: 24px;"></div>
+            <nav id="licitacoes-paginacao" class="licitacoes-paginacao" aria-label="Paginação das licitações"></nav>
+            <p class="selos-aviso">Os selos são indicativos e usam o valor estimado e os limites de 2026 (Lei 14.133/2021). Servem como apoio à triagem e não substituem a leitura do edital nem a análise jurídica.</p>
         </div>
     </main>
 
