@@ -2,6 +2,10 @@
 // Fonte principal: backend Del Company (/api/licitacoes/filtros). Se o backend ainda
 // não tiver dados (ou estiver fora do ar), cai para a API pública de Tijucas, sem selos.
 
+// Acesso por plano (Free, Pro, Max). Preenchido em aplicarAcessoDoPlano() quando a página abre.
+let ACESSO = { consultasMes: Infinity, filtrosAvancados: true, ramo: true, seloCompleto: true }
+let PLANO_ACESSO = null
+
 let licitacoesDebounce = null
 let situacoesSelecionadas = []
 let paginaAtual = 1
@@ -48,7 +52,7 @@ function limparFiltros() {
     document.querySelectorAll('.situacao-checkbox').forEach(cb => { cb.checked = false })
     situacoesSelecionadas = []
     atualizarLabelSituacao()
-    buscarLicitacoes(1)
+    buscarComCota(1)
 }
 
 function preencherSelect(id, itens, rotuloPadrao, pegarValor = i => i, pegarTexto = i => i) {
@@ -91,7 +95,7 @@ function montarPainelSituacoes(lista) {
         cb.addEventListener('change', () => {
             situacoesSelecionadas = Array.from(panel.querySelectorAll('.situacao-checkbox:checked')).map(c => c.value)
             atualizarLabelSituacao()
-            buscarLicitacoes(1)
+            buscarComCota(1)
         })
     })
 }
@@ -235,7 +239,7 @@ function renderizarLicitacoes(lista, paginacao) {
 
     container.innerHTML = lista.map((l, i) => {
         const favoritado = ehFavorito(chaveLicitacao(l))
-        const ramo = l.categoria ? `<span class="licitacao-ramo">${escaparHtml(l.categoria.nome)}</span>` : ''
+        const ramo = (l.categoria && ACESSO.ramo) ? `<span class="licitacao-ramo">${escaparHtml(l.categoria.nome)}</span>` : ''
         const valores = (l.valorEstimado !== null || l.valorHomologado !== null) ? `
             <div class="licitacao-valores">
                 <div><span>Valor estimado</span><strong>${formatarMoeda(l.valorEstimado)}</strong></div>
@@ -251,7 +255,7 @@ function renderizarLicitacoes(lista, paginacao) {
                     <div>
                         <span class="licitacao-modalidade">${escaparHtml(l.modalidade || 'Modalidade não informada')}</span>${ramo}
                         <h3 class="licitacao-nome">Licitação ${escaparHtml(l.numero || '-')}/${escaparHtml(l.ano || '-')}</h3>
-                        ${renderizarSelos(l.selos)}
+                        ${renderizarSelos(l.selos, { basico: !ACESSO.seloCompleto })}
                     </div>
                     <span class="licitacao-ver-mais">Ver mais ▾</span>
                 </button>
@@ -304,20 +308,123 @@ function renderizarLicitacoes(lista, paginacao) {
     if (typeof lucide !== 'undefined') lucide.createIcons()
 }
 
+// ---------- acesso por plano ----------
+
+function mostrarBloqueio(titulo, texto, rotuloBotao) {
+    const bloqueio = document.getElementById('licitacoes-bloqueio')
+    const conteudo = document.getElementById('licitacoes-conteudo')
+    if (conteudo) conteudo.style.display = 'none'
+    if (!bloqueio) return
+
+    bloqueio.style.display = 'block'
+    bloqueio.innerHTML = `
+        <span class="eyebrow">Acesso por plano</span>
+        <h2>${escaparHtml(titulo)}</h2>
+        <p>${escaparHtml(texto)}</p>
+        <a href="./catalog.html#planos" class="btn btn-primary">${escaparHtml(rotuloBotao)}</a>
+    `
+}
+
+function atualizarBarraCota() {
+    const barra = document.getElementById('licitacoes-cota')
+    if (!barra || !PLANO_ACESSO) return
+
+    const limite = ACESSO.consultasMes
+    const consultas = isFinite(limite)
+        ? `Consultas neste mês: <strong>${consultasUsadas()}/${limite}</strong>`
+        : 'Consultas: <strong>ilimitadas</strong>'
+    const upgrade = PLANO_ACESSO.id === 'max' ? '' : ' · <a href="./catalog.html#planos">Fazer upgrade</a>'
+
+    barra.innerHTML = `<span>Plano <strong>${escaparHtml(PLANO_ACESSO.nome)}</strong>${upgrade}</span><span>${consultas}</span>`
+}
+
+// Retorna true se o usuário tem plano ativo e a página pode carregar.
+function aplicarAcessoDoPlano() {
+    if (!estaLogado()) {
+        exigirLogin() // volta para esta página depois do login
+        return false
+    }
+
+    const assinatura = getAssinatura()
+
+    if (!assinatura) {
+        mostrarBloqueio(
+            'Escolha um plano para pesquisar licitações',
+            'A pesquisa de licitações é liberada depois da contratação de um plano. Existe um plano gratuito para começar.',
+            'Ver planos'
+        )
+        return false
+    }
+
+    if (!assinatura.ativa) {
+        mostrarBloqueio(
+            'Seu plano expirou',
+            'Renove a assinatura para voltar a pesquisar licitações.',
+            'Renovar plano'
+        )
+        return false
+    }
+
+    PLANO_ACESSO = PLANOS[assinatura.planoId]
+    ACESSO = PLANO_ACESSO.limites
+
+    document.getElementById('licitacoes-conteudo').style.display = 'block'
+
+    if (!ACESSO.filtrosAvancados) {
+        // Esconde só os campos avançados; contador e botões Limpar/Aplicar continuam disponíveis
+        document.querySelector('#filtros-avancados .filtros-avancados-grid')?.style.setProperty('display', 'none')
+        document.getElementById('filtros-bloqueados')?.style.setProperty('display', 'block')
+    }
+
+    atualizarBarraCota()
+    return true
+}
+
+// Busca disparada pelo usuário (digitar, filtrar, limpar): gasta 1 consulta do plano.
+// Abrir a página e trocar de página na listagem não contam.
+let ultimaBuscaContada = null
+
+function buscarComCota(pagina = 1) {
+    // Repetir exatamente a mesma busca não gasta outra consulta
+    const assinaturaBusca = lerFiltros().toString()
+    if (assinaturaBusca === ultimaBuscaContada) {
+        buscarLicitacoes(pagina)
+        return
+    }
+
+    const resultado = consumirConsulta(ACESSO.consultasMes)
+
+    if (!resultado.ok) {
+        const container = document.getElementById('licitacoes-grid')
+        if (container) {
+            container.innerHTML = `<p class="state-message">Você usou as ${resultado.limite} consultas do plano ${escaparHtml(PLANO_ACESSO.nome)} neste mês. <a href="./catalog.html#planos" style="color: var(--brand-red); font-weight: 600;">Faça upgrade</a> para pesquisar sem limite.</p>`
+        }
+        atualizarBarraCota()
+        return
+    }
+
+    ultimaBuscaContada = assinaturaBusca
+    atualizarBarraCota()
+    buscarLicitacoes(pagina)
+}
+
 document.addEventListener('DOMContentLoaded', () => {
+    if (!aplicarAcessoDoPlano()) return
+
     configurarDropdownSituacao()
     carregarOpcoes()
+    ultimaBuscaContada = lerFiltros().toString()
     buscarLicitacoes(1)
 
     const busca = document.getElementById('licitacoes-busca')
     if (busca) {
         busca.addEventListener('input', () => {
             clearTimeout(licitacoesDebounce)
-            licitacoesDebounce = setTimeout(() => buscarLicitacoes(1), 400)
+            licitacoesDebounce = setTimeout(() => buscarComCota(1), 400)
         })
     }
 
-    document.getElementById('btn-aplicar-filtros')?.addEventListener('click', () => buscarLicitacoes(1))
+    document.getElementById('btn-aplicar-filtros')?.addEventListener('click', () => buscarComCota(1))
     document.getElementById('btn-limpar-filtros')?.addEventListener('click', limparFiltros)
     document.getElementById('filtros-avancados-toggle')?.addEventListener('click', () => {
         document.getElementById('filtros-avancados')?.classList.toggle('hidden-filtros')

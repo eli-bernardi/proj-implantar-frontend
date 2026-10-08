@@ -14,7 +14,7 @@
 
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/shop.css">
-    <link rel="stylesheet" href="../css/inteligencia.css">
+    <link rel="stylesheet" href="../css/planos.css">
 
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
 
@@ -24,10 +24,10 @@
     <script src="../js/api.js" defer></script>
     <script src="../js/auth.js" defer></script>
     <script src="../js/cart-store.js" defer></script>
-    <script src="../js/favoritos-store.js" defer></script>
     <script src="../js/selos.js" defer></script>
+    <script src="../js/planos-store.js" defer></script>
     <script src="../js/catalog.js" defer></script>
-    <script src="../js/licitacoes.js" defer></script>
+    <script src="../js/planos.js" defer></script>
 </head>
 
 <body style="min-height: 100vh; display: flex; flex-direction: column;">
@@ -45,6 +45,8 @@
             <nav class="nav">
                 <a href="../index.html#solucoes">Soluções</a>
                 <a href="./catalog.html" style="color: var(--brand-red); font-weight: 700;">Serviços</a>
+                <a href="./catalog.html#planos">Planos</a>
+                <a href="./licitacoes.html">Licitações</a>
                 <a href="./contato.html">Contato</a>
             </nav>
 
@@ -73,10 +75,16 @@
                     licitatório.
                 </p>
             </div>
-            <a href="./cart.html" class="link-arrow">
-                <i data-lucide="shopping-bag" class="icon"></i>
-                Ver Carrinho
-            </a>
+            <div class="page-title-actions">
+                <a href="./licitacoes.html" id="btn-pesquisar-licitacoes" class="btn btn-primary">
+                    <i data-lucide="search" class="icon"></i>
+                    Pesquisar licitações
+                </a>
+                <a href="./cart.html" class="link-arrow">
+                    <i data-lucide="shopping-bag" class="icon"></i>
+                    Ver Carrinho
+                </a>
+            </div>
         </div>
 
         <div class="shop-filters">
@@ -96,69 +104,32 @@
             <p class="state-message">Carregando serviços...</p>
         </div>
 
-        <div class="licitacoes-section">
-            <h2 class="section-title" style="font-size: 32px;">Licitações em Andamento — Tijucas/SC</h2>
-
-            <div class="licitacoes-filters" style="margin-top: 32px;">
-                <input type="text" id="licitacoes-busca" placeholder="Buscar licitação por nome ou objeto...">
-
-                <select id="licitacoes-cidade" disabled>
-                    <option value="tijucas">Tijucas/SC</option>
-                </select>
-
-                <div class="situacao-dropdown">
-                    <button type="button" id="licitacoes-situacao-btn" class="situacao-btn">
-                        <span id="licitacoes-situacao-label">Todas as situações</span>
-                        <i data-lucide="chevron-down" class="icon"></i>
-                    </button>
-                    <div id="licitacoes-situacao-panel" class="situacao-panel"></div>
-                </div>
+        <section id="planos" class="planos-section">
+            <div class="planos-header">
+                <span class="eyebrow">Planos de Acesso</span>
+                <h2 class="section-title" style="font-size: 32px;">Contrate o plano e libere a pesquisa de licitações</h2>
+                <p class="section-desc">
+                    Escolha o plano, faça o pagamento e o acesso à inteligência em licitações é liberado na hora.
+                    Quanto maior o ciclo de contratação, menor o valor mensal.
+                </p>
             </div>
 
-            <div id="filtros-avancados" class="filtros-avancados">
-                <div class="filtros-avancados-grid">
-                    <div class="filtro-campo">
-                        <label for="filtro-ramo">Ramo</label>
-                        <select id="filtro-ramo"><option value="">Todos os ramos</option></select>
-                    </div>
-                    <div class="filtro-campo">
-                        <label for="filtro-modalidade">Modalidade</label>
-                        <select id="filtro-modalidade"><option value="">Todas as modalidades</option></select>
-                    </div>
-                    <div class="filtro-campo">
-                        <label for="filtro-enquadramento">Enquadramento</label>
-                        <select id="filtro-enquadramento"><option value="">Todos os enquadramentos</option></select>
-                    </div>
-                    <div class="filtro-campo">
-                        <label for="filtro-valor-min">Valor estimado (mín.)</label>
-                        <input type="number" id="filtro-valor-min" min="0" step="0.01" placeholder="R$ 0,00">
-                    </div>
-                    <div class="filtro-campo">
-                        <label for="filtro-valor-max">Valor estimado (máx.)</label>
-                        <input type="number" id="filtro-valor-max" min="0" step="0.01" placeholder="R$ 100.000,00">
-                    </div>
-                    <div class="filtro-campo">
-                        <label for="filtro-publicacao-de">Publicação a partir de</label>
-                        <input type="date" id="filtro-publicacao-de">
-                    </div>
-                    <div class="filtro-campo">
-                        <label for="filtro-publicacao-ate">Publicação até</label>
-                        <input type="date" id="filtro-publicacao-ate">
-                    </div>
-                </div>
-                <div class="filtros-acoes">
-                    <span id="licitacoes-contador" class="licitacoes-contador" style="margin: 0;"></span>
-                    <div class="filtros-botoes">
-                        <button type="button" id="btn-limpar-filtros" class="btn-filtro">Limpar</button>
-                        <button type="button" id="btn-aplicar-filtros" class="btn-filtro btn-filtro-primario">Aplicar filtros</button>
-                    </div>
-                </div>
-            </div>
+            <div id="plano-status" class="plano-status" style="display: none;"></div>
 
-            <div id="licitacoes-grid" class="licitacoes-list" style="margin-top: 24px;"></div>
-            <nav id="licitacoes-paginacao" class="licitacoes-paginacao" aria-label="Paginação das licitações"></nav>
-            <p class="selos-aviso">Os selos são indicativos e usam o valor estimado e os limites de 2026 (Lei 14.133/2021). Servem como apoio à triagem e não substituem a leitura do edital nem a análise jurídica.</p>
-        </div>
+            <div id="ciclo-toggle" class="ciclo-toggle" role="group" aria-label="Ciclo de cobrança"></div>
+
+            <div id="planos-grid" class="planos-grid"></div>
+
+            <div id="planos-extras" class="planos-extras"></div>
+
+            <h3 class="planos-subtitulo">Comparativo completo de recursos</h3>
+            <div id="planos-tabela" class="planos-tabela-wrap" style="margin-top: 16px;"></div>
+
+            <p class="planos-nota">
+                Valores em reais, por mês quando indicado. Trimestral e anual são cobrados de uma só vez e têm desconto
+                sobre o mensal. Extras (CNPJ e usuário) são cobrados por mês durante todo o ciclo contratado.
+            </p>
+        </section>
     </main>
 
     <footer class="footer">
