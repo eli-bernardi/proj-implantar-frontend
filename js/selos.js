@@ -21,14 +21,15 @@ function formatarData(iso) {
 }
 
 // selos: [{ codigo, rotulo, cor, emoji, baseLegal, limite, indicativo }]
-function renderizarSelos(selos) {
+// opcoes.basico: selo "Básico" do plano Free (só o rótulo, sem limite nem base legal)
+function renderizarSelos(selos, opcoes = {}) {
     if (!Array.isArray(selos) || selos.length === 0) return ''
 
     const itens = selos.map(s => {
         const dica = [
             s.indicativo ? 'Indicativo: confirme no texto do edital.' : null,
-            s.limite ? `Limite considerado: ${formatarMoeda(s.limite)}` : null,
-            s.baseLegal || null
+            !opcoes.basico && s.limite ? `Limite considerado: ${formatarMoeda(s.limite)}` : null,
+            !opcoes.basico ? (s.baseLegal || null) : null
         ].filter(Boolean).join(' — ')
 
         return `<span class="selo selo-${escaparHtml(s.cor)} ${s.indicativo ? 'selo-indicativo' : ''}" title="${escaparHtml(dica)}">${escaparHtml(s.emoji)} ${escaparHtml(s.rotulo)}</span>`

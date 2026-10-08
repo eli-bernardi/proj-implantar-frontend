@@ -30,7 +30,9 @@ O catálogo também integra uma **API própria de licitações**, alimentada com
 
 - **Página inicial institucional** com apresentação, soluções, etapas do processo ("Como Funciona"), diferenciais e perguntas frequentes
 - **Catálogo de serviços** com busca e filtro por categoria
-- **Licitações reais de Tijucas/SC** exibidas no catálogo, via API externa
+- **Planos Free, Pro e Max** no catálogo, com tabela de preços por ciclo (mensal, trimestral e anual) e contratação em `html/assinatura.html`
+- **Pesquisa de licitações** em `html/licitacoes.html`, liberada conforme o plano contratado (Free: 20 consultas/mês, sem filtros avançados nem classificação por ramo)
+- **Licitações reais de Tijucas/SC** via API externa, na página de pesquisa
 - **Carrinho de serviços** com estado gerenciado no cliente (`cart-store.js`)
 - **Login e autenticação** com JWT, integrados ao backend
 - **Página de contato** com envio de mensagem por e-mail e atalho para WhatsApp
@@ -55,7 +57,9 @@ proj-implantar-frontend/
 ├── index.html                    # Página inicial
 ├── gerar-licitacoes-tijucas.js   # Script de geração dos dados de licitações de Tijucas
 ├── html/
-│   ├── catalog.html              # Catálogo de serviços e licitações
+│   ├── catalog.html              # Catálogo de serviços e planos
+│   ├── assinatura.html           # Contratação e pagamento do plano
+│   ├── licitacoes.html           # Pesquisa de licitações (exige plano)
 │   ├── cart.html                 # Carrinho de serviços
 │   ├── login.html                # Autenticação
 │   ├── contato.html              # Formulário de contato

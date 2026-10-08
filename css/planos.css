@@ -1,0 +1,352 @@
+/* ===== Planos de assinatura (Free, Pro, Max) ===== */
+
+.planos-section {
+    margin-top: 80px;
+    padding-top: 56px;
+    border-top: 1px solid var(--brand-border);
+}
+
+.planos-header {
+    max-width: 720px;
+    margin-bottom: 32px;
+}
+
+/* Barra de status do plano do usuário */
+.plano-status {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 16px 20px;
+    margin-bottom: 32px;
+    background: var(--brand-surface);
+    border: 1px solid var(--brand-border);
+    border-left: 4px solid var(--brand-red);
+    font-size: 13px;
+}
+
+.plano-status strong { color: var(--brand-black); }
+
+/* Seletor de ciclo */
+.ciclo-toggle {
+    display: inline-flex;
+    border: 1px solid var(--brand-border);
+    background: var(--brand-surface);
+    margin-bottom: 32px;
+}
+
+.ciclo-btn {
+    padding: 12px 22px;
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    background: none;
+    border: none;
+    color: var(--brand-muted);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.ciclo-btn small {
+    margin-left: 6px;
+    color: var(--brand-red);
+    font-size: 10px;
+}
+
+.ciclo-btn.ativo {
+    background: var(--brand-black);
+    color: white;
+}
+
+.ciclo-btn.ativo small { color: #ff8a8a; }
+
+/* Cards */
+.planos-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+}
+
+@media (min-width: 900px) {
+    .planos-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+.plano-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 32px 28px;
+    background: var(--brand-surface);
+    border: 1px solid var(--brand-border);
+    transition: all 0.3s ease;
+}
+
+.plano-card:hover {
+    border-color: var(--brand-black);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+}
+
+.plano-card.destaque {
+    border-color: var(--brand-black);
+    border-top: 4px solid var(--brand-red);
+}
+
+.plano-card.atual { background: var(--brand-red-light); }
+
+.plano-selo {
+    position: absolute;
+    top: -12px;
+    right: 20px;
+    padding: 4px 12px;
+    background: var(--brand-red);
+    color: white;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.plano-nome {
+    font-family: var(--font-serif);
+    font-size: 30px;
+    font-weight: 500;
+    color: var(--brand-black);
+}
+
+.plano-resumo {
+    font-size: 12px;
+    color: var(--brand-muted);
+    font-weight: 300;
+    line-height: 1.6;
+    min-height: 38px;
+}
+
+.plano-preco {
+    font-size: 36px;
+    font-weight: 600;
+    color: var(--brand-black);
+    line-height: 1.1;
+}
+
+.plano-preco span {
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--brand-muted);
+}
+
+.plano-cobranca {
+    font-size: 12px;
+    color: var(--brand-muted);
+    min-height: 34px;
+}
+
+.plano-cobranca b { color: var(--brand-red); font-weight: 600; }
+
+.plano-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+    padding-top: 16px;
+    border-top: 1px solid var(--brand-border);
+    font-size: 12px;
+    color: var(--brand-dark);
+}
+
+.plano-lista li {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.plano-lista li span:first-child { color: var(--brand-muted); }
+.plano-lista li span:last-child { text-align: right; font-weight: 600; }
+
+/* Tabela comparativa */
+.planos-tabela-wrap {
+    margin-top: 48px;
+    overflow-x: auto;
+    border: 1px solid var(--brand-border);
+    background: var(--brand-surface);
+}
+
+.planos-tabela {
+    width: 100%;
+    min-width: 640px;
+    border-collapse: collapse;
+    font-size: 13px;
+}
+
+.planos-tabela th,
+.planos-tabela td {
+    padding: 14px 18px;
+    text-align: left;
+    border-bottom: 1px solid var(--brand-border);
+}
+
+.planos-tabela thead th {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    background: var(--brand-canvas);
+    color: var(--brand-black);
+}
+
+.planos-tabela tbody th {
+    font-weight: 500;
+    color: var(--brand-muted);
+}
+
+.planos-tabela tbody tr:last-child th,
+.planos-tabela tbody tr:last-child td { border-bottom: none; }
+
+.planos-nota {
+    margin-top: 16px;
+    font-size: 11px;
+    color: var(--brand-muted);
+    line-height: 1.6;
+}
+
+.planos-extras {
+    margin-top: 24px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+}
+
+.plano-extra-box {
+    padding: 18px 20px;
+    background: var(--brand-surface);
+    border: 1px solid var(--brand-border);
+    font-size: 12px;
+    color: var(--brand-muted);
+}
+
+.plano-extra-box strong { display: block; margin-bottom: 6px; color: var(--brand-black); font-size: 13px; }
+
+/* Botões de ação nos títulos */
+.page-title-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+}
+
+/* ===== Página assinatura.html ===== */
+.opcoes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 12px;
+}
+
+.opcao-radio {
+    display: block;
+    padding: 14px 16px;
+    border: 1px solid var(--brand-border);
+    background: white;
+    cursor: pointer;
+    font-size: 13px;
+    transition: all 0.2s ease;
+}
+
+.opcao-radio input { margin-right: 8px; accent-color: var(--brand-red); }
+.opcao-radio small { display: block; margin-top: 4px; color: var(--brand-muted); font-size: 11px; }
+.opcao-radio.ativa { border-color: var(--brand-black); background: var(--brand-canvas); }
+
+.extra-linha {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--brand-border);
+    font-size: 13px;
+}
+
+.extra-linha:last-child { border-bottom: none; }
+.extra-linha small { display: block; color: var(--brand-muted); font-size: 11px; }
+
+.stepper { display: inline-flex; align-items: center; border: 1px solid var(--brand-border); }
+
+.stepper button {
+    width: 34px;
+    height: 34px;
+    background: white;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.stepper span { min-width: 36px; text-align: center; font-weight: 600; }
+
+.aviso-demo {
+    padding: 14px 18px;
+    margin-bottom: 24px;
+    background: #FFF6ED;
+    border: 1px solid #F9DBAF;
+    color: #B93815;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.bloco-assinatura { margin-bottom: 32px; }
+
+.termos-linha { display: flex; gap: 10px; align-items: flex-start; font-size: 12px; margin: 20px 0; color: var(--brand-muted); }
+.termos-linha input { margin-top: 3px; accent-color: var(--brand-red); }
+
+/* ===== Página licitacoes.html (acesso por plano) ===== */
+.acesso-bloqueado {
+    padding: 64px 32px;
+    text-align: center;
+    background: var(--brand-surface);
+    border: 1px solid var(--brand-border);
+}
+
+.acesso-bloqueado h2 { font-family: var(--font-serif); font-size: 30px; font-weight: 500; color: var(--brand-black); margin: 12px 0; }
+.acesso-bloqueado p { max-width: 520px; margin: 0 auto 24px; font-size: 13px; color: var(--brand-muted); line-height: 1.7; }
+
+.cota-barra {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 24px;
+    padding: 12px 18px;
+    background: var(--brand-surface);
+    border: 1px solid var(--brand-border);
+    font-size: 12px;
+    color: var(--brand-muted);
+}
+
+.cota-barra strong { color: var(--brand-black); }
+.cota-barra a { color: var(--brand-red); font-weight: 600; }
+
+.recurso-bloqueado {
+    margin-top: 16px;
+    padding: 16px 20px;
+    background: var(--brand-canvas);
+    border: 1px dashed var(--brand-border);
+    font-size: 12px;
+    color: var(--brand-muted);
+}
+
+.recurso-bloqueado a { color: var(--brand-red); font-weight: 600; }
+
+@media (max-width: 640px) {
+    .ciclo-toggle { display: flex; width: 100%; }
+    .ciclo-btn { flex: 1; padding: 12px 6px; }
+    .plano-card { padding: 28px 20px; }
+}
+
+.planos-subtitulo {
+    margin-top: 48px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+    color: var(--brand-black);
+}

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Del Company — Contratar Plano</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="../css/cart.css">
+    <link rel="stylesheet" href="../css/checkout.css">
+    <link rel="stylesheet" href="../css/planos.css">
+
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script src="../js/config.js" defer></script>
+    <script src="../js/api.js" defer></script>
+    <script src="../js/auth.js" defer></script>
+    <script src="../js/cart-store.js" defer></script>
+    <script src="../js/planos-store.js" defer></script>
+    <script src="../js/assinatura.js" defer></script>
+</head>
+
+<body style="min-height: 100vh; display: flex; flex-direction: column;">
+
+    <header class="header">
+        <div class="container header-inner">
+            <a href="../index.html" class="logo">
+                <div class="logo-mark">D</div>
+                <div class="logo-text">
+                    <span class="logo-title">DEL COMPANY</span>
+                    <span class="logo-subtitle">ASSESSORIA EM LICITAÇÕES</span>
+                </div>
+            </a>
+
+            <nav class="nav">
+                <a href="../index.html#solucoes">Soluções</a>
+                <a href="./catalog.html">Serviços</a>
+                <a href="./catalog.html#planos" style="color: var(--brand-red); font-weight: 700;">Planos</a>
+                <a href="./contato.html">Contato</a>
+            </nav>
+
+            <div class="header-actions">
+                <a href="./cart.html" class="btn btn-outline cart-link">
+                    <i data-lucide="shopping-bag" class="icon"></i>
+                    Carrinho
+                    <span id="nav-carrinho-count" class="cart-badge"></span>
+                </a>
+                <a href="./login.html" id="nav-conta" class="btn btn-dark">
+                    <i data-lucide="log-in" class="icon"></i>
+                    Entrar
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="section" style="max-width: 768px; flex: 1; width: 100%;">
+
+        <div class="page-title-row"
+            style="border-bottom: 1px solid var(--brand-border); padding-bottom: 24px; margin-bottom: 40px;">
+            <div>
+                <span class="eyebrow">Contratação</span>
+                <h1 class="section-title">Contratar Plano</h1>
+                <p class="section-desc">Escolha o plano, confirme o pagamento e libere a pesquisa de licitações.</p>
+            </div>
+        </div>
+
+        <div id="assinatura-alert" class="auth-alert" style="margin-bottom: 24px;"></div>
+
+        <div id="assinatura-content">
+            <div class="loading-box">
+                <i data-lucide="loader-2" class="icon"></i>
+                <p>Carregando...</p>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-inner">
+            <div class="footer-brand">
+                <strong>DEL COMPANY</strong>
+                <span>© 2026. Todos os direitos reservados.</span>
+            </div>
+            <div class="footer-links">
+                <a href="./termos.html">Termos de Uso</a>
+                <a href="./privacidade.html">Privacidade &amp; LGPD</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>
